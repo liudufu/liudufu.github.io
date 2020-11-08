@@ -1,0 +1,1862 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('����������') !== ''){
+                alert('�������');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "03760df2"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="归并排序,树状数组,线段树,动态线段树,平衡二叉搜索树," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云澈の博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="🌸题目🍁给定一个整数数组 nums，返回区间和在 [lower, upper] 之间的个数，包含 lower 和 upper。区间和 S(i, j) 表示在 nums 中，位置从 i 到 j 的元素之和，包含 i 和 j (i ≤ j)。 说明:最直观的算法复杂度是 O(n2) ，请在此基础上优化你的算法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="高级树_LeetCode.327_区间和的个数">
+<meta property="og:url" content="https://liudufu.github.io/The_number_of_interval_sums/index.html">
+<meta property="og:site_name" content="云澈の博客">
+<meta property="og:description" content="🌸题目🍁给定一个整数数组 nums，返回区间和在 [lower, upper] 之间的个数，包含 lower 和 upper。区间和 S(i, j) 表示在 nums 中，位置从 i 到 j 的元素之和，包含 i 和 j (i ≤ j)。 说明:最直观的算法复杂度是 O(n2) ，请在此基础上优化你的算法。">
+<meta property="article:published_time" content="2020-11-08T13:32:11.000Z">
+<meta property="article:modified_time" content="2020-11-08T13:34:19.295Z">
+<meta property="article:author" content="云澈">
+<meta property="article:tag" content="归并排序">
+<meta property="article:tag" content="树状数组">
+<meta property="article:tag" content="线段树">
+<meta property="article:tag" content="动态线段树">
+<meta property="article:tag" content="平衡二叉搜索树">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liudufu.github.io/The_number_of_interval_sums/"/>
+
+
+
+
+
+  <title>高级树_LeetCode.327_区间和的个数 | 云澈の博客</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '5e442439848b85893d4627c44c1d8971', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/liudufu" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+	
+	<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+	<meta name="baidu-site-verification" content="DPYNeCY4vP" />
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云澈の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不经历风雨，怎能见彩虹！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            TopX
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liudufu.github.io/The_number_of_interval_sums/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云澈">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云澈の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">高级树_LeetCode.327_区间和的个数</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-08T21:32:11+08:00">
+                2020-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+		  
+		  
+
+          
+            
+          
+
+          
+          
+             <span id="/The_number_of_interval_sums/" class="leancloud_visitors" data-flag-title="高级树_LeetCode.327_区间和的个数">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="🌸题目"><a href="#🌸题目" class="headerlink" title="🌸题目"></a>🌸题目</h2><p>🍁给定一个整数数组 nums，返回区间和在 [lower, upper] 之间的个数，包含 lower 和 upper。<br>区间和 S(i, j) 表示在 nums 中，位置从 i 到 j 的元素之和，包含 i 和 j (i ≤ j)。</p>
+<p>说明:<br>最直观的算法复杂度是 O(n2) ，请在此基础上优化你的算法。</p>
+<a id="more"></a>
+
+<p>示例:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">输入: nums = [-2,5,-1], lower = -2, upper = 2,</span><br><span class="line">输出: 3 </span><br><span class="line">解释: 3个区间分别是: [0,0], [2,2], [0,2]，它们表示的和分别为: -2, -1, 2。</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法一：归并排序"><a href="#🌸解法一：归并排序" class="headerlink" title="🌸解法一：归并排序"></a>🌸解法一：归并排序</h2><p>设前缀和数组为 $\textit{preSum}$，则问题等价于求所有的下标对(<em>i</em>,<em>j</em>)，满足</p>
+<p><em>preSum</em>[<em>j</em>]−<em>preSum</em>[<em>i</em>]∈[<em>lower</em>,<em>upper</em>]</p>
+<p><code>我们先考虑如下的问题</code>：给定两个<strong>升序排列</strong>的数组 n1,<em>n</em>2，试找出所有的下标对 (i,j)，满足<em>n</em>2[<em>j</em>]−<em>n</em>1[<em>i</em>]∈[<em>lower</em>,<em>upper</em>]</p>
+<p>在已知两个数组均为升序的情况下，这一问题是相对简单的：我们在 n2中维护两个指针 l,r。起初，它们都指向 n 2 的起始位置。随后，我们考察 n 1 的第一个元素。首先，不断地将指针 l 向右移动，直到$$ n_2[l] \ge n_1[0] + \textit{lower}$$为止，此时， ll 及其右边的元素均大于或等于 $n_1[0] + \textit{lower}$；随后，再不断地将指针 r 向右移动，直到 $n_2[r] &gt; n_1[0] + \textit{upper}$为止，则 r左边的元素均小于或等于 $n_1[0] + \textit{upper}$,故区间 [l,r) 中的所有下标 j，都满足<em>n</em>2[<em>j</em>]−<em>n</em>1[0]∈[<em>lower</em>,<em>upper</em>]</p>
+<p>接下来，我们考察 n 1 的第二个元素。由于n1 是递增的，不难发现 l,r 只可能向右移动。因此，我们不断地进行上述过程，并对于 n 1中的每一个下标，都记录相应的区间 [l,r) 的大小。最终，我们就统计得到了满足条件的下标对 (i,j) 的数量。</p>
+<p>在解决这一问题后，原问题就迎刃而解了：我们采用归并排序的方式，能够得到左右两个数组排序后的形式，以及对应的下标对数量。对于原数组而言，若要找出全部的下标对数量，只需要再额外找出左端点在左侧数组，同时右端点在右侧数组的下标对数量，而这正是我们此前讨论的问题。</p>
+<p>代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>{</span><br><span class="line">        <span class="keyword">long</span> s = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span>[] sum = <span class="keyword">new</span> <span class="keyword">long</span>[nums.length + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            s += nums[i];</span><br><span class="line">            sum[i + <span class="number">1</span>] = s;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> countRangeSumRecursive(sum, lower, upper, <span class="number">0</span>, sum.length - <span class="number">1</span>);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countRangeSumRecursive</span><span class="params">(<span class="keyword">long</span>[] sum, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (left == right) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">int</span> n1 = countRangeSumRecursive(sum, lower, upper, left, mid);</span><br><span class="line">            <span class="keyword">int</span> n2 = countRangeSumRecursive(sum, lower, upper, mid + <span class="number">1</span>, right);</span><br><span class="line">            <span class="keyword">int</span> ret = n1 + n2;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 首先统计下标对的数量</span></span><br><span class="line">            <span class="keyword">int</span> i = left;</span><br><span class="line">            <span class="keyword">int</span> l = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> r = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span> (i &lt;= mid) {</span><br><span class="line">                <span class="keyword">while</span> (l &lt;= right &amp;&amp; sum[l] - sum[i] &lt; lower) {</span><br><span class="line">                    l++;</span><br><span class="line">                }</span><br><span class="line">                <span class="keyword">while</span> (r &lt;= right &amp;&amp; sum[r] - sum[i] &lt;= upper) {</span><br><span class="line">                    r++;</span><br><span class="line">                }</span><br><span class="line">                ret += r - l;</span><br><span class="line">                i++;</span><br><span class="line">            }</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 随后合并两个排序数组</span></span><br><span class="line">            <span class="keyword">int</span>[] sorted = <span class="keyword">new</span> <span class="keyword">int</span>[right - left + <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> p1 = left, p2 = mid + <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">int</span> p = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span> (p1 &lt;= mid || p2 &lt;= right) {</span><br><span class="line">                <span class="keyword">if</span> (p1 &gt; mid) {</span><br><span class="line">                    sorted[p++] = (<span class="keyword">int</span>) sum[p2++];</span><br><span class="line">                } <span class="keyword">else</span> <span class="keyword">if</span> (p2 &gt; right) {</span><br><span class="line">                    sorted[p++] = (<span class="keyword">int</span>) sum[p1++];</span><br><span class="line">                } <span class="keyword">else</span> {</span><br><span class="line">                    <span class="keyword">if</span> (sum[p1] &lt; sum[p2]) {</span><br><span class="line">                        sorted[p++] = (<span class="keyword">int</span>) sum[p1++];</span><br><span class="line">                    } <span class="keyword">else</span> {</span><br><span class="line">                        sorted[p++] = (<span class="keyword">int</span>) sum[p2++];</span><br><span class="line">                    }</span><br><span class="line">                }</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; sorted.length; j++) {</span><br><span class="line">                sum[left + j] = sorted[j];</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">return</span> ret;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法二：线段树"><a href="#🌸解法二：线段树" class="headerlink" title="🌸解法二：线段树"></a>🌸解法二：线段树</h2><p>依然考虑前缀和数组$ \textit{preSum}$</p>
+<p>对于每个下标 j，以 j 为右端点的下标对的数量，就等于数组 $\textit{preSum}$[0..j-1] 中的所有整数，出现在区间$ [\textit{preSum}[j]-\textit{upper}, \textit{preSum}[j]-\textit{lower}]$ 的次数。故很容易想到基于线段树的解法。</p>
+<p>我们从左到右扫描前缀和数组。每遇到一个数$ \textit{preSum}[j]$，我们就在线段树中查询区间$ [\textit{preSum}[j]-\textit{upper}, \textit{preSum}[j]-\textit{lower}]$内的整数数量，随后，将 $\textit{preSum}[j]$ 插入到线段树当中。</p>
+<p>注意到整数的范围可能很大，故需要利用哈希表将所有可能出现的整数，映射到连续的整数区间内。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>{</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span>[] preSum = <span class="keyword">new</span> <span class="keyword">long</span>[nums.length + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            sum += nums[i];</span><br><span class="line">            preSum[i + <span class="number">1</span>] = sum;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        Set&lt;Long&gt; allNumbers = <span class="keyword">new</span> TreeSet&lt;Long&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : preSum) {</span><br><span class="line">            allNumbers.add(x);</span><br><span class="line">            allNumbers.add(x - lower);</span><br><span class="line">            allNumbers.add(x - upper);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 利用哈希表进行离散化</span></span><br><span class="line">        Map&lt;Long, Integer&gt; values = <span class="keyword">new</span> HashMap&lt;Long, Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : allNumbers) {</span><br><span class="line">            values.put(x, idx);</span><br><span class="line">            idx++;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        SegNode root = build(<span class="number">0</span>, values.size() - <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : preSum) {</span><br><span class="line">            <span class="keyword">int</span> left = values.get(x - upper), right = values.get(x - lower);</span><br><span class="line">            ret += count(root, left, right);</span><br><span class="line">            insert(root, values.get(x));</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> SegNode <span class="title">build</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>{</span><br><span class="line">        SegNode node = <span class="keyword">new</span> SegNode(left, right);</span><br><span class="line">        <span class="keyword">if</span> (left == right) {</span><br><span class="line">            <span class="keyword">return</span> node;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> mid = (left + right) / <span class="number">2</span>;</span><br><span class="line">        node.lchild = build(left, mid);</span><br><span class="line">        node.rchild = build(mid + <span class="number">1</span>, right);</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(SegNode root, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (left &gt; root.hi || right &lt; root.lo) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= root.lo &amp;&amp; root.hi &lt;= right) {</span><br><span class="line">            <span class="keyword">return</span> root.add;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count(root.lchild, left, right) + count(root.rchild, left, right);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(SegNode root, <span class="keyword">int</span> val)</span> </span>{</span><br><span class="line">        root.add++;</span><br><span class="line">        <span class="keyword">if</span> (root.lo == root.hi) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">int</span> mid = (root.lo + root.hi) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">if</span> (val &lt;= mid) {</span><br><span class="line">            insert(root.lchild, val);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            insert(root.rchild, val);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SegNode</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> lo, hi, add;</span><br><span class="line">    SegNode lchild, rchild;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SegNode</span><span class="params">(<span class="keyword">int</span> left, <span class="keyword">int</span> right)</span> </span>{</span><br><span class="line">        lo = left;</span><br><span class="line">        hi = right;</span><br><span class="line">        add = <span class="number">0</span>;</span><br><span class="line">        lchild = <span class="keyword">null</span>;</span><br><span class="line">        rchild = <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法三：动态增加节点的线段树"><a href="#🌸解法三：动态增加节点的线段树" class="headerlink" title="🌸解法三：动态增加节点的线段树"></a>🌸解法三：动态增加节点的线段树</h2><p>与方法二类似，但我们可以不实用哈希表进行映射，而是只在线段树的插入操作过程中动态地增加树中的节点。而当我们进行查询操作时，如果到达一个空节点，那么说明对应的区间中暂时还没有值，就可以直接返回 0。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>{</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span>[] preSum = <span class="keyword">new</span> <span class="keyword">long</span>[nums.length + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            sum += nums[i];</span><br><span class="line">            preSum[i + <span class="number">1</span>] = sum;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">long</span> lbound = Long.MAX_VALUE, rbound = Long.MIN_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : preSum) {</span><br><span class="line">            lbound = Math.min(Math.min(lbound, x), Math.min(x - lower, x - upper));</span><br><span class="line">            rbound = Math.max(Math.max(rbound, x), Math.max(x - lower, x - upper));</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        SegNode root = <span class="keyword">new</span> SegNode(lbound, rbound);</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : preSum) {</span><br><span class="line">            ret += count(root, x - upper, x - lower);</span><br><span class="line">            insert(root, x);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">count</span><span class="params">(SegNode root, <span class="keyword">long</span> left, <span class="keyword">long</span> right)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (left &gt; root.hi || right &lt; root.lo) {</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (left &lt;= root.lo &amp;&amp; root.hi &lt;= right) {</span><br><span class="line">            <span class="keyword">return</span> root.add;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> count(root.lchild, left, right) + count(root.rchild, left, right);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(SegNode root, <span class="keyword">long</span> val)</span> </span>{</span><br><span class="line">        root.add++;</span><br><span class="line">        <span class="keyword">if</span> (root.lo == root.hi) {</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">long</span> mid = (root.lo + root.hi) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (val &lt;= mid) {</span><br><span class="line">            <span class="keyword">if</span> (root.lchild == <span class="keyword">null</span>) {</span><br><span class="line">                root.lchild = <span class="keyword">new</span> SegNode(root.lo, mid);</span><br><span class="line">            }</span><br><span class="line">            insert(root.lchild, val);</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            <span class="keyword">if</span> (root.rchild == <span class="keyword">null</span>) {</span><br><span class="line">                root.rchild = <span class="keyword">new</span> SegNode(mid + <span class="number">1</span>, root.hi);</span><br><span class="line">            }</span><br><span class="line">            insert(root.rchild, val);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SegNode</span> </span>{</span><br><span class="line">    <span class="keyword">long</span> lo, hi;</span><br><span class="line">    <span class="keyword">int</span> add;</span><br><span class="line">    SegNode lchild, rchild;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">SegNode</span><span class="params">(<span class="keyword">long</span> left, <span class="keyword">long</span> right)</span> </span>{</span><br><span class="line">        lo = left;</span><br><span class="line">        hi = right;</span><br><span class="line">        add = <span class="number">0</span>;</span><br><span class="line">        lchild = <span class="keyword">null</span>;</span><br><span class="line">        rchild = <span class="keyword">null</span>;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法四：树状数组"><a href="#🌸解法四：树状数组" class="headerlink" title="🌸解法四：树状数组"></a>🌸解法四：树状数组</h2><p>树状数组与线段树基于类似的思想，不过树状数组支持的基本查询为求出 $[0, \textit{val}]$ 之间的整数数量。为了查询区间$ [\textit{preSum}[j]-\textit{upper}, \textit{preSum}[j]-\textit{lower}]$内的整数数量，需要执行两次查询，即分别查询 $[0, \textit{preSum}[j]-\textit{upper}-1]$ 区间的整数数量 L 和$[0,\textit{preSum}[j]-\textit{lower}]$ 区间的整数数量 R，答案即为两者作差 R-L。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>{</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span>[] preSum = <span class="keyword">new</span> <span class="keyword">long</span>[nums.length + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            sum += nums[i];</span><br><span class="line">            preSum[i + <span class="number">1</span>] = sum;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        Set&lt;Long&gt; allNumbers = <span class="keyword">new</span> TreeSet&lt;Long&gt;();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : preSum) {</span><br><span class="line">            allNumbers.add(x);</span><br><span class="line">            allNumbers.add(x - lower);</span><br><span class="line">            allNumbers.add(x - upper);</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 利用哈希表进行离散化</span></span><br><span class="line">        Map&lt;Long, Integer&gt; values = <span class="keyword">new</span> HashMap&lt;Long, Integer&gt;();</span><br><span class="line">        <span class="keyword">int</span> idx = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x: allNumbers) {</span><br><span class="line">            values.put(x, idx);</span><br><span class="line">            idx++;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        BIT bit = <span class="keyword">new</span> BIT(values.size());</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; preSum.length; i++) {</span><br><span class="line">            <span class="keyword">int</span> left = values.get(preSum[i] - upper), right = values.get(preSum[i] - lower);</span><br><span class="line">            ret += bit.query(right + <span class="number">1</span>) - bit.query(left);</span><br><span class="line">            bit.update(values.get(preSum[i]) + <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BIT</span> </span>{</span><br><span class="line">    <span class="keyword">int</span>[] tree;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BIT</span><span class="params">(<span class="keyword">int</span> n)</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.n = n;</span><br><span class="line">        <span class="keyword">this</span>.tree = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">lowbit</span><span class="params">(<span class="keyword">int</span> x)</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> x &amp; (-x);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> d)</span> </span>{</span><br><span class="line">        <span class="keyword">while</span> (x &lt;= n) {</span><br><span class="line">            tree[x] += d;</span><br><span class="line">            x += lowbit(x);</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> x)</span> </span>{</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (x != <span class="number">0</span>) {</span><br><span class="line">            ans += tree[x];</span><br><span class="line">            x -= lowbit(x);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法五：平衡二叉搜索树"><a href="#🌸解法五：平衡二叉搜索树" class="headerlink" title="🌸解法五：平衡二叉搜索树"></a>🌸解法五：平衡二叉搜索树</h2><p>考虑一棵平衡二叉搜索树。若其节点数量为 N，则深度为 O(log N)。二叉搜索树能够在 O(logN) 的时间内，对任意给定的值 $\textit{val}$,查询树中所有小于或等于该值的数量。</p>
+<p>因此，我们可以从左到右扫描前缀和数组。对于$ \textit{preSum}[j]$ 而言，首先进行两次查询，得到区间 $[\textit{preSum}[j]-\textit{upper}, \textit{preSum}[j]-\textit{lower}]$内的整数数量；随后再将 $\textit{preSum}[j]$ 插入到平衡树中。</p>
+<p>平衡二叉搜索树有多种不同的实现，最经典的为 AVL 树与红黑树。此外，在算法竞赛中，还包括 Treap、SBT 等数据结构。</p>
+<p>下面给出基于 Treap 的实现。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>{</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">countRangeSum</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper)</span> </span>{</span><br><span class="line">        <span class="keyword">long</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span>[] preSum = <span class="keyword">new</span> <span class="keyword">long</span>[nums.length + <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.length; ++i) {</span><br><span class="line">            sum += nums[i];</span><br><span class="line">            preSum[i + <span class="number">1</span>] = sum;</span><br><span class="line">        }</span><br><span class="line">        </span><br><span class="line">        BalancedTree treap = <span class="keyword">new</span> BalancedTree();</span><br><span class="line">        <span class="keyword">int</span> ret = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">long</span> x : preSum) {</span><br><span class="line">            <span class="keyword">long</span> numLeft = treap.lowerBound(x - upper);</span><br><span class="line">            <span class="keyword">int</span> rankLeft = (numLeft == Long.MAX_VALUE ? (<span class="keyword">int</span>) (treap.getSize() + <span class="number">1</span>) : treap.rank(numLeft)[<span class="number">0</span>]);</span><br><span class="line">            <span class="keyword">long</span> numRight = treap.upperBound(x - lower);</span><br><span class="line">            <span class="keyword">int</span> rankRight = (numRight == Long.MAX_VALUE ? (<span class="keyword">int</span>) treap.getSize() : treap.rank(numRight)[<span class="number">0</span>] - <span class="number">1</span>);</span><br><span class="line">            ret += rankRight - rankLeft + <span class="number">1</span>;</span><br><span class="line">            treap.insert(x);</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    }</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BalancedTree</span> </span>{</span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">BalancedNode</span> </span>{</span><br><span class="line">        <span class="keyword">long</span> val;</span><br><span class="line">        <span class="keyword">long</span> seed;</span><br><span class="line">        <span class="keyword">int</span> count;</span><br><span class="line">        <span class="keyword">int</span> size;</span><br><span class="line">        BalancedNode left;</span><br><span class="line">        BalancedNode right;</span><br><span class="line"></span><br><span class="line">        BalancedNode(<span class="keyword">long</span> val, <span class="keyword">long</span> seed) {</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">            <span class="keyword">this</span>.seed = seed;</span><br><span class="line">            <span class="keyword">this</span>.count = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">this</span>.size = <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">this</span>.left = <span class="keyword">null</span>;</span><br><span class="line">            <span class="keyword">this</span>.right = <span class="keyword">null</span>;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="function">BalancedNode <span class="title">leftRotate</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="keyword">int</span> prevSize = size;</span><br><span class="line">            <span class="keyword">int</span> currSize = (left != <span class="keyword">null</span> ? left.size : <span class="number">0</span>) + (right.left != <span class="keyword">null</span> ? right.left.size : <span class="number">0</span>) + count;</span><br><span class="line">            BalancedNode root = right;</span><br><span class="line">            right = root.left;</span><br><span class="line">            root.left = <span class="keyword">this</span>;</span><br><span class="line">            root.size = prevSize;</span><br><span class="line">            size = currSize;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="function">BalancedNode <span class="title">rightRotate</span><span class="params">()</span> </span>{</span><br><span class="line">            <span class="keyword">int</span> prevSize = size;</span><br><span class="line">            <span class="keyword">int</span> currSize = (right != <span class="keyword">null</span> ? right.size : <span class="number">0</span>) + (left.right != <span class="keyword">null</span> ? left.right.size : <span class="number">0</span>) + count;</span><br><span class="line">            BalancedNode root = left;</span><br><span class="line">            left = root.right;</span><br><span class="line">            root.right = <span class="keyword">this</span>;</span><br><span class="line">            root.size = prevSize;</span><br><span class="line">            size = currSize;</span><br><span class="line">            <span class="keyword">return</span> root;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> BalancedNode root;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> size;</span><br><span class="line">    <span class="keyword">private</span> Random rand;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">BalancedTree</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">this</span>.root = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">this</span>.rand = <span class="keyword">new</span> Random();</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">getSize</span><span class="params">()</span> </span>{</span><br><span class="line">        <span class="keyword">return</span> size;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">long</span> x)</span> </span>{</span><br><span class="line">        ++size;</span><br><span class="line">        root = insert(root, x);</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">lowerBound</span><span class="params">(<span class="keyword">long</span> x)</span> </span>{</span><br><span class="line">        BalancedNode node = root;</span><br><span class="line">        <span class="keyword">long</span> ans = Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (x == node.val) {</span><br><span class="line">                <span class="keyword">return</span> x;</span><br><span class="line">            }</span><br><span class="line">            <span class="keyword">if</span> (x &lt; node.val) {</span><br><span class="line">                ans = node.val;</span><br><span class="line">                node = node.left;</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                node = node.right;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">upperBound</span><span class="params">(<span class="keyword">long</span> x)</span> </span>{</span><br><span class="line">        BalancedNode node = root;</span><br><span class="line">        <span class="keyword">long</span> ans = Long.MAX_VALUE;</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (x &lt; node.val) {</span><br><span class="line">                ans = node.val;</span><br><span class="line">                node = node.left;</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                node = node.right;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span>[] rank(<span class="keyword">long</span> x) {</span><br><span class="line">        BalancedNode node = root;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (node != <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">if</span> (x &lt; node.val) {</span><br><span class="line">                node = node.left;</span><br><span class="line">            } <span class="keyword">else</span> {</span><br><span class="line">                ans += (node.left != <span class="keyword">null</span> ? node.left.size : <span class="number">0</span>) + node.count;</span><br><span class="line">                <span class="keyword">if</span> (x == node.val) {</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]{ans - node.count + <span class="number">1</span>, ans};</span><br><span class="line">                }</span><br><span class="line">                node = node.right;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[]{Integer.MIN_VALUE, Integer.MAX_VALUE};</span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> BalancedNode <span class="title">insert</span><span class="params">(BalancedNode node, <span class="keyword">long</span> x)</span> </span>{</span><br><span class="line">        <span class="keyword">if</span> (node == <span class="keyword">null</span>) {</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> BalancedNode(x, rand.nextInt());</span><br><span class="line">        }</span><br><span class="line">        ++node.size;</span><br><span class="line">        <span class="keyword">if</span> (x &lt; node.val) {</span><br><span class="line">            node.left = insert(node.left, x);</span><br><span class="line">            <span class="keyword">if</span> (node.left.seed &gt; node.seed) {</span><br><span class="line">                node = node.rightRotate();</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">else</span> <span class="keyword">if</span> (x &gt; node.val) {</span><br><span class="line">            node.right = insert(node.right, x);</span><br><span class="line">            <span class="keyword">if</span> (node.right.seed &gt; node.seed) {</span><br><span class="line">                node = node.leftRotate();</span><br><span class="line">            }</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            ++node.count;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    }</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法一说明：为什么可以归并"><a href="#🌸解法一说明：为什么可以归并" class="headerlink" title="🌸解法一说明：为什么可以归并"></a>🌸解法一说明：为什么可以归并</h2><p>看完后我明白如果数组是有序的，那么可以容易的求出区间数量，那么为什么对数组排序前后所求的区间数量不会改变呢，下面我来说明一下（官方并没有实际说明这一点）</p>
+<p><strong>初始归并：</strong><br>此时只会有0或1个元素，不涉及左右两段的情况，是可以的</p>
+<p><strong>合并归并：</strong>此时是有左右两段的，左右两段是分别有序的，<strong>对前缀和数组排序并不会修改数组中元素的值，只是改变了元素是位置，如对left ~ right=3~5位置的前缀和排序，排序后前缀和3 ~ 5位置的数还是原来3 ~ 5位置的数，只是排列变化了</strong></p>
+<p>设想一个一般的情况，现在是某一层的递归，左，右两段区间left ~ mid, mid+1 ~ right的符合要求的区间数量已经通过countRangeSumRecursive计算了出来，整个left ~ right区间中可能的符合要求的区间情况是两端点在left ~ mid中；两端点在mid+1 ~ right；一个端点在left~ mid中，一个端点在mid+1~ right中，所以现在只要求出第三种情况的区间数量就可以了<br>通过上面的说明，left ~ mid,mid+1~ right区间中的数还是原来区间中的数，只是顺序变成了有序，而有序是容易计算符合要求的区间数量的，一个图说明为什么第三种情况排序前后符合数量的区间数量是不变的</p>
+<h2 id="🌸指路：如何学习本题的算法和数据结构"><a href="#🌸指路：如何学习本题的算法和数据结构" class="headerlink" title="🌸指路：如何学习本题的算法和数据结构"></a>🌸指路：如何学习本题的算法和数据结构</h2><p>忽略官方题解中的方法一，剩余的四种方法分别使用了线段树、树状数组和平衡树。这些方法都不是面试的考点，甚至在笔试中也很少出现，所以大部分读者应该是完全不知道这些都是啥神奇的数据结构的。所以我觉得这里有必要补充以下两点：</p>
+<ul>
+<li>这道题需要哪些接口。</li>
+<li>上面的这些神奇的数据结构可以提供哪些接口。</li>
+</ul>
+<h3 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h3><p>给定数组 A，它的长度为 n，对应的元素以及下标为A[0],A[1],⋯,A[n−1]。</p>
+<p>令 S(i,j) 为A[i] 到 A[j] 的和，即</p>
+<p>$S(i, j) = \sum_{k=i}^j A[k]$</p>
+<p>题目需要求出满足$ \textit{lower} \leq S(i, j) \leq \textit{upper}$ 的二元组 (i, j)(i,j) 的个数。</p>
+<p>换成人话就是，问数组 A 有多少个连续的子数组，其元素只和在 $[\textit{lower}, \textit{upper}]$ 的范围内。</p>
+<h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>暴力的做法是使用前缀和。令 P 为 A 的前缀和数组，那么</p>
+<p>S(i, j) = P[j] - P[i-1]</p>
+<p>可以在O(1) 的时间求出。这里我们规定边界 P[-1] = 0。</p>
+<p>这样一来，我们枚举所有的二元组 (i, j)，算出S(i,j) 并判断其是否在范围内即可。时间复杂度为$ O(n^2)$。</p>
+<p>那么怎么进行优化呢？我们考虑从小到大枚举 j，由于</p>
+<p>$\textit{lower} \leq P[j] - P[i-1] \leq \textit{upper}$</p>
+<p>我们可以得到 P[i-1] 应该满足的不等式</p>
+<p>$P[j] - \textit{upper} \leq P[i-1] \leq P[j] - \textit{lower}$</p>
+<p>因此本质上，我们需要一个数据结构支持下面的两个操作：</p>
+<p>操作 1「查询」：给定一个范围 $[\textit{left}, \textit{right}]$，查询数据结构中在该范围内的元素个数。对应到本题中，我们给定的范围就是$ \big[P[j] - \textit{upper}, P[j] - \textit{lower}\big]$；</p>
+<p>操作 2「更新」：给定一个元素 xx，我们需要把它添加到数据结构中。对应到本题中，我们给定的元素就是 P[j]。</p>
+<p>如果有了这样一个数据结构，我们就可以很方便地做出本题：</p>
+<p>我们首先将 00 放入数据结构中，随后我们从小到大枚举 j，查询 $\big[P[j] - \textit{upper}, P[j] - \textit{lower}\big]$ 范围内的元素个数并计入答案。在查询完成之后，我们将P[j] 添加进数据结构，就可以进行下一次枚举。</p>
+<h3 id="频数数组"><a href="#频数数组" class="headerlink" title="频数数组"></a>频数数组</h3><p>很多数据结构都是基于「频数数组」。</p>
+<p>给定数组 t 以及它的下标范围 [L, R][L,R]，t[x] 就表示元素 x 在数据结构中的出现次数。基于此，上述的两个操作可以变为：</p>
+<p>操作 1「查询」：给定一个范围$ [\textit{left}, \textit{right}]$，查询$ t[\textit{left}]$到 $t[\textit{right}]$ 的和；</p>
+<p>操作 2「更新」：给定一个元素 x，将 t[x] 增加 1。</p>
+<p>这也是线段树和树状数组的基础，它们需要的空间都与数组 t 的下标范围 [L, R][L,R] 正相关。在本题数据规模较大的情况下（例如测试数据中，出现了元素值达到 32 位有符号整数的上下界），线段树和树状数组都会超出空间限制，因此需要借助「离散化」操作，将这些元素映射到一个较小规模的区间内。</p>
+<h3 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h3><p>给定数组元素 [1, 22, 333, 4444, 55555]，如果我们只关注它们之间的大小关系，那么该数组其实和 [1, 2, 3, 4, 5] 是等价的。</p>
+<p>这就是离散化的技巧。我们将所有会涉及到比较操作的数全部放入一个列表中，进行排序，再从小到大依次给它们赋予一个新的值。在离散化完成后，任何两个数之间的相对大小都不会改变，但是元素的上下界范围被限制住，这使得我们可以方便地使用一些数据结构。</p>
+<p>在本题中，我们可以将所有的 $P[j], P[j] - \textit{upper}, P[j] - \textit{lower}$一起进行离散化，并将它们从小到大，依次赋予一个从 1 开始的整数值。这样一来，我们所有涉及到的元素值都会在 [1, 3(n+1)]的范围内。</p>
+<h3 id="线段树"><a href="#线段树" class="headerlink" title="线段树"></a>线段树</h3><p>当我们将元素离散化后，就可以直接使用线段树了。最基础的线段树恰好就支持这两种操作：</p>
+<p>操作 1「查询」：给定一个范围$ [\textit{left}, \textit{right}]$,查询$ t[\textit{left}] $到 $t[\textit{right}]$ 的和；</p>
+<p>操作 2「更新」：给定一个元素 x，将 t[x] 增加 $\delta$。</p>
+<p>我们只需要时刻令$\delta$=1即可。两种操作的时间复杂度均为$ O(\log n)$</p>
+<h3 id="树状数组"><a href="#树状数组" class="headerlink" title="树状数组"></a>树状数组</h3><p>当我们将元素离散化后，也可以直接使用树状数组了。最基础的线段树支持这两种操作：</p>
+<p>操作 1「查询」：给定一个下标$ \textit{right}$，查询 t[1] 到$ t[\textit{right}]$ 的和（即前缀和）；</p>
+<p>操作 2「更新」：给定一个元素 x，将t[x] 增加 $\deltaδ$。</p>
+<p>我们只需要时刻令 $\delta=1$ 即可，并且通过调用操作 1 两次（即 $\textit{right}$ 和$ \textit{left}-1left−1）相减得到 t[\textit{left}]$ 到 $t[\textit{right}]$ 的和。两种操作的时间复杂度均为 $O(\log n)$。</p>
+<h3 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h3><p>平衡树实际上就是「平衡」的二叉搜索树，它与线段树和树状数组不同，并且它不需要借助离散化操作。支持的操作（在本题中会使用到的）主要有以下几种：</p>
+<p>操作 1「lower bound」：给定一个元素 x，查询平衡树中最小的大于等于 x 的元素；</p>
+<p>操作 2「upper bound」：给定一个元素 x，查询平衡树中最小的大于 x 的元素；</p>
+<p>操作 3「rank」：给定一个元素 x（它必须在平衡树中），求它是第几小的元素。当存在重复元素时，会计入多次；</p>
+<p>操作 4「insert」：给定一个元素 x，将它放入平衡树中。</p>
+<p>所有操作的时间复杂度均为 $O(\log n)$。大部分语言自带的平衡树支持操作 1 和 2 和 4 但不支持操作 3。</p>
+<p>那么对于本题中需要的两种操作：</p>
+<p>「查询」：我们令 $u = P[j] - \textit{upper}$，$v = P[j] - \textit{lower}$。对 u 使用操作 11 得到 u’′<br> ，对 v 使用操作 2 得到 v’  。我们再使用操作 3 得到 u’的$ rank r_u$ 以及 v’<br>  的$ rank r_v$ ，那么$ r_v’-r_u’$′， 就是$ \big[P[j] - \textit{upper}, P[j] - \textit{lower}\big]$ 中的元素个数。</p>
+<p>「更新」：我们对 x 使用操作 4 即可。</p>
+<h3 id="学习方法"><a href="#学习方法" class="headerlink" title="学习方法"></a>学习方法</h3><p>关于这些竞赛难度的知识点，我建议读者在学有余力的情况下学习。这些知识点对面试几乎没有任何帮助；相反，在没有完全掌握这些知识点的前提下，可能会影响读者原本正常的思维，产生「看什么题都是线段树」之类的后果。</p>
+<p>这里我推荐两个参考资料：</p>
+<ul>
+<li><a href="https://oi-wiki.org/" target="_blank" rel="noopener">OI Wiki</a>，是一个信息学竞赛爱好者用爱发电的算法小百科。</li>
+<li><a href="https://github.com/atcoder/ac-library" target="_blank" rel="noopener">ac-library</a>，是日本著名算法竞赛平台 AtCoder 整理的算法模板，但其中没有平衡树。</li>
+</ul>
+<p>读者也可以参考其它互联网上的博客。线段树、树状数组和平衡树在算法竞赛圈中是非常基础的知识点，优质的博客数量也很多</p>
+<h2 id="最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！"><a href="#最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！" class="headerlink" title="最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！"></a><strong>最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！</strong></h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	  
+		<div>
+		  <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/bolg_mask.png" alt="云澈 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，用手机访问哦</div>
+</div>
+
+		</div>
+	  
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://i.loli.net/2020/06/10/PNbxe7H5KXJgcoh.jpg" alt="云澈 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://i.loli.net/2020/06/10/FQkTKeyYndB5WhP.jpg" alt="云澈 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云澈
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://liudufu.github.io/The_number_of_interval_sums/" title="高级树_LeetCode.327_区间和的个数">https://liudufu.github.io/The_number_of_interval_sums/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" rel="tag"><i class="fa fa-tag"></i> 归并排序</a>
+          
+            <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" rel="tag"><i class="fa fa-tag"></i> 树状数组</a>
+          
+            <a href="/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 线段树</a>
+          
+            <a href="/tags/%E5%8A%A8%E6%80%81%E7%BA%BF%E6%AE%B5%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 动态线段树</a>
+          
+            <a href="/tags/%E5%B9%B3%E8%A1%A1%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/" rel="tag"><i class="fa fa-tag"></i> 平衡二叉搜索树</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/The_best_time_to_buy_and_sell_stocks/" rel="prev" title="动态规划_leetcode.121.买卖股票的最佳时期">
+                <i class="fa fa-chevron-left"></i> 动态规划_leetcode.121.买卖股票的最佳时期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Detailed_explanation_of_tree/" rel="next" title="史上最全的遍历二叉树详解">
+                史上最全的遍历二叉树详解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDQzNi8yNjkyMw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+			  <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg"
+                  alt="云澈" />
+			  </a>
+            
+              <p class="site-author-name" itemprop="name">云澈</p>
+              <p class="site-description motion-element" itemprop="description">Time would heal almost all wounds,if your wounds have not been healed up.please wait for a short while</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">91</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/liudufu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2649176532@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/liudufu" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_45333934" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/dufu-csdn/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+		  
+		  
+		  
+		    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+			  <div class="links-of-blogroll-title">
+			    <!-- modify icon to fire by szw -->
+			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+			    近期文章
+			  </div>
+			  <ul class="links-of-blogroll-list">
+			    
+			    
+				  <li class="recent_posts_li">
+				    <a href="/A_summary_of_the_National_Games/" title="蓝桥算法国赛真题总结" target="_blank">蓝桥算法国赛真题总结</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Summary_of_provincial_competition/" title="蓝桥算法省赛真题总结" target="_blank">蓝桥算法省赛真题总结</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/general_solutions_to_stock_problems/" title="LeetCode股票问题系列通解" target="_blank">LeetCode股票问题系列通解</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/The_best_time_to_buy_and_sell_stocks/" title="动态规划_leetcode.121.买卖股票的最佳时期" target="_blank">动态规划_leetcode.121.买卖股票的最佳时期</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/The_number_of_interval_sums/" title="高级树_LeetCode.327_区间和的个数" target="_blank">高级树_LeetCode.327_区间和的个数</a>
+				  </li>
+			    
+			  </ul>
+		    </div>
+		  
+		  
+		  <div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1428784488&auto=1&height=66"></iframe>
+		  </div>
+		  
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+        
+			  
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://leetcode-cn.com/" title="leetcode" target="_blank" rel="external nofollow">leetcode</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://gitee.com/dufu-03-13/" title="码云" target="_blank" rel="external nofollow">码云</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank" rel="external nofollow">Web前端导航</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank" rel="external nofollow">前端书籍资料</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank" rel="external nofollow">百度前端技术学院</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank" rel="external nofollow">google前端开发基础</a>
+                </span>
+              
+		  <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()",1000);
+BirthDay=new Date("06/01/2020 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+
+            </div>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸题目"><span class="nav-number">1.</span> <span class="nav-text">🌸题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法一：归并排序"><span class="nav-number">2.</span> <span class="nav-text">🌸解法一：归并排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法二：线段树"><span class="nav-number">3.</span> <span class="nav-text">🌸解法二：线段树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法三：动态增加节点的线段树"><span class="nav-number">4.</span> <span class="nav-text">🌸解法三：动态增加节点的线段树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法四：树状数组"><span class="nav-number">5.</span> <span class="nav-text">🌸解法四：树状数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法五：平衡二叉搜索树"><span class="nav-number">6.</span> <span class="nav-text">🌸解法五：平衡二叉搜索树</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法一说明：为什么可以归并"><span class="nav-number">7.</span> <span class="nav-text">🌸解法一说明：为什么可以归并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸指路：如何学习本题的算法和数据结构"><span class="nav-number">8.</span> <span class="nav-text">🌸指路：如何学习本题的算法和数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目描述"><span class="nav-number">8.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目分析"><span class="nav-number">8.2.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#频数数组"><span class="nav-number">8.3.</span> <span class="nav-text">频数数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#离散化"><span class="nav-number">8.4.</span> <span class="nav-text">离散化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树"><span class="nav-number">8.5.</span> <span class="nav-text">线段树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#树状数组"><span class="nav-number">8.6.</span> <span class="nav-text">树状数组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平衡树"><span class="nav-number">8.7.</span> <span class="nav-text">平衡树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习方法"><span class="nav-number">8.8.</span> <span class="nav-text">学习方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！"><span class="nav-number">9.</span> <span class="nav-text">最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云澈</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">131.8k</span>
+  
+  
+   <span style="margin-left:8px;">
+   <script src="http://s6.cnzz.com/stat.php?id=1278978367&web_id=1278978367" type="text/javascript"></script>
+   </span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共131.8k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ToKAq6EqsKrh3oh1kL7AwHkb-9Nh9j0Va", "Jjb4SKFne0eAr0pwOARr8X21");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "topRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300,"left":120},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
