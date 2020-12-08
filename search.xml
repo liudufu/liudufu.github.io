@@ -970,8 +970,8 @@
       </categories>
       <tags>
         <tag>递归</tag>
-        <tag>中序遍历</tag>
         <tag>迭代</tag>
+        <tag>中序遍历</tag>
         <tag>前序遍历</tag>
         <tag>后序遍历</tag>
         <tag>Morris解法</tag>
@@ -1549,8 +1549,8 @@
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
         <tag>BFS</tag>
-        <tag>动态规划</tag>
         <tag>剪枝</tag>
+        <tag>动态规划</tag>
         <tag>递归</tag>
       </tags>
   </entry>
@@ -1909,8 +1909,8 @@
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
         <tag>递归</tag>
-        <tag>回溯</tag>
         <tag>模拟</tag>
+        <tag>回溯</tag>
       </tags>
   </entry>
   <entry>
@@ -5414,8 +5414,8 @@
         <tag>深度优先搜索</tag>
         <tag>递归</tag>
         <tag>先序遍历</tag>
-        <tag>中序遍历</tag>
         <tag>迭代</tag>
+        <tag>中序遍历</tag>
       </tags>
   </entry>
   <entry>
