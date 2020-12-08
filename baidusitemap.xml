@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liudufu.github.io/Servlet_Basics/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/The_difference_and_basic_usage_of_JPA_and_JDBC/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/Mapper_relation_of_mybatis/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/How_to_install_redis_under_Windows/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/SQL_log_connection_database_report/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/MySQL_basic_learning/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/Git_tutorial/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
+    <loc>https://liudufu.github.io/Three_in_one/</loc>
+    <lastmod>2020-12-08</lastmod>
+  </url>
+  <url>
     <loc>https://liudufu.github.io/A_summary_of_the_National_Games/</loc>
     <lastmod>2020-11-08</lastmod>
   </url>

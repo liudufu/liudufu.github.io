@@ -2,6 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liudufu.github.io/Servlet_Basics/</loc>
+    
+    <lastmod>2020-12-08T13:33:03.918Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/The_difference_and_basic_usage_of_JPA_and_JDBC/</loc>
+    
+    <lastmod>2020-12-08T10:44:37.057Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/Mapper_relation_of_mybatis/</loc>
+    
+    <lastmod>2020-12-08T10:42:24.493Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/How_to_install_redis_under_Windows/</loc>
+    
+    <lastmod>2020-12-08T10:32:53.976Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/SQL_log_connection_database_report/</loc>
+    
+    <lastmod>2020-12-08T09:59:22.704Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/MySQL_basic_learning/</loc>
+    
+    <lastmod>2020-12-08T09:56:17.977Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/Git_tutorial/</loc>
+    
+    <lastmod>2020-12-08T09:51:04.509Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/Three_in_one/</loc>
+    
+    <lastmod>2020-12-08T09:42:02.018Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://liudufu.github.io/A_summary_of_the_National_Games/</loc>
     
     <lastmod>2020-11-08T13:46:05.447Z</lastmod>
