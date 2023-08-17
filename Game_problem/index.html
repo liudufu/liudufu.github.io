@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('����������') !== ''){
+                alert('�������');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "03760df2"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="模拟,博弈论,基姆拉尔森公式," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云澈の博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="🌸博弈训练贴在前面，想了解什么是博弈论，博弈论的基本游戏和基本解法可查看韦泽鑫の博客和想要成为富婆的我每天都在努力の博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2020_java蓝桥_暑假训练_进制(补)+博弈问题">
+<meta property="og:url" content="https://liudufu.github.io/Game_problem/index.html">
+<meta property="og:site_name" content="云澈の博客">
+<meta property="og:description" content="🌸博弈训练贴在前面，想了解什么是博弈论，博弈论的基本游戏和基本解法可查看韦泽鑫の博客和想要成为富婆的我每天都在努力の博客">
+<meta property="article:published_time" content="2020-08-28T08:33:19.000Z">
+<meta property="article:modified_time" content="2020-08-28T08:52:18.079Z">
+<meta property="article:author" content="云澈">
+<meta property="article:tag" content="模拟">
+<meta property="article:tag" content="博弈论">
+<meta property="article:tag" content="基姆拉尔森公式">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liudufu.github.io/Game_problem/"/>
+
+
+
+
+
+  <title>2020_java蓝桥_暑假训练_进制(补)+博弈问题 | 云澈の博客</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '5e442439848b85893d4627c44c1d8971', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/liudufu" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+	
+	<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+	<meta name="baidu-site-verification" content="DPYNeCY4vP" />
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云澈の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不经历风雨，怎能见彩虹！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            TopX
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liudufu.github.io/Game_problem/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云澈">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云澈の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2020_java蓝桥_暑假训练_进制(补)+博弈问题</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-28T16:33:19+08:00">
+                2020-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/%E8%93%9D%E6%A1%A5%E6%9D%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">蓝桥杯</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+		  
+		  
+
+          
+            
+          
+
+          
+          
+             <span id="/Game_problem/" class="leancloud_visitors" data-flag-title="2020_java蓝桥_暑假训练_进制(补)+博弈问题">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  5.4k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  22
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="🌸博弈训练"><a href="#🌸博弈训练" class="headerlink" title="🌸博弈训练"></a>🌸博弈训练</h2><p>贴在前面，想了解什么是博弈论，博弈论的基本游戏和基本解法可查看<a href="https://blog.csdn.net/qq_40167327/article/details/99334507?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.edu_weight" target="_blank" rel="noopener">韦泽鑫の博客</a>和<a href="https://blog.csdn.net/Crystal_viv/article/details/79417137" target="_blank" rel="noopener">想要成为富婆的我每天都在努力の博客</a></p>
+<a id="more"></a>
+
+<h2 id="🍁Excel地址"><a href="#🍁Excel地址" class="headerlink" title="🍁Excel地址"></a>🍁Excel地址</h2><p>Excel单元格的地址表示很有趣，它使用字母来表示列号，比如：</p>
+<p>A表示第1列，</p>
+<p>B表示第2列，</p>
+<p>Z表示第26列，</p>
+<p>AA表示第27列，</p>
+<p>AB表示第28列，</p>
+<p>BA表示第53列，</p>
+<p>….</p>
+<p>当然Excel的最大列号是有限度的，所以转换起来不难。</p>
+<p>如果我们想把这种表示法一般化，可以把很大的数字转换为很长的字母序列呢？</p>
+<p>本题目既是要求对输入的数字, 输出其对应的Excel地址表示方式 </p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">26</span><br><span class="line">程序应该输出：</span><br><span class="line">Z </span><br><span class="line">输入：</span><br><span class="line">2054</span><br><span class="line">则程序应该输出：</span><br><span class="line">BZZ</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p><strong>我们约定，输入的整数范围[1,2147483647]</strong></p>
+<h4 id="🍂分析"><a href="#🍂分析" class="headerlink" title="🍂分析"></a>🍂分析</h4><p>此题是进制与整除的变种，需要理解题意有时甚至可以逆向思维推导</p>
+<p>可找出以下规律</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">a=1;</span><br><span class="line">	b=2;</span><br><span class="line">	z=26;</span><br><span class="line">	aa=1*26+1=27</span><br><span class="line">	ab=1*26+2=28;</span><br><span class="line">	az=1*26+26=52;</span><br><span class="line">	ba=2*26+1=53;</span><br><span class="line"> 	bb=2*26+2=54;</span><br><span class="line"> 	za=26*26+1=676;</span><br><span class="line"> 	zz=26*26+26=702</span><br><span class="line">	aaa=1*26*26+1*26+1=703;</span><br><span class="line">	aab=1*26*26+1*26+2=704;</span><br><span class="line">	aaz=1*26*26+1*26+26=728;</span><br><span class="line">	aba=1*26*26+2*26+1=729;</span><br><span class="line">	azz=1*26*26+26*26+26=1378;</span><br><span class="line">	baa=2*26*26+1*26+1=1379;</span><br><span class="line">bab=2*26*26+1*26+2=1379;</span><br><span class="line">baz=2*26*26+1*26+26=1404;</span><br><span class="line">bba=2*26*26+2*26+1=1405;</span><br><span class="line">....................</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Excel_address</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = input.nextInt();</span><br><span class="line">		System.out.println(chage(n));</span><br><span class="line">		input.close();</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">chage</span><span class="params">(<span class="keyword">int</span> n)</span> </span>{</span><br><span class="line">		StringBuilder str = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="keyword">while</span>(n &gt; <span class="number">0</span>) {</span><br><span class="line">			<span class="keyword">if</span>(n % <span class="number">26</span> == <span class="number">0</span>) { <span class="comment">//n除以26能整除说明最后一位必定是Z</span></span><br><span class="line">				str.append(<span class="string">"Z"</span>);</span><br><span class="line">				n /= <span class="number">26</span>;</span><br><span class="line">				n--; 	<span class="comment">//前面一行已经除过26了，所以要把那一份26减掉</span></span><br><span class="line">			}<span class="keyword">else</span> {</span><br><span class="line">				str.append((<span class="keyword">char</span>)(<span class="string">'A'</span> + n % <span class="number">26</span> - <span class="number">1</span>));</span><br><span class="line">				n /= <span class="number">26</span>;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> str.reverse().toString();</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🍁高僧斗法"><a href="#🍁高僧斗法" class="headerlink" title="🍁高僧斗法"></a>🍁高僧斗法</h2><p>古时丧葬活动中经常请高僧做法事。仪式结束后，有时会有“高僧斗法”的趣味节目，以舒缓压抑的气氛。  节目大略步骤为：先用粮食（一般是稻米）在地上“画”出若干级台阶（表示N级浮屠）。又有若干小和尚随机地“站”在某个台阶上。最高一级台阶必须站人，其它任意。</p>
+<p>两位参加斗法的法师分别指挥某个小和尚向上走任意多级的台阶，但会被站在高级台阶上的小和尚阻挡，不能越过。</p>
+<p>两个小和尚也不能站在同一台阶，也不能向低级台阶移动。</p>
+<p> 两法师轮流发出指令，最后所有小和尚必然会都挤在高段台阶，再也不能向上移动。轮到哪个法师指挥时无法继续移动，则游戏结束，该法师认输。</p>
+<p> 对于已知的台阶数和小和尚的分布位置，请你计算先发指令的法师该如何决策才能保证胜出。</p>
+<p>输入数据为一行用空格分 尚的位置。台阶序号从1算起，所以最后一个小和尚的位置即是台阶的总数。（N&lt;100, 台阶总数&lt;1000）</p>
+<p> 输出为一行用空格分开的两个整数: A B, 表示把A位置的小和尚移动到B位置。</p>
+<p>若有多个解，输出A值较小的解，若无解则输出-1。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">用户输入：</span><br><span class="line">1 5 9</span><br><span class="line">则程序输出： </span><br><span class="line">1 4</span><br><span class="line">再如：</span><br><span class="line">用户输入：</span><br><span class="line">1 5 8 10</span><br><span class="line">则程序输出：</span><br><span class="line">1 3</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="🍂分析-1"><a href="#🍂分析-1" class="headerlink" title="🍂分析"></a>🍂分析</h4><h5 id="🍂尼姆博奕（Nimm-Game）"><a href="#🍂尼姆博奕（Nimm-Game）" class="headerlink" title="🍂尼姆博奕（Nimm Game）"></a>🍂尼姆博奕（Nimm Game）</h5><p>有三堆各若干个物品，两个人轮流从某一堆取任意多的物品，规定每次至少取一个，多者不限，最后取光者得胜。这种情况最有意思，它与二进制有密切关系，我们用（a，b，c）表示某种局势，首先（0，0，0）显然是奇异局势，无论谁面对奇异局势，都必然失败。第二种奇异局势是（0，n，n），只要与对手拿走一样多的物品，最后都将导致（0，0，0）。仔细分析一下，（1，2，3）也是奇异局势，无论对手如何拿，接下来都可以变为（0，n，n）的情形。计算机算法里面有一种叫做按位模2加，也叫做异或的运算（相异为1,相同为0），我们用符号（+）表示这种运算。这种运算和一般加法不同的一点是1+1=0。先看（1，2，3）的按位模2加的结果：</p>
+<p>1 =二进制01</p>
+<p>2 =二进制10</p>
+<p>3 =二进制11 （+）</p>
+<p>———————</p>
+<p>0 =二进制00 （注意不进位）</p>
+<p>  对于奇异局势（0，n，n）也一样，结果也是0。</p>
+<p>  任何奇异局势（a，b，c）都有a（+）b（+）c =0。</p>
+<p>如果我们面对的是一个非奇异局势（a，b，c），要如何变为奇异局势呢？假设 a &lt; b&lt; c,我们只要将 c 变为 a（+）b,即可,因为有如下的运算结果:a（+）b（+）(a（+）b)=(a（+）a)（+）(b（+）b)=0（+）0=0。要将c 变为a（+）b，只要从 c中减去 c-（a（+）b）即可。</p>
+<p>此题便是尼姆博弈的典型例子，<strong>只要找到怎样改变使可移动的台阶数之间异或相加之后结果为0就是必赢局面，如果没有移动之前异或相加的值就是0，那么是必输局面</strong>，先求出n个和尚中每个和尚可以向上移动的台阶数量，再将和尚两两分组，1和2、3和4、……、2i-1和2i，只需要求出两两分组之间台阶数的异或相加值就可以判断是否为必赢局面，因为移动3可以通过移动2达到同样的异或结果，同理移动4也可以通过移动5达到同样的异或结果，所以有影响的只有两两组合之间的台阶数。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Nimm_Game</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		String[] nim = input.nextLine().split(<span class="string">" "</span>);</span><br><span class="line">		<span class="keyword">int</span>[] address = <span class="keyword">new</span> <span class="keyword">int</span>[nim.length]; <span class="comment">// 用来存放和尚站的阶梯的位置</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; address.length; i++) {</span><br><span class="line">			address[i] = Integer.parseInt(nim[i]);</span><br><span class="line">		}</span><br><span class="line">		game(address);</span><br><span class="line">		input.close();</span><br><span class="line">	}	</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">game</span><span class="params">(<span class="keyword">int</span>[] address)</span> </span>{</span><br><span class="line">		<span class="comment">//用于存放和尚之间的阶梯数量</span></span><br><span class="line">		<span class="keyword">int</span>[] count = <span class="keyword">new</span> <span class="keyword">int</span>[address.length];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; address.length; i++) {</span><br><span class="line">			count[i - <span class="number">1</span>] = address[i] - address[i - <span class="number">1</span>] - <span class="number">1</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>; <span class="comment">// 用于记录走的步数的异或和</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count.length; i += <span class="number">2</span>) {</span><br><span class="line">			sum ^= count[i]; <span class="comment">//异或和</span></span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span>(sum == <span class="number">0</span>) {<span class="comment">// 如果异或和结果为0，则必输</span></span><br><span class="line">			System.out.println(<span class="string">"必输！"</span>);</span><br><span class="line">		}<span class="keyword">else</span> {</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; address.length; i++) { <span class="comment">// 所有和尚的移动，一个一个的进行枚举</span></span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= count[i]; j++) { <span class="comment">//从第一节台阶开始进行枚举</span></span><br><span class="line">					count[i] -= j;</span><br><span class="line">					<span class="keyword">if</span>(i &gt; <span class="number">0</span>) {</span><br><span class="line">						count[i - <span class="number">1</span>] += j;</span><br><span class="line">					}</span><br><span class="line">					sum = <span class="number">0</span>; <span class="comment">//每走一步重新计算异或值</span></span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; count.length; k += <span class="number">2</span>) {</span><br><span class="line">						sum ^= count[k];</span><br><span class="line">					}</span><br><span class="line">					<span class="keyword">if</span>(sum == <span class="number">0</span>) {</span><br><span class="line">						System.out.println(address[i] + <span class="string">" "</span> + (address[i] + j));</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					}</span><br><span class="line">					<span class="comment">//回溯</span></span><br><span class="line">					count[i] += j;</span><br><span class="line">					<span class="keyword">if</span>(i &gt; <span class="number">0</span>) {</span><br><span class="line">						count[i - <span class="number">1</span>] -= j;</span><br><span class="line">					}</span><br><span class="line">				}</span><br><span class="line">				<span class="keyword">if</span>(sum == <span class="number">0</span>) {<span class="comment">//特判，可加可不加</span></span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				}</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🍁高斯日记"><a href="#🍁高斯日记" class="headerlink" title="🍁高斯日记"></a>🍁高斯日记</h2><p>大数学家高斯有个好习惯：无论如何都要记日记。</p>
+<p>他的日记有个与众不同的地方，他从不注明年月日，而是用一个整数代替，比如：4210</p>
+<p>后来人们知道，那个整数就是日期，它表示那一天是高斯出生后的第几天。这或许也是个好习惯，它时时刻刻提醒着主人：日子又过去一天，还有多少时光可以用于浪费呢 </p>
+<p>高斯出生于：1777年4月30日。</p>
+<p>在高斯发现的一个重要定理的日记上标注着：5343，因此可算出那天是：1791年12月15日。</p>
+<p>高斯获得博士学位的那天日记上标着：8113  </p>
+<p>请你算出高斯获得博士学位的年月日。</p>
+<h4 id="🍂分析-2"><a href="#🍂分析-2" class="headerlink" title="🍂分析"></a>🍂分析</h4><p>此题没什么好分析的，单纯的暴力模拟日期，一天天的加上去就ok了（能用Excel首用Excel，能用API首用API）</p>
+<p>利用API</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gauss_Diary</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		getDate();</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getDate</span><span class="params">()</span> </span>{</span><br><span class="line">		Calendar c = Calendar.getInstance();</span><br><span class="line">		c.set(<span class="number">1777</span>, <span class="number">04</span>, <span class="number">30</span>);</span><br><span class="line">		c.add(Calendar.DATE, <span class="number">8113</span>);</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">int</span> year = c.get(Calendar.YEAR);</span><br><span class="line">		<span class="keyword">int</span> month = c.get(Calendar.MONTH);</span><br><span class="line">		String m = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">if</span>(month &lt; <span class="number">10</span>) {</span><br><span class="line">			m = <span class="string">"0"</span> + month;</span><br><span class="line"> 		}<span class="keyword">else</span> {</span><br><span class="line"> 			m += month;</span><br><span class="line"> 		}</span><br><span class="line">		<span class="keyword">int</span> day = c.get(Calendar.DATE);</span><br><span class="line">		System.out.println(year + <span class="string">"-"</span> + m + <span class="string">"-"</span> + day);</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Gauss_Diary</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		getDate2();</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getDate2</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> year = <span class="number">1777</span>, month = <span class="number">4</span>, day = <span class="number">30</span>;</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span>(num &lt; <span class="number">8113</span>) {</span><br><span class="line">			<span class="keyword">if</span>(month == <span class="number">12</span> &amp;&amp; day == <span class="number">31</span>) {</span><br><span class="line">				year++;</span><br><span class="line">				month = <span class="number">1</span>;</span><br><span class="line">				day = <span class="number">1</span>;</span><br><span class="line">			}<span class="keyword">else</span> <span class="keyword">if</span>(day == getDays(year, month)) {</span><br><span class="line">				month++;</span><br><span class="line">				day = <span class="number">1</span>;</span><br><span class="line">			}<span class="keyword">else</span> {</span><br><span class="line">				day++;</span><br><span class="line">			}</span><br><span class="line">			num++;</span><br><span class="line">		}</span><br><span class="line">		String m = <span class="string">""</span>;</span><br><span class="line">		<span class="keyword">if</span>(month &lt; <span class="number">10</span>) {</span><br><span class="line">			m = <span class="string">"0"</span> + month;</span><br><span class="line"> 		}<span class="keyword">else</span> {</span><br><span class="line"> 			m += month;</span><br><span class="line"> 		}</span><br><span class="line">		System.out.println(year + <span class="string">"-"</span> + m + <span class="string">"-"</span> + day);</span><br><span class="line">	}</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断闰年</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> year</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isleap</span><span class="params">(<span class="keyword">int</span> year)</span> </span>{</span><br><span class="line">		<span class="keyword">return</span> (year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || year % <span class="number">400</span> == <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">   <span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算当年某月的天数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> year</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> month</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getDays</span><span class="params">(<span class="keyword">int</span> year, <span class="keyword">int</span> month)</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> days;</span><br><span class="line">		<span class="keyword">switch</span>(month) {</span><br><span class="line">		<span class="keyword">case</span> <span class="number">2</span>: {</span><br><span class="line">			<span class="keyword">if</span>(isleap(year)) {</span><br><span class="line">				days = <span class="number">29</span>;</span><br><span class="line">			}<span class="keyword">else</span> {</span><br><span class="line">				days = <span class="number">28</span>;</span><br><span class="line">			}</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">case</span> <span class="number">4</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">6</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">9</span>:</span><br><span class="line">		<span class="keyword">case</span> <span class="number">11</span>: {</span><br><span class="line">			days = <span class="number">30</span>;</span><br><span class="line">			<span class="keyword">break</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">default</span> :</span><br><span class="line">			days = <span class="number">31</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> days;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🍁古代赌局"><a href="#🍁古代赌局" class="headerlink" title="🍁古代赌局"></a>🍁古代赌局</h2><p>俗话说：十赌九输。因为大多数赌局的背后都藏有阴谋。</p>
+<p>不过也不尽然，有些赌局背后藏有的是：“阳谋”。</p>
+<p>有一种赌局是这样的：桌子上放六个匣子，编号是1至6。</p>
+<p>多位参与者（以下称玩家）可以把任意数量的钱押在某个编号的匣子上。</p>
+<p>所有玩家都下注后，庄家同时掷出3个骰子（骰子上的数字都是1至6）。</p>
+<p>输赢规则如下：</p>
+<p>1.若只有1个骰子上的数字与玩家所押注的匣子号相同，则玩家拿回自己的押注，庄家按他押注的数目赔付（即1比1的赔率）。</p>
+<p>2.若2个骰子上的数字与玩家所押注的匣子号相同，则玩家拿回自己的押注，庄家按他押注的数目的2倍赔付（即1比2的赔率）。</p>
+<p>3.若3个骰子上的数字都与玩家押注的匣子号相同，则玩家拿回自己的押注，庄家按他押注的数目的10倍赔付（即1比10的赔率）。</p>
+<p>乍一看起来，好像规则对玩家有利，庄家吃亏。但经过大量实战，会发现局面很难说，于是怀疑是否庄家做了手脚，庄家则十分爽快地说：可以由玩家提供骰子，甚至也可以由玩家来投掷骰子。</p>
+<p>你的任务是：通过编程模拟该过程。模拟50万次，假定只有1个玩家，他每次的押注都是1元钱，其押注的匣子号是随机的。再假定庄家有足够的资金用于赔付。最后计算出庄家的盈率（庄家盈利金额/押注总金额）。</p>
+<h4 id="🍂分析-3"><a href="#🍂分析-3" class="headerlink" title="🍂分析"></a>🍂分析</h4><p>直接模拟赌博过程</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ancient_Gambling</span> </span>{</span><br><span class="line">	<span class="keyword">static</span> <span class="keyword">int</span> sum = <span class="number">0</span>; <span class="comment">//押注总钱数</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> m = <span class="number">1</span>;	<span class="comment">// 押注都是1元钱</span></span><br><span class="line">		<span class="keyword">int</span> n;		<span class="comment">// 押注匣子号</span></span><br><span class="line">		<span class="keyword">int</span> a;		<span class="comment">// 第一个骰子</span></span><br><span class="line">		<span class="keyword">int</span> b;		<span class="comment">// 第二个骰子</span></span><br><span class="line">		<span class="keyword">int</span> c;		<span class="comment">// 第三个骰子</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">500000</span>; i++) {</span><br><span class="line">			n = (<span class="keyword">int</span>)(Math.random() * <span class="number">6</span> + <span class="number">1</span>);</span><br><span class="line">			a = (<span class="keyword">int</span>)(Math.random() * <span class="number">6</span> + <span class="number">1</span>);</span><br><span class="line">			b = (<span class="keyword">int</span>)(Math.random() * <span class="number">6</span> + <span class="number">1</span>);</span><br><span class="line">			c = (<span class="keyword">int</span>)(Math.random() * <span class="number">6</span> + <span class="number">1</span>);</span><br><span class="line">			gamble(m, n, a, b, c);</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">double</span> f = sum / <span class="number">500000.0</span>;</span><br><span class="line">		System.out.println(f);</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">gamble</span><span class="params">(<span class="keyword">int</span> m, <span class="keyword">int</span> n, <span class="keyword">int</span> a, <span class="keyword">int</span> b, <span class="keyword">int</span> c)</span> </span>{</span><br><span class="line">		<span class="keyword">if</span>(n == a &amp;&amp; n == b &amp;&amp; n == c) {</span><br><span class="line">			sum -= m * <span class="number">10</span>;</span><br><span class="line">		}<span class="keyword">else</span> <span class="keyword">if</span>((n == a &amp;&amp; n == b) || (n == a &amp;&amp; n == c) || (n == b &amp;&amp; n == c)) {</span><br><span class="line">			sum -= m * <span class="number">2</span>;</span><br><span class="line">		}<span class="keyword">else</span> <span class="keyword">if</span>(n == a || n == b || n == c) {</span><br><span class="line">			sum -= m;</span><br><span class="line">		}<span class="keyword">else</span> {</span><br><span class="line">			sum += m;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🍁国庆节"><a href="#🍁国庆节" class="headerlink" title="🍁国庆节"></a>🍁国庆节</h2><p>1949年的国庆节（10月1日）是星期六。 </p>
+<p>今年（2012）的国庆节是星期一。</p>
+<p>那么，从建国到现在，有几次国庆节正好是星期日呢？</p>
+<p>只要答案，不限手段！</p>
+<p>可以用windows日历，windows计算器，Excel公式，。。。。。</p>
+<p>当然，也可以编程！</p>
+<h4 id="🍂普通解法"><a href="#🍂普通解法" class="headerlink" title="🍂普通解法"></a>🍂普通解法</h4><p>利用当年10月1日到1949年10月2日的总天数计算模以7是否为0，如果是则代表那天为星期日</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">National_day</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="comment">// 1949年的国庆节（10月2日）是星期日。 </span></span><br><span class="line">		<span class="comment">// 得到这年10月2号后的的剩余天数</span></span><br><span class="line">		<span class="keyword">int</span> sum = getCal(<span class="number">1949</span>, <span class="number">12</span>, <span class="number">31</span>) - getCal(<span class="number">1949</span>, <span class="number">10</span>, <span class="number">2</span>);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1950</span>; i &lt; <span class="number">2012</span>; i++) {</span><br><span class="line">			sum += getCal(i, <span class="number">10</span>, <span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span>(sum % <span class="number">7</span> == <span class="number">0</span>) {</span><br><span class="line">				System.out.println(i + <span class="string">"年10月1日"</span>);</span><br><span class="line">				count++;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		System.out.println(<span class="string">"总数："</span> + count);</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 判断闰年</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> year</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isleap</span><span class="params">(<span class="keyword">int</span> year)</span> </span>{</span><br><span class="line">		<span class="keyword">return</span> (year % <span class="number">4</span> == <span class="number">0</span> &amp;&amp; year % <span class="number">100</span> != <span class="number">0</span>) || year % <span class="number">400</span> == <span class="number">0</span>;</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 计算当年当日前的总天数</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> year</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> month</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> day</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">getCal</span><span class="params">(<span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span> </span>{</span><br><span class="line">		<span class="keyword">int</span>[][] days = {{<span class="number">0</span>, <span class="number">31</span>, <span class="number">28</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>},{<span class="number">0</span>, <span class="number">31</span>, <span class="number">29</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>, <span class="number">30</span>, <span class="number">31</span>}};</span><br><span class="line">		<span class="keyword">int</span> run = <span class="number">0</span>;<span class="comment">//默认不是闰年</span></span><br><span class="line">		<span class="keyword">if</span>(isleap(year)) {</span><br><span class="line">			run = <span class="number">1</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">int</span> sum = day;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; month; i++) {</span><br><span class="line">			sum += days[run][i];</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> sum;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="🍂解法二：基姆拉尔森计算公式"><a href="#🍂解法二：基姆拉尔森计算公式" class="headerlink" title="🍂解法二：基姆拉尔森计算公式"></a>🍂解法二：基姆拉尔森计算公式</h4><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">National_day</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		search();</span><br><span class="line">	}</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 *  基姆拉尔森计算公式</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">search</span><span class="params">()</span> </span>{</span><br><span class="line">		<span class="keyword">int</span> count = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1950</span>; i &lt; <span class="number">2012</span>; i++) {</span><br><span class="line">			<span class="keyword">if</span>(jim(i, <span class="number">10</span>, <span class="number">1</span>) == <span class="number">6</span>) {</span><br><span class="line">				System.out.println(i + <span class="string">"年10月1日"</span>);</span><br><span class="line">				count++;</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		System.out.println(<span class="string">"总数："</span> + count);</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">jim</span><span class="params">(<span class="keyword">int</span> year, <span class="keyword">int</span> month, <span class="keyword">int</span> day)</span> </span>{</span><br><span class="line">		<span class="keyword">if</span>(month == <span class="number">1</span> || month == <span class="number">2</span>) {</span><br><span class="line">			month += <span class="number">12</span>;</span><br><span class="line">			year--;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">return</span> (day + <span class="number">2</span> * month + <span class="number">3</span> * (month + <span class="number">1</span>) / <span class="number">5</span> + year + year / <span class="number">4</span> - year / <span class="number">100</span> + year / <span class="number">400</span>) % <span class="number">7</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+
+
+<h2 id="🍁火柴游戏"><a href="#🍁火柴游戏" class="headerlink" title="🍁火柴游戏"></a>🍁火柴游戏</h2><p>这是一个纵横火柴棒游戏。</p>
+<p>如表</p>
+<table>
+<thead>
+<tr>
+<th>3</th>
+<th></th>
+<th></th>
+<th>—</th>
+<th align="center">|</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>—</td>
+<td></td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>—</td>
+<td></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td></td>
+<td>A</td>
+<td>B</td>
+<td>C</td>
+<td align="center">D</td>
+</tr>
+</tbody></table>
+<p>在3x4的格子中，游戏的双方轮流放置火柴棒。</p>
+<p>其规则是：</p>
+<ol>
+<li><p>不能放置在已经放置了火柴棒的地方（即只能在空格中放置）。</p>
+</li>
+<li><p>火柴棒的方向只能是竖直或水平放置。</p>
+</li>
+<li><p>火柴棒不能与其它格子中的火柴“连通”。</p>
+</li>
+</ol>
+<p>所谓连通是指两根火柴棒可以连成一条直线，且中间没有其它不同方向的火柴“阻拦”。</p>
+<p>例如：</p>
+<p>表所示的局面下，可以在C2位置竖直放置（为了方便描述格子位置，图中左、下都添加了标记），但不能水平放置，因为会与A2连通。</p>
+<p>同样道理，B2，B3，D2此时两种方向都不可以放置。</p>
+<p>但如果C2竖直放置后，D2就可以水平放置了，因为不再会与A2连通（受到了C2的阻挡）。</p>
+<ol start="4">
+<li>游戏双方轮流放置火柴，不可以弃权，也不可以放多根。</li>
+</ol>
+<p>如某一方无法继续放置，则该方为负（输的一方）。</p>
+<p>游戏开始时可能已经放置了多根火柴。</p>
+<p>你的任务是：编写程序，读入初始状态，计算出对自己最有利的放置方法并输出放置后的局面。</p>
+<p>图1的局面表示为：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">00-1</span><br><span class="line"></span><br><span class="line">-000</span><br><span class="line"></span><br><span class="line">0100</span><br><span class="line"></span><br><span class="line">即用“0”表示空闲位置，用“1”表示竖直放置，用“-”表示水平放置。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解法不唯一，找到任意解法即可。</p>
+<p>例如，局面：</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">0111</span><br><span class="line">-000</span><br><span class="line">-000</span><br><span class="line">的解：</span><br><span class="line">-111</span><br><span class="line">-000</span><br><span class="line">-000</span><br><span class="line"> </span><br><span class="line">再例如，局面：</span><br><span class="line">1111</span><br><span class="line">----</span><br><span class="line">0010</span><br><span class="line">的解：</span><br><span class="line">1111</span><br><span class="line">----</span><br><span class="line">0110</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="🍂分析-4"><a href="#🍂分析-4" class="headerlink" title="🍂分析"></a>🍂分析</h4><figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">思考中。。</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🍁取球游戏"><a href="#🍁取球游戏" class="headerlink" title="🍁取球游戏"></a>🍁取球游戏</h2><p>今盒里有n个小球，A、B两人轮流从盒中取球。</p>
+<p>每个人都可以看到另一个人取了多少个，也可以看到盒中还剩下多少个。</p>
+<p>两人都很聪明，不会做出错误的判断。</p>
+<p>每个人从盒子中取出的球的数目必须是：1，3，7或者8个。</p>
+<p>轮到某一方取球时不能弃权！</p>
+<p>A先取球，然后双方交替取球，直到取完。</p>
+<p>被迫拿到最后一个球的一方为负方（输方）</p>
+<p>编程确定出在双方都不判断失误的情况下，对于特定的初始球数，A是否能赢？</p>
+<h4 id="🍂分析-5"><a href="#🍂分析-5" class="headerlink" title="🍂分析"></a>🍂分析</h4><p>已知每人最多能取1，3，7或者8个,那么，球总数=乙必输的情况+甲拿（1，3，7或者8个），球为1时甲必输，以此类推（可以正向迭代和逆向递归），正向：将10000以内的输赢情况都存入数组，然后查表。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ball_Game</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = input.nextInt();</span><br><span class="line">		List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">			list.add(input.nextInt());</span><br><span class="line">		}</span><br><span class="line">		ball(list);</span><br><span class="line">		input.close();</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ball</span><span class="params">(List&lt;Integer&gt; list)</span> </span>{</span><br><span class="line">		<span class="keyword">int</span>[] take = {<span class="number">1</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">8</span>};</span><br><span class="line">		<span class="keyword">int</span>[] res = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10010</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">10000</span>; i++) {</span><br><span class="line">			<span class="keyword">if</span>(res[i] == <span class="number">0</span>) {</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">4</span>; j++) {</span><br><span class="line">					res[i + take[j]] = <span class="number">1</span>;</span><br><span class="line">				}</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) {</span><br><span class="line">			System.out.println(<span class="string">"结果："</span> + res[list.get(i)]);</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>逆向：球数是n时，只要满足n-1，n-3，n-7和n-8有一个数字对于乙玩家来说是必输的。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Ball_Game</span> </span>{</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = input.nextInt();</span><br><span class="line">		List&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">			list.add(input.nextInt());</span><br><span class="line">		}</span><br><span class="line">		ball2(list);</span><br><span class="line">		input.close();</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ball2</span><span class="params">(List&lt;Integer&gt; list)</span> </span>{</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; list.size(); i++) {</span><br><span class="line">			<span class="keyword">if</span>(test(list.get(i))) {</span><br><span class="line">				System.out.println(<span class="number">1</span>);</span><br><span class="line">			}<span class="keyword">else</span> {</span><br><span class="line">				System.out.println(<span class="number">0</span>);</span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> n)</span> </span>{</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		<span class="keyword">if</span>(n &gt;= <span class="number">1</span>) {</span><br><span class="line">			<span class="keyword">switch</span>(n) {</span><br><span class="line">			<span class="keyword">case</span> <span class="number">1</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;<span class="comment">// 剩1个球,则输</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">3</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;<span class="comment">// 剩3个球,则输</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">7</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;<span class="comment">// 剩7个球,则输</span></span><br><span class="line">			<span class="keyword">case</span> <span class="number">8</span>:</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">true</span>;<span class="comment">// 剩8个球,则赢</span></span><br><span class="line">			<span class="comment">// 如果不是不是1，3，7，8则 选择权交给B，B任然调用该函数，不过返回值需要取反</span></span><br><span class="line">			<span class="comment">// 而此时A可以选的只有 1 3 7 8 所以用num减去之 逐个测试即可</span></span><br><span class="line">			<span class="keyword">default</span>:</span><br><span class="line">				<span class="keyword">return</span> (!test(n - <span class="number">8</span>) || !test(n - <span class="number">7</span>) || !test(n - <span class="number">3</span>) || !test(n - <span class="number">1</span>));</span><br><span class="line">			}</span><br><span class="line">		}<span class="keyword">else</span> {</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">		}</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h3 id="🍁填字母游戏"><a href="#🍁填字母游戏" class="headerlink" title="🍁填字母游戏"></a>🍁填字母游戏</h3><p>K大师在纸上画了一行n个格子，要小明和他交替往其中填入字母。</p>
+<ol>
+<li><p>轮到某人填的时候，只能在某个空 格中填入L或O</p>
+</li>
+<li><p>谁先让字母组成了“LOL”的字样，谁获胜。</p>
+</li>
+<li><p>如果所有格子都填满了，仍无法组成LOL，则平局。</p>
+</li>
+</ol>
+<p>小明试验了几次都输了，他很惭愧，希望你能用计算机帮他解开这个谜。</p>
+<p>本题的输入格式为：</p>
+<p>第一行，数字n（n&lt;10），表示下面有n个初始局面。</p>
+<p>接下来，n行，每行一个串，表示开始的局面。</p>
+<p> 比如：“<strong>**</strong>”, 表示有6个空格。“L** **”,  表示左边是一个字母L，它的右边是4个空格。</p>
+<p>要求输出n个数字，表示对每个局面，如果小明先填，当K大师总是用最强着法的时候，小明的最好结果。</p>
+<p>1 表示能赢</p>
+<p>-1 表示必输</p>
+<p>0 表示可以逼平</p>
+<p>例如，</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">输入：</span><br><span class="line">4</span><br><span class="line">***</span><br><span class="line">L**L</span><br><span class="line">L**L***L</span><br><span class="line">L*****L </span><br><span class="line"></span><br><span class="line">则程序应该输出：</span><br><span class="line">0</span><br><span class="line">-1</span><br><span class="line">1</span><br><span class="line">1</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="🍂分析-6"><a href="#🍂分析-6" class="headerlink" title="🍂分析"></a>🍂分析</h4><p>利用回溯，一步一步的进行递归尝试，每走一步进行一次递归，将结果放入哈希表（利用记忆化哈希表减少递归查找的时间复杂度）。具体详情可查看代码注释</p>
+<h5 id="下面介绍带平局的博弈类解法魔板："><a href="#下面介绍带平局的博弈类解法魔板：" class="headerlink" title="下面介绍带平局的博弈类解法魔板："></a>下面介绍带平局的博弈类解法魔板：</h5><figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">main函数里调用dfs (a)</span><br><span class="line">给定一个局面a,dfs(a)是计算我方通过最优步骤走是输还是赢还是平局。</span><br><span class="line">利用map容器记录局面胜负平的状态可减少重复局面的运算提高算法效率</span><br><span class="line">胜负平</span><br><span class="line">dfs (局面a) {</span><br><span class="line">	边界值处理</span><br><span class="line">    for (所有可走的局面) {</span><br><span class="line">        试着走一步，得到一个新局面b</span><br><span class="line">        交给对手走，即判断dfs (b)的返回值</span><br><span class="line">        恢复局面</span><br><span class="line">        如果返回值为负，则我必赢，即这步是我的最优走法</span><br><span class="line">        如果返回值为赢，则我必输，不可取</span><br><span class="line">        如果返回值为平，则我至少可以逼平对手，先存着这个结果</span><br><span class="line">    }</span><br><span class="line">    如果算的可以逼平，则返回平</span><br><span class="line">    否则返回负|</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>解法代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Alphabet_Game</span> </span>{</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>{</span><br><span class="line">		Scanner input = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">		<span class="keyword">int</span> n = input.nextInt();</span><br><span class="line">		input.nextLine();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) {</span><br><span class="line">			String str = input.nextLine();</span><br><span class="line">			System.out.println(dfs(str.toCharArray()));</span><br><span class="line">		}</span><br><span class="line">		<span class="comment">//System.out.println(dfs("L**L".toCharArray()));</span></span><br><span class="line">		input.close();</span><br><span class="line">	}</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String, Integer&gt; map = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">char</span>[] a)</span> </span>{</span><br><span class="line">		<span class="comment">// TODO Auto-generated method stub</span></span><br><span class="line">		String s = <span class="keyword">new</span> String(a);</span><br><span class="line">		<span class="keyword">if</span>(map.containsKey(s)) {</span><br><span class="line">			<span class="keyword">return</span> map.get(s);</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span>(s.contains(<span class="string">"LOL"</span>)) { <span class="comment">//如果对手给我的局面是包含了”LOL"的情况，那我就输了</span></span><br><span class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">if</span>(!s.contains(<span class="string">"*"</span>)) { <span class="comment">//如果对手给我的局面是没有空格可以填的情况，那我没赢也没输，返回平局</span></span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="keyword">boolean</span> ping = <span class="keyword">false</span>; <span class="comment">//先假设我跟对手之间不可能出现平局</span></span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; a.length; i++) { <span class="comment">//开始循环，对有空格进行试填</span></span><br><span class="line">			<span class="keyword">if</span>(a[i] == <span class="string">'*'</span>) { <span class="comment">//循环开始，先判断遍历到的地方是不是空格，这里是空格的情况，</span></span><br><span class="line">				a[i] = <span class="string">'L'</span>; <span class="comment">//自己进行尝试填写</span></span><br><span class="line">				<span class="comment">//自己下完后交给对手进行判断</span></span><br><span class="line">				<span class="comment">//此时switch()中传入的dfs(a)已经不是最开始传入的a数组了</span></span><br><span class="line">				<span class="comment">//而是试填L后的a数组</span></span><br><span class="line">				<span class="keyword">int</span> res = dfs(a);</span><br><span class="line">				<span class="comment">//存入哈希表</span></span><br><span class="line">				map.put(String.valueOf(a), res);</span><br><span class="line">				<span class="keyword">switch</span>(res) {</span><br><span class="line">				<span class="keyword">case</span> -<span class="number">1</span>: <span class="comment">//如果对手返回-1，那么就是我赢了，我就返回1</span></span><br><span class="line">					<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">				<span class="comment">//如果对手返回0就是对手有可把我逼平的方法，此时我不是直接返回0是因为</span></span><br><span class="line">				<span class="comment">//我继续下下一个空格可能有将对手赢了的可能，所以我先将ping置为true</span></span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">					ping = <span class="keyword">true</span>;</span><br><span class="line">				}</span><br><span class="line">				<span class="comment">//回到我自己下</span></span><br><span class="line">				a[i] = <span class="string">'O'</span>;</span><br><span class="line">				<span class="comment">//交给对手</span></span><br><span class="line">				res = dfs(a);</span><br><span class="line">				map.put(String.valueOf(a), res);</span><br><span class="line">				<span class="comment">//回溯，因为你们操作的是同一个数组</span></span><br><span class="line">				a[i] = <span class="string">'*'</span>;</span><br><span class="line">				<span class="keyword">switch</span>(res) {</span><br><span class="line">				<span class="keyword">case</span> -<span class="number">1</span>:</span><br><span class="line">					<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">				<span class="keyword">case</span> <span class="number">0</span>:</span><br><span class="line">					ping = <span class="keyword">true</span>;</span><br><span class="line">				}</span><br><span class="line"></span><br><span class="line">			}</span><br><span class="line">		}</span><br><span class="line">		<span class="comment">//最后返回如果对手没有返回输的话，就是我赢不了对手了，</span></span><br><span class="line">		<span class="comment">//这个时候我再来看看是否有平局的可能</span></span><br><span class="line">		<span class="keyword">if</span>(ping) {</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		}</span><br><span class="line">		<span class="comment">//平局都没有，那我就输了</span></span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	}</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！"><a href="#最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！" class="headerlink" title="最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！"></a><strong>最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！</strong></h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	  
+		<div>
+		  <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/bolg_mask.png" alt="云澈 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，用手机访问哦</div>
+</div>
+
+		</div>
+	  
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://i.loli.net/2020/06/10/PNbxe7H5KXJgcoh.jpg" alt="云澈 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://i.loli.net/2020/06/10/FQkTKeyYndB5WhP.jpg" alt="云澈 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云澈
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://liudufu.github.io/Game_problem/" title="2020_java蓝桥_暑假训练_进制(补)+博弈问题">https://liudufu.github.io/Game_problem/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%A8%A1%E6%8B%9F/" rel="tag"><i class="fa fa-tag"></i> 模拟</a>
+          
+            <a href="/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/" rel="tag"><i class="fa fa-tag"></i> 博弈论</a>
+          
+            <a href="/tags/%E5%9F%BA%E5%A7%86%E6%8B%89%E5%B0%94%E6%A3%AE%E5%85%AC%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 基姆拉尔森公式</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Divide_and_rule/" rel="prev" title="2020_java蓝桥_暑假训练_分治与动态规划">
+                <i class="fa fa-chevron-left"></i> 2020_java蓝桥_暑假训练_分治与动态规划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/System_and_division/" rel="next" title="2020_java蓝桥_暑假训练_进制与整除">
+                2020_java蓝桥_暑假训练_进制与整除 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDQzNi8yNjkyMw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+			  <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg"
+                  alt="云澈" />
+			  </a>
+            
+              <p class="site-author-name" itemprop="name">云澈</p>
+              <p class="site-description motion-element" itemprop="description">Time would heal almost all wounds,if your wounds have not been healed up.please wait for a short while</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/liudufu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2649176532@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/liudufu" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_45333934" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/dufu-csdn/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+		  
+		  
+		  
+		    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+			  <div class="links-of-blogroll-title">
+			    <!-- modify icon to fire by szw -->
+			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+			    近期文章
+			  </div>
+			  <ul class="links-of-blogroll-list">
+			    
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Servlet_Basics/" title="servlet基础" target="_blank">servlet基础</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/The_difference_and_basic_usage_of_JPA_and_JDBC/" title="JPA与JDBC的区别和基本用法" target="_blank">JPA与JDBC的区别和基本用法</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Mapper_relation_of_mybatis/" title="关于数据库和mybatis的mapper关系" target="_blank">关于数据库和mybatis的mapper关系</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/How_to_install_redis_under_Windows/" title="windows下如何安装redis" target="_blank">windows下如何安装redis</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/SQL_log_connection_database_report/" title="SQLyog连接数据库报错plugin caching_sha2_password could not be loaded" target="_blank">SQLyog连接数据库报错plugin caching_sha2_password could not be loaded</a>
+				  </li>
+			    
+			  </ul>
+		    </div>
+		  
+		  
+		  <div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1428784488&auto=1&height=66"></iframe>
+		  </div>
+		  
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+        
+			  
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://leetcode-cn.com/" title="leetcode" target="_blank" rel="external nofollow">leetcode</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://gitee.com/dufu-03-13/" title="码云" target="_blank" rel="external nofollow">码云</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank" rel="external nofollow">Web前端导航</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank" rel="external nofollow">前端书籍资料</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank" rel="external nofollow">百度前端技术学院</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank" rel="external nofollow">google前端开发基础</a>
+                </span>
+              
+		  <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()",1000);
+BirthDay=new Date("06/01/2020 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+
+            </div>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸博弈训练"><span class="nav-number">1.</span> <span class="nav-text">🌸博弈训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁Excel地址"><span class="nav-number">2.</span> <span class="nav-text">🍁Excel地址</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析"><span class="nav-number">2.0.1.</span> <span class="nav-text">🍂分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁高僧斗法"><span class="nav-number">3.</span> <span class="nav-text">🍁高僧斗法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">🍂分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#🍂尼姆博奕（Nimm-Game）"><span class="nav-number">3.0.1.1.</span> <span class="nav-text">🍂尼姆博奕（Nimm Game）</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁高斯日记"><span class="nav-number">4.</span> <span class="nav-text">🍁高斯日记</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析-2"><span class="nav-number">4.0.1.</span> <span class="nav-text">🍂分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁古代赌局"><span class="nav-number">5.</span> <span class="nav-text">🍁古代赌局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析-3"><span class="nav-number">5.0.1.</span> <span class="nav-text">🍂分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁国庆节"><span class="nav-number">6.</span> <span class="nav-text">🍁国庆节</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂普通解法"><span class="nav-number">6.0.1.</span> <span class="nav-text">🍂普通解法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂解法二：基姆拉尔森计算公式"><span class="nav-number">6.0.2.</span> <span class="nav-text">🍂解法二：基姆拉尔森计算公式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁火柴游戏"><span class="nav-number">7.</span> <span class="nav-text">🍁火柴游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析-4"><span class="nav-number">7.0.1.</span> <span class="nav-text">🍂分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🍁取球游戏"><span class="nav-number">8.</span> <span class="nav-text">🍁取球游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析-5"><span class="nav-number">8.0.1.</span> <span class="nav-text">🍂分析</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#🍁填字母游戏"><span class="nav-number">8.1.</span> <span class="nav-text">🍁填字母游戏</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#🍂分析-6"><span class="nav-number">8.1.1.</span> <span class="nav-text">🍂分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#下面介绍带平局的博弈类解法魔板："><span class="nav-number">8.1.1.1.</span> <span class="nav-text">下面介绍带平局的博弈类解法魔板：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！"><span class="nav-number">9.</span> <span class="nav-text">最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云澈</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">189k</span>
+  
+  
+   <span style="margin-left:8px;">
+   <script src="http://s6.cnzz.com/stat.php?id=1278978367&web_id=1278978367" type="text/javascript"></script>
+   </span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共189k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ToKAq6EqsKrh3oh1kL7AwHkb-9Nh9j0Va", "Jjb4SKFne0eAr0pwOARr8X21");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "topRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300,"left":120},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>

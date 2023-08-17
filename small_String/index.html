@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('����������') !== ''){
+                alert('�������');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "03760df2"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="KMP,递归,Manacher(马拉车),Rabin-Karp," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云澈の博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="🌸题目🍁给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP_leetcode.214.最短回文串">
+<meta property="og:url" content="https://liudufu.github.io/small_String/index.html">
+<meta property="og:site_name" content="云澈の博客">
+<meta property="og:description" content="🌸题目🍁给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。">
+<meta property="article:published_time" content="2020-08-29T02:14:23.000Z">
+<meta property="article:modified_time" content="2020-08-29T02:23:44.157Z">
+<meta property="article:author" content="云澈">
+<meta property="article:tag" content="KMP">
+<meta property="article:tag" content="递归">
+<meta property="article:tag" content="Manacher(马拉车)">
+<meta property="article:tag" content="Rabin-Karp">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liudufu.github.io/small_String/"/>
+
+
+
+
+
+  <title>KMP_leetcode.214.最短回文串 | 云澈の博客</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '5e442439848b85893d4627c44c1d8971', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/liudufu" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+	
+	<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+	<meta name="baidu-site-verification" content="DPYNeCY4vP" />
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云澈の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不经历风雨，怎能见彩虹！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            TopX
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liudufu.github.io/small_String/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云澈">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云澈の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">KMP_leetcode.214.最短回文串</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-29T10:14:23+08:00">
+                2020-08-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index">
+                    <span itemprop="name">算法</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/LeetCode/" itemprop="url" rel="index">
+                    <span itemprop="name">LeetCode</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+		  
+		  
+
+          
+            
+          
+
+          
+          
+             <span id="/small_String/" class="leancloud_visitors" data-flag-title="KMP_leetcode.214.最短回文串">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.8k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  16
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="🌸题目"><a href="#🌸题目" class="headerlink" title="🌸题目"></a>🌸题目</h2><p>🍁给定一个字符串 s，你可以通过在字符串前面添加字符将其转换为回文串。找到并返回可以用这种方式转换的最短回文串。</p>
+<a id="more"></a>
+
+<p>示例 1:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: "aacecaaa"</span><br><span class="line">输出: "aaacecaaa"</span><br></pre></td></tr></tbody></table></figure>
+
+
+<p>示例 2:</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: "abcd"</span><br><span class="line">输出: "dcbabcd"</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🌸分析"><a href="#🌸分析" class="headerlink" title="🌸分析"></a>🌸分析</h2><p>在字符串开头补充最少的字符，使得当前字符串成为回文串。</p>
+<h2 id="🌸解法一：暴力解法"><a href="#🌸解法一：暴力解法" class="headerlink" title="🌸解法一：暴力解法"></a>🌸解法一：暴力解法</h2><p>先判断整个字符串是不是回文串，如果是的话，就直接将当前字符串返回。不是的话，进行下一步。</p>
+<p>判断去掉末尾 1 个字符的字符串是不是回文串，如果是的话，就将末尾的 1 个字符加到原字符串的头部返回。不是的话，进行下一步。</p>
+<p>判断去掉末尾 2 个字符的字符串是不是回文串，如果是的话，就将末尾的 2 个字符倒置后加到原字符串的头部返回。不是的话，进行下一步。</p>
+<p>判断去掉末尾 3 个字符的字符串是不是回文串，如果是的话，就将末尾的 3 个字符倒置后加到原字符串的头部返回。不是的话，进行下一步。</p>
+<p>…</p>
+<p>直到判断去掉末尾的 <code>n - 1</code> 个字符，整个字符串剩下一个字符，把末尾的 <code>n - 1</code> 个字符倒置后加到原字符串的头部返回。</p>
+<p>举个例子，比如字符串 abbacd。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">原字符串 abbacd</span><br><span class="line">先判断 abbacd 是不是回文串, 发现不是, 执行下一步</span><br><span class="line">判断 abbac 是不是回文串, 发现不是, 执行下一步</span><br><span class="line">判断 abba 是不是回文串, 发现是，将末尾的 2 个字符 cd 倒置后加到原字符串的头部,</span><br><span class="line">即 dcabbacd</span><br></pre></td></tr></tbody></table></figure>
+
+<p>代码的话，判断是否是回文串的话可以用 <a href="https://leetcode.wang/leetcode-125-Valid-Palindrome.html" target="_blank" rel="noopener">125 题</a> 的思想，利用双指针法</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//判断是否是回文串, 传入字符串的范围</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindromic</span><span class="params">(String s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>{</span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">while</span> (start &lt; end) {</span><br><span class="line">        <span class="keyword">if</span> (c[start] != c[end]) {</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        }</span><br><span class="line">        start++;</span><br><span class="line">        end--;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> end = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//找到回文串的结尾, 用 end 标记</span></span><br><span class="line">    <span class="keyword">for</span> (; end &gt; <span class="number">0</span>; end--) {</span><br><span class="line">        <span class="keyword">if</span> (isPalindromic(s, <span class="number">0</span>, end)) {</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//将末尾的几个倒置然后加到原字符串开头</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(end + <span class="number">1</span>)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🌸解法二："><a href="#🌸解法二：" class="headerlink" title="🌸解法二："></a>🌸解法二：</h2><p>根据解法一，我们其实就是在<strong>寻找从开头开始的最长回文串</strong>（这个很关键，后边所有的解法都是基于这个了），然后将末尾的除去最长回文串部分的几个字符倒置后加到原字符串开头即可。</p>
+<p>我们只需要两个指针， <code>i</code> 和 <code>j</code>，<code>i</code> 初始化为 0，<code>j</code> 初始化为字符串长度减 1。然后依次判断 <code>s[i]</code> 和 <code>s[j]</code> 是否相同，相同的话， i 就进行加 1，j 进行减 1。 s[i] 和 s[j] 不同的话，只将 j 进行减 1。</p>
+<p>看几个例子。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">abbacde</span><br><span class="line">a b b a c d e</span><br><span class="line">^           ^</span><br><span class="line">i           j</span><br><span class="line">如上所示, s[i] != s[j], j--</span><br><span class="line">    </span><br><span class="line">a b b a c d e</span><br><span class="line">^         ^</span><br><span class="line">i         j</span><br><span class="line">如上所示, s[i] != s[j], j--</span><br><span class="line">    </span><br><span class="line">a b b a c d e</span><br><span class="line">^       ^</span><br><span class="line">i       j</span><br><span class="line">如上所示, s[i] != s[j], j--</span><br><span class="line">    </span><br><span class="line">a b b a c d e</span><br><span class="line">^     ^</span><br><span class="line">i     j</span><br><span class="line">如上所示, s[i] == s[j], i++, j--</span><br><span class="line">    </span><br><span class="line">a b b a c d e</span><br><span class="line">  ^ ^</span><br><span class="line">  i j</span><br><span class="line">如上所示, s[i] == s[j], i++, j--</span><br><span class="line">    </span><br><span class="line">a b b a c d e</span><br><span class="line">  ^ ^</span><br><span class="line">  j i</span><br><span class="line">如上所示, s[i] == s[j], i++, j--</span><br><span class="line">    </span><br><span class="line">a b b a c d e</span><br><span class="line">^     ^</span><br><span class="line">j     i</span><br><span class="line">如上所示, s[i] == s[j], i++, j--</span><br><span class="line">    </span><br><span class="line"> a b b a c d e</span><br><span class="line">^        ^</span><br><span class="line">j        i</span><br><span class="line">如上所示, j &lt; 0, 结束循环。</span><br><span class="line">此时 i 指向最长回文串的下一个字符串,我们只需要把 i 到 最后的字符倒置加到开头即可。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>当然，上边是最理想的情况，如果 <code>j</code> 在最长回文串外提前出现了和 <code>i</code> 相同的字符会有影响吗？</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">abbacba</span><br><span class="line">a b b a c b a</span><br><span class="line">^           ^</span><br><span class="line">i           j</span><br><span class="line">如上所示, s[i] == s[j], i++, j--</span><br><span class="line">    </span><br><span class="line">a b b a c b a</span><br><span class="line">  ^       ^</span><br><span class="line">  i       j</span><br><span class="line">如上所示, s[i] == s[j], i++, j--    </span><br><span class="line">    </span><br><span class="line">a b b a c b a</span><br><span class="line">    ^   ^</span><br><span class="line">    i   j</span><br><span class="line">如上所示, s[i] != s[j], j--</span><br><span class="line">    </span><br><span class="line">a b b a c b a</span><br><span class="line">    ^ ^</span><br><span class="line">    i j</span><br><span class="line">如上所示, s[i] != s[j], j--</span><br><span class="line">    </span><br><span class="line">a b b a c b a</span><br><span class="line">    ^  </span><br><span class="line">    i  </span><br><span class="line">    j</span><br><span class="line">如上所示, s[i] == s[j], i++, j--</span><br><span class="line">    </span><br><span class="line">a b b a c b a</span><br><span class="line">  ^   ^  </span><br><span class="line">  j   i  </span><br><span class="line">如上所示, s[i] != s[j], j--</span><br><span class="line">    </span><br><span class="line">a b b a c b a</span><br><span class="line">^     ^  </span><br><span class="line">j     i  </span><br><span class="line">如上所示, s[i] == s[j], i++, j--   </span><br><span class="line">    </span><br><span class="line"> a b b a c d e</span><br><span class="line">^        ^</span><br><span class="line">j        i</span><br><span class="line">如上所示, j &lt; 0, 结束循环。</span><br><span class="line">会发现此时 i 和之前一样, 依旧指向最长回文串的下一个字符,我们只需要把 i 到最后的字符倒置加到开头即可。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>可以看到上边的两种情况，只要 <code>j</code> 进入了最长回文子串，一定会使得 <code>i</code> 走出最长回文子串。所以我们可以利用双指针写一下代码了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">if</span> (i == j){</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">if</span> (c[i] == c[j]) {</span><br><span class="line">            i++;</span><br><span class="line">        }</span><br><span class="line">        j--;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//此时代表整个字符串是回文串</span></span><br><span class="line">    <span class="keyword">if</span> (i == s.length()) {</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//后缀</span></span><br><span class="line">    String suffix = s.substring(i);</span><br><span class="line">    <span class="comment">//后缀倒置</span></span><br><span class="line">    String reverse = <span class="keyword">new</span> StringBuilder(suffix).reverse().toString();</span><br><span class="line">    <span class="comment">//加到开头</span></span><br><span class="line">    <span class="keyword">return</span> reverse + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>看起来没什么问题，但还有一种情况，那就是 <code>i</code> 提前走出了最长回文子串，看下边的例子。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ababbcefbbaba</span><br><span class="line">a b a b b c e f b b a b a</span><br><span class="line">^                       ^</span><br><span class="line">i                       j</span><br><span class="line"></span><br><span class="line">i 和 j 同时移动, 一直是相等, 直到下边的情况</span><br><span class="line"></span><br><span class="line">a b a b b c e f b b a b a</span><br><span class="line">          ^   ^</span><br><span class="line">          i   j</span><br><span class="line"></span><br><span class="line">然后继续移动, 最后就变成了下边的样子</span><br><span class="line"></span><br><span class="line"> a b a b b c e f b b a b a</span><br><span class="line">^            ^  </span><br><span class="line">j            i   </span><br><span class="line"></span><br><span class="line">会发现此时 0 到 i - 1 并不是一个回文串, 所以我们需要递归的去解决这个问题</span><br></pre></td></tr></tbody></table></figure>
+
+<p>此时我们并没有找到最长回文串，但是我们可以肯定最长回文串一定在 0 到 i 之间，所以我们只需要递归的从<code>s[0, i)</code> 中继续寻找最长回文串即可。</p>
+<p>因为上边的所有情况，都保证了 i 一定可以走出最长回文串，只不过可能超出一部分，所以用递归解决即可。代码的整体框架不需要改变。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>, j = s.length() - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">while</span> (j &gt;= <span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">if</span> (c[i] == c[j]) {</span><br><span class="line">            i++;</span><br><span class="line">        }</span><br><span class="line">        j--;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//此时代表整个字符串是回文串</span></span><br><span class="line">    <span class="keyword">if</span> (i == s.length()) {</span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    }</span><br><span class="line">    <span class="comment">//后缀</span></span><br><span class="line">    String suffix = s.substring(i);</span><br><span class="line">    <span class="comment">//后缀倒置</span></span><br><span class="line">    String reverse = <span class="keyword">new</span> StringBuilder(suffix).reverse().toString();</span><br><span class="line">    <span class="comment">//递归 s[0,i),寻找开头开始的最长回文串，将其余部分加到开头和结尾</span></span><br><span class="line">    <span class="keyword">return</span> reverse + shortestPalindrome(s.substring(<span class="number">0</span>, i)) + suffix;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🌸解法三：暴力（判断回文升级）"><a href="#🌸解法三：暴力（判断回文升级）" class="headerlink" title="🌸解法三：暴力（判断回文升级）"></a>🌸解法三：暴力（判断回文升级）</h2><p>寻找开头开始的最长回文串，我们回到更暴力的方法。</p>
+<p>将原始字符串逆序，然后比较对应的子串即可判断是否是回文串。举个例子。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">abbacd</span><br><span class="line"></span><br><span class="line">原s: abbacd, 长度记为 n</span><br><span class="line">逆r: dcabba, 长度记为 n</span><br><span class="line"></span><br><span class="line">判断 s[0,n) 和 r[0,n)</span><br><span class="line">abbacd != dcabba</span><br><span class="line"></span><br><span class="line">判断 s[0,n - 1) 和 r[1,n)</span><br><span class="line">abbac != cabba  </span><br><span class="line"></span><br><span class="line">判断 s[0,n - 2) 和 r[2,n)</span><br><span class="line">abba == abba  </span><br><span class="line"></span><br><span class="line">从开头开始的最长回文串也就找到了, 接下来只需要使用之前的方法。</span><br><span class="line">将末尾不是回文串的部分倒置加到原字符串开头即可。</span><br></pre></td></tr></tbody></table></figure>
+
+<p>代码</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    String r = <span class="keyword">new</span> StringBuilder(s).reverse().toString();</span><br><span class="line">    <span class="keyword">int</span> n = s.length();</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; n; i++) {</span><br><span class="line">        <span class="keyword">if</span> (s.substring(<span class="number">0</span>, n - i).equals(r.substring(i))) {</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(n - i)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🌸解法四：字符串哈希"><a href="#🌸解法四：字符串哈希" class="headerlink" title="🌸解法四：字符串哈希"></a>🌸解法四：字符串哈希</h2><p>在解法三倒置的基础上进行一下优化，参考 这里。</p>
+<p>用到了字符串匹配算法 RK 算法的思想，也就是滚动哈希。</p>
+<p>解法三中，每次比较两个字符串是否相等都需要一个字符一个字符比较，如果我们把字符串通过 hash 算法映射到数字，就可以只判断数字是否相等即可。</p>
+<p>而 hash 算法，这里的话，我们将 a 看做 1，b 看做 2 … 以此类推，然后把字符串看做是 26 进制的一个数字，将其转为十进制后的值作为 hash 值。</p>
+<p>举个例子，对于 abcd。</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> a      b    c    d</span><br><span class="line"> 1      2    3    4</span><br><span class="line">26^3  26^2   26   1</span><br></pre></td></tr></tbody></table></figure>
+
+<p>那么 abcd 的 hash 值就是 4+3*26+2*26^2^ + 1*26^3^ 。</p>
+<p>这样做的好处是，我们可以通过前一个字符串的 <code>hash</code> 值，算出当前字符串的 <code>hash</code> 值。</p>
+<p>举个例子。</p>
+<p>对于字符串 abb ，如果我们知道了它的 hash 值是 x ，那么对于 abba 的 hash 值，因为新增加的数字 a 对应 1，所以 abba 的 hash 值就是 <code>(x * 26 + 1)</code>。</p>
+<p>所以代码可以写成下边的样子。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), pos = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">26</span>; <span class="comment">// 基数</span></span><br><span class="line">    <span class="keyword">int</span> pow = <span class="number">1</span>; <span class="comment">// 为了方便计算倒置字符串的 hash 值</span></span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">int</span> hash1 = <span class="number">0</span>, hash2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++, pow = pow * b) {</span><br><span class="line">        hash1 = hash1 * b + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 倒置字符串的 hash 值, 新增的字符要放到最高位</span></span><br><span class="line">        hash2 = hash2 + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>) * pow;</span><br><span class="line">        <span class="keyword">if</span> (hash1 == hash2) {</span><br><span class="line">            pos = i;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(pos + <span class="number">1</span>)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>提交时出现错误，最直接的问题肯定是由于我们用 int 存储 hash 值，所以一定会出现溢出的情况。溢出以后，接着带来了 hash 冲突，从而使得相同的 hash 值，但是字符串并不相同。</p>
+<p>基于上边的分析，我们可以在 pos = i 之前判断一下当前是否是回文串。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindromic</span><span class="params">(String s, <span class="keyword">int</span> start, <span class="keyword">int</span> end)</span> </span>{</span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">while</span> (start &lt; end) {</span><br><span class="line">        <span class="keyword">if</span> (c[start] != c[end]) {</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        }</span><br><span class="line">        start++;</span><br><span class="line">        end--;</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">}</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), pos = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">26</span>; <span class="comment">// 基数</span></span><br><span class="line">    <span class="keyword">int</span> pow = <span class="number">1</span>; <span class="comment">// 为了方便计算倒置字符串的 hash 值</span></span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">int</span> hash1 = <span class="number">0</span>, hash2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++, pow = pow * b) {</span><br><span class="line">        hash1 = hash1 * b + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 倒置字符串的 hash 值, 新增的字符要放到最高位</span></span><br><span class="line">        hash2 = hash2 + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>) * pow;</span><br><span class="line">        <span class="keyword">if</span> (hash1 == hash2) {</span><br><span class="line">            <span class="comment">//确认下当前是否是回文串</span></span><br><span class="line">            <span class="keyword">if</span> (isPalindromic(s,<span class="number">0</span>,i)) {</span><br><span class="line">                pos = i;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(pos + <span class="number">1</span>)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后就是换 <code>hash</code> 算法，我们可以把每次的结果取模，这样就不会溢出了。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), pos = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">26</span>; <span class="comment">// 基数</span></span><br><span class="line">    <span class="keyword">int</span> pow = <span class="number">1</span>; <span class="comment">// 为了方便计算倒置字符串的 hash 值</span></span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">int</span> hash1 = <span class="number">0</span>, hash2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> mod = <span class="number">1000000</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++, pow = (pow * b) % mod) {</span><br><span class="line">        hash1 = (hash1 * b + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>)) % mod;</span><br><span class="line">        <span class="comment">// 倒置字符串的 hash 值, 新增的字符要放到最高位</span></span><br><span class="line">        hash2 = (hash2 + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>) * pow)% mod;</span><br><span class="line">        <span class="keyword">if</span> (hash1 == hash2) {</span><br><span class="line">            pos = i;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(pos + <span class="number">1</span>)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>上边确认当前是否是回文串的时候，我们调用了 isPalindromic ，但超时了，这里的话我们还可以和它的逆置字符串进行比较。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> n = s.length(), pos = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> b = <span class="number">26</span>; <span class="comment">// 基数</span></span><br><span class="line">    <span class="keyword">int</span> pow = <span class="number">1</span>; <span class="comment">// 为了方便计算倒置字符串的 hash 值</span></span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    String rev = <span class="keyword">new</span> StringBuilder(s).reverse().toString();</span><br><span class="line">    <span class="keyword">int</span> hash1 = <span class="number">0</span>, hash2 = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++, pow = pow * b) {</span><br><span class="line">        hash1 = hash1 * b + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>);</span><br><span class="line">        <span class="comment">// 倒置字符串的 hash 值, 新增的字符要放到最高位</span></span><br><span class="line">        hash2 = hash2 + (c[i] - <span class="string">'a'</span> + <span class="number">1</span>) * pow;</span><br><span class="line">        <span class="keyword">if</span> (hash1 == hash2) {</span><br><span class="line">            <span class="keyword">if</span> (s.substring(<span class="number">0</span>, i + <span class="number">1</span>).equals(rev.substring(n - i - <span class="number">1</span>))) {</span><br><span class="line">                pos = i;</span><br><span class="line">            }</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(pos + <span class="number">1</span>)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h2 id="🌸解法五：KMP算法"><a href="#🌸解法五：KMP算法" class="headerlink" title="🌸解法五：KMP算法"></a>🌸解法五：KMP算法</h2><p>这个解法的前提是你熟悉另一种字符串匹配算法，即 KMP 算法。推荐两个链接，大家可以先学习一下，我就不多说了。</p>
+<p>之前也有一篇文章写了KMP，那里有详细证明</p>
+<p>如果熟悉了 KMP 算法，下边就简单了。</p>
+<p>再回想一下解法三，倒置字符串的思路，依次比较对应子串。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">abbacd</span><br><span class="line"></span><br><span class="line">原s: abbacd, 长度记为 n</span><br><span class="line">逆r: dcabba, 长度记为 n</span><br><span class="line"></span><br><span class="line">我们把两个字符串写在一起</span><br><span class="line">abbacd dcabba</span><br><span class="line"></span><br><span class="line">判断 abbacd 和 dcabba 是否相等</span><br><span class="line">判断 abbac 和 cabba 是否相等</span><br><span class="line">判断 abba 和 abba 是否相等</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果我们把 abbacd dcabba看成一个字符串，中间加上一个分隔符 #，abbacd#dcabba。</p>
+<p>回味一下上边的三条判断，判断 XXX 和 XXX 是否相等，按列看一下。</p>
+<p>左半部分 abbacd，abbac , abba 其实就是 abbacd#dcabba 的一些前缀。</p>
+<p>右半部分dcabba，cabba，abba 其实就是 abbacd#dcabba 的一些后缀。</p>
+<p>寻找前缀和后缀相等。</p>
+<p>想一想 KMP 算法，这不就是 next 数组做的事情吗。</p>
+<p>而我们中间加了分隔符，也就保证了前缀和后缀相等时，前缀一定在 abbacd 中。</p>
+<p>换句话说，我们如果求出了 <code>abbacd#dcabba</code> 的 next 数组，因为我们构造的字符串后缀就是原字符串的倒置，前缀后缀相等时，也就意味着当前前缀是一个回文串，而 next 数组是寻求最长的前缀，我们也就找到了开头开始的最长回文串。</p>
+<p>因为 next 数组的含义并不统一，但 KMP 算法本质上都是一样的，所以下边的代码仅供参考。</p>
+<p>我的 next 数组 next[i] 所考虑的对应字符串不包含 s[i]。</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    String ss = s + <span class="string">'#'</span> + <span class="keyword">new</span> StringBuilder(s).reverse();</span><br><span class="line">    <span class="keyword">int</span> max = getLastNext(ss);</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(max)).reverse() + s;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回 next 数组的最后一个值</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getLastNext</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> n = s.length();</span><br><span class="line">    <span class="keyword">char</span>[] c = s.toCharArray();</span><br><span class="line">    <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    next[<span class="number">0</span>] = -<span class="number">1</span>;</span><br><span class="line">    next[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">while</span> (i &lt;= n) {</span><br><span class="line">        <span class="keyword">if</span> (k == -<span class="number">1</span> || c[i - <span class="number">1</span>] == c[k]) {</span><br><span class="line">            next[i] = k + <span class="number">1</span>;</span><br><span class="line">            k++;</span><br><span class="line">            i++;</span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            k = next[k];</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> next[n];</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<h2 id="🌸解法六-马拉车"><a href="#🌸解法六-马拉车" class="headerlink" title="🌸解法六: 马拉车"></a>🌸解法六: 马拉车</h2><p>大家还记得 第 5 题 吗？求最长回文子串。</p>
+<p>这里我们已经把题目转换成了求开头开始的最长回文子串，很明显这个问题只是第 5 题的子问题了。但这道题时间复杂度差不多只有 O(n) 才会通过。这就必须使用 第 5 题 介绍的马拉车算法了。</p>
+<p>直接把马拉车算法粘贴过来即可，然后在最后稍微修改一下即可</p>
+<figure class="highlight java"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">preProcess</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    <span class="keyword">int</span> n = s.length();</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) {</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"^$"</span>;</span><br><span class="line">    }</span><br><span class="line">    String ret = <span class="string">"^"</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">        ret += <span class="string">"#"</span> + s.charAt(i);</span><br><span class="line">    ret += <span class="string">"#$"</span>;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">}</span><br><span class="line"></span><br><span class="line"><span class="comment">// 马拉车算法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">shortestPalindrome</span><span class="params">(String s)</span> </span>{</span><br><span class="line">    String T = preProcess(s);</span><br><span class="line">    <span class="keyword">int</span> n = T.length();</span><br><span class="line">    <span class="keyword">int</span>[] P = <span class="keyword">new</span> <span class="keyword">int</span>[n];</span><br><span class="line">    <span class="keyword">int</span> C = <span class="number">0</span>, R = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n - <span class="number">1</span>; i++) {</span><br><span class="line">        <span class="keyword">int</span> i_mirror = <span class="number">2</span> * C - i;</span><br><span class="line">        <span class="keyword">if</span> (R &gt; i) {</span><br><span class="line">            P[i] = Math.min(R - i, P[i_mirror]);<span class="comment">// 防止超出 R</span></span><br><span class="line">        } <span class="keyword">else</span> {</span><br><span class="line">            P[i] = <span class="number">0</span>;<span class="comment">// 等于 R 的情况</span></span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 碰到之前讲的三种情况时候，需要利用中心扩展法</span></span><br><span class="line">        <span class="keyword">while</span> (T.charAt(i + <span class="number">1</span> + P[i]) == T.charAt(i - <span class="number">1</span> - P[i])) {</span><br><span class="line">            P[i]++;</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 判断是否需要更新 R</span></span><br><span class="line">        <span class="keyword">if</span> (i + P[i] &gt; R) {</span><br><span class="line">            C = i;</span><br><span class="line">            R = i + P[i];</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">    }</span><br><span class="line"></span><br><span class="line">    <span class="comment">//这里的话需要修改</span></span><br><span class="line">    <span class="keyword">int</span> maxLen = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> centerIndex = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n - <span class="number">1</span>; i++) {</span><br><span class="line">        <span class="keyword">int</span> start = (i - P[i]) / <span class="number">2</span>;</span><br><span class="line">        <span class="comment">//我们要判断当前回文串是不是开头是不是从 0 开始的</span></span><br><span class="line">        <span class="keyword">if</span> (start == <span class="number">0</span>) {</span><br><span class="line">            maxLen = P[i] &gt; maxLen ? P[i] : maxLen;</span><br><span class="line">        }</span><br><span class="line">    }</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> StringBuilder(s.substring(maxLen)).reverse() + s;</span><br><span class="line">}</span><br></pre></td></tr></tbody></table></figure>
+
+<p>题解出自<a href="https://leetcode-cn.com/problems/shortest-palindrome/solution/xiang-xi-tong-su-de-si-lu-fen-xi-duo-jie-fa-by--44/" target="_blank" rel="noopener">windliang</a></p>
+<h2 id="最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！"><a href="#最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！" class="headerlink" title="最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！"></a><strong>最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！</strong></h2><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	  
+		<div>
+		  <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/bolg_mask.png" alt="云澈 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，用手机访问哦</div>
+</div>
+
+		</div>
+	  
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://i.loli.net/2020/06/10/PNbxe7H5KXJgcoh.jpg" alt="云澈 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://i.loli.net/2020/06/10/FQkTKeyYndB5WhP.jpg" alt="云澈 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云澈
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://liudufu.github.io/small_String/" title="KMP_leetcode.214.最短回文串">https://liudufu.github.io/small_String/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/KMP/" rel="tag"><i class="fa fa-tag"></i> KMP</a>
+          
+            <a href="/tags/%E9%80%92%E5%BD%92/" rel="tag"><i class="fa fa-tag"></i> 递归</a>
+          
+            <a href="/tags/Manacher-%E9%A9%AC%E6%8B%89%E8%BD%A6/" rel="tag"><i class="fa fa-tag"></i> Manacher(马拉车)</a>
+          
+            <a href="/tags/Rabin-Karp/" rel="tag"><i class="fa fa-tag"></i> Rabin-Karp</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/A_string_representing_numeric/" rel="prev" title="状态机_剑指offer.20_表示数值的字符串">
+                <i class="fa fa-chevron-left"></i> 状态机_剑指offer.20_表示数值的字符串
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/markdown_grammer/" rel="next" title="Markdown_语法_数学公式合集">
+                Markdown_语法_数学公式合集 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDQzNi8yNjkyMw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+			  <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg"
+                  alt="云澈" />
+			  </a>
+            
+              <p class="site-author-name" itemprop="name">云澈</p>
+              <p class="site-description motion-element" itemprop="description">Time would heal almost all wounds,if your wounds have not been healed up.please wait for a short while</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">72</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">103</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/liudufu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2649176532@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/liudufu" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_45333934" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/dufu-csdn/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+		  
+		  
+		  
+		    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+			  <div class="links-of-blogroll-title">
+			    <!-- modify icon to fire by szw -->
+			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+			    近期文章
+			  </div>
+			  <ul class="links-of-blogroll-list">
+			    
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Servlet_Basics/" title="servlet基础" target="_blank">servlet基础</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/The_difference_and_basic_usage_of_JPA_and_JDBC/" title="JPA与JDBC的区别和基本用法" target="_blank">JPA与JDBC的区别和基本用法</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Mapper_relation_of_mybatis/" title="关于数据库和mybatis的mapper关系" target="_blank">关于数据库和mybatis的mapper关系</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/How_to_install_redis_under_Windows/" title="windows下如何安装redis" target="_blank">windows下如何安装redis</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/SQL_log_connection_database_report/" title="SQLyog连接数据库报错plugin caching_sha2_password could not be loaded" target="_blank">SQLyog连接数据库报错plugin caching_sha2_password could not be loaded</a>
+				  </li>
+			    
+			  </ul>
+		    </div>
+		  
+		  
+		  <div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1428784488&auto=1&height=66"></iframe>
+		  </div>
+		  
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+        
+			  
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://leetcode-cn.com/" title="leetcode" target="_blank" rel="external nofollow">leetcode</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://gitee.com/dufu-03-13/" title="码云" target="_blank" rel="external nofollow">码云</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank" rel="external nofollow">Web前端导航</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank" rel="external nofollow">前端书籍资料</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank" rel="external nofollow">百度前端技术学院</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank" rel="external nofollow">google前端开发基础</a>
+                </span>
+              
+		  <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()",1000);
+BirthDay=new Date("06/01/2020 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+
+            </div>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸题目"><span class="nav-number">1.</span> <span class="nav-text">🌸题目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸分析"><span class="nav-number">2.</span> <span class="nav-text">🌸分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法一：暴力解法"><span class="nav-number">3.</span> <span class="nav-text">🌸解法一：暴力解法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法二："><span class="nav-number">4.</span> <span class="nav-text">🌸解法二：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法三：暴力（判断回文升级）"><span class="nav-number">5.</span> <span class="nav-text">🌸解法三：暴力（判断回文升级）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法四：字符串哈希"><span class="nav-number">6.</span> <span class="nav-text">🌸解法四：字符串哈希</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法五：KMP算法"><span class="nav-number">7.</span> <span class="nav-text">🌸解法五：KMP算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸解法六-马拉车"><span class="nav-number">8.</span> <span class="nav-text">🌸解法六: 马拉车</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最后，不经历风雨-怎能在计算机的大山之顶看见彩虹呢！-无论怎样，相信明天一定会更好！！！！！"><span class="nav-number">9.</span> <span class="nav-text">最后，不经历风雨,怎能在计算机的大山之顶看见彩虹呢！ 无论怎样，相信明天一定会更好！！！！！</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云澈</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">189k</span>
+  
+  
+   <span style="margin-left:8px;">
+   <script src="http://s6.cnzz.com/stat.php?id=1278978367&web_id=1278978367" type="text/javascript"></script>
+   </span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共189k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ToKAq6EqsKrh3oh1kL7AwHkb-9Nh9j0Va", "Jjb4SKFne0eAr0pwOARr8X21");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "topRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300,"left":120},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
