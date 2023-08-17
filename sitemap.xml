@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://liudufu.github.io/knowledge_C_language/</loc>
+    
+    <lastmod>2023-08-17</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://liudufu.github.io/Servlet_Basics/</loc>
     
     <lastmod>2020-12-08</lastmod>
@@ -1433,6 +1442,27 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://liudufu.github.io/tags/C/</loc>
+    <lastmod>2023-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/tags/%E8%80%83%E7%A0%94/</loc>
+    <lastmod>2023-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/tags/807/</loc>
+    <lastmod>2023-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
@@ -1528,6 +1558,20 @@
   
   <url>
     <loc>https://liudufu.github.io/categories/Linux/Debug/</loc>
+    <lastmod>2023-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/categories/%E8%80%83%E7%A0%94/</loc>
+    <lastmod>2023-08-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://liudufu.github.io/categories/%E8%80%83%E7%A0%94/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2023-08-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
