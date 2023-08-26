@@ -6291,8 +6291,8 @@ struct B{A&amp; _a;};
       </categories>
       <tags>
         <tag>递归</tag>
-        <tag>中序遍历</tag>
         <tag>迭代</tag>
+        <tag>中序遍历</tag>
         <tag>前序遍历</tag>
         <tag>后序遍历</tag>
         <tag>Morris解法</tag>
@@ -8828,9 +8828,9 @@ struct B{A&amp; _a;};
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
+        <tag>java</tag>
         <tag>树</tag>
       </tags>
   </entry>
@@ -8936,11 +8936,11 @@ struct B{A&amp; _a;};
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>java</tag>
-        <tag>python</tag>
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
         <tag>BFS</tag>
+        <tag>java</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
@@ -9407,10 +9407,10 @@ struct B{A&amp; _a;};
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>枚举</tag>
-        <tag>java</tag>
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
+        <tag>枚举</tag>
+        <tag>java</tag>
         <tag>双栈</tag>
         <tag>贪心</tag>
       </tags>
@@ -9621,11 +9621,11 @@ struct B{A&amp; _a;};
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>DFS</tag>
+        <tag>java</tag>
         <tag>动态规划</tag>
-        <tag>卡塔兰公式</tag>
         <tag>递归</tag>
+        <tag>卡塔兰公式</tag>
       </tags>
   </entry>
   <entry>
@@ -10325,8 +10325,8 @@ struct B{A&amp; _a;};
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>java</tag>
         <tag>DFS</tag>
+        <tag>java</tag>
         <tag>动态规划</tag>
         <tag>递归</tag>
         <tag>记忆化</tag>
@@ -10519,10 +10519,10 @@ struct B{A&amp; _a;};
         <category>LeetCode</category>
       </categories>
       <tags>
-        <tag>java</tag>
-        <tag>python</tag>
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
+        <tag>java</tag>
+        <tag>python</tag>
         <tag>动态规划</tag>
       </tags>
   </entry>
@@ -10734,9 +10734,9 @@ struct B{A&amp; _a;};
         <tag>DFS</tag>
         <tag>深度优先搜索</tag>
         <tag>递归</tag>
-        <tag>中序遍历</tag>
         <tag>先序遍历</tag>
         <tag>迭代</tag>
+        <tag>中序遍历</tag>
       </tags>
   </entry>
   <entry>
