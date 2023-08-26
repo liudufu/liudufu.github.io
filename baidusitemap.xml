@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://liudufu.github.io/Getting_Started_with_Request_Crawler/</loc>
+    <lastmod>2023-08-26</lastmod>
+  </url>
+  <url>
     <loc>https://liudufu.github.io/Introduction_to_RE_Regularization/</loc>
     <lastmod>2023-08-26</lastmod>
   </url>

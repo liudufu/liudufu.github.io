@@ -1,0 +1,2046 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <script type="text/javascript" src="/js/src/dytitle.js"></script>
+
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+  <script>
+    (function(){
+        if(''){
+            if (prompt('����������') !== ''){
+                alert('�������');
+                history.back();
+            }
+        }
+    })();
+  </script>
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "03760df2"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="python,学习笔记," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="云澈の博客" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="从网页的基本结构开始讲述, 慢慢使用一些简单的工具, 做一些简单的爬虫. 还会有一些小练习, 让你爬爬真正的互联网. 下载美图, 逛逛百度百科, 全网爬取等等. 当你懂得了爬虫的概念, 我们在深入一些, 谈谈如何加速你那和蠕虫(爬的慢)一样的爬虫, 把它升级为一只小飞虫(多进程,异步爬取). 当然这些内容都不会特别深入, 重点是把你带入门">
+<meta property="og:type" content="article">
+<meta property="og:title" content="request爬虫入门">
+<meta property="og:url" content="https://liudufu.github.io/Getting_Started_with_Request_Crawler/index.html">
+<meta property="og:site_name" content="云澈の博客">
+<meta property="og:description" content="从网页的基本结构开始讲述, 慢慢使用一些简单的工具, 做一些简单的爬虫. 还会有一些小练习, 让你爬爬真正的互联网. 下载美图, 逛逛百度百科, 全网爬取等等. 当你懂得了爬虫的概念, 我们在深入一些, 谈谈如何加速你那和蠕虫(爬的慢)一样的爬虫, 把它升级为一只小飞虫(多进程,异步爬取). 当然这些内容都不会特别深入, 重点是把你带入门">
+<meta property="article:published_time" content="2023-08-26T09:58:02.000Z">
+<meta property="article:modified_time" content="2023-08-26T09:59:46.250Z">
+<meta property="article:author" content="云澈">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":true},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://liudufu.github.io/Getting_Started_with_Request_Crawler/"/>
+
+
+
+
+
+  <title>request爬虫入门 | 云澈の博客</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '5e442439848b85893d4627c44c1d8971', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/liudufu" target="_blank" rel="noopener" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+	
+	<meta name="google-site-verification" content="DYS4wW8ApxKb0piV2oZl20bMa8kLxtUKxiPM1JT1ZJo" />
+	<meta name="baidu-site-verification" content="DPYNeCY4vP" />
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">云澈の博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">不经历风雨，怎能见彩虹！</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-top">
+          <a href="/top/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-signal"></i> <br />
+            
+            TopX
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-resources">
+          <a href="/resources/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            resources
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://liudufu.github.io/Getting_Started_with_Request_Crawler/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="云澈">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="云澈の博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">request爬虫入门</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2023-08-26T17:58:02+08:00">
+                2023-08-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/" itemprop="url" rel="index">
+                    <span itemprop="name">数据挖掘</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+		  
+		  
+
+          
+            
+          
+
+          
+          
+             <span id="/Getting_Started_with_Request_Crawler/" class="leancloud_visitors" data-flag-title="request爬虫入门">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">热度&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+				 <span>℃</span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  11.9k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  46
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>从网页的基本结构开始讲述, 慢慢使用一些简单的工具, 做一些简单的爬虫. 还会有一些小练习, 让你爬爬真正的互联网. 下载美图, 逛逛百度百科, 全网爬取等等. 当你懂得了爬虫的概念, 我们在深入一些, 谈谈如何加速你那和蠕虫(爬的慢)一样的爬虫, 把它升级为一只小飞虫(多进程,异步爬取). 当然这些内容都不会特别深入, 重点是把你带入门</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="🌸request爬虫入门"><a href="#🌸request爬虫入门" class="headerlink" title="🌸request爬虫入门"></a>🌸request爬虫入门</h2><blockquote>
+<p>从网页的基本结构开始讲述, 慢慢使用一些简单的工具, 做一些简单的爬虫. 还会有一些小练习, 让你爬爬真正的互联网. 下载美图, 逛逛百度百科, 全网爬取等等. 当你懂得了爬虫的概念, 我们在深入一些, 谈谈如何加速你那和蠕虫(爬的慢)一样的爬虫, 把它升级为一只小飞虫(多进程,异步爬取). 当然这些内容都不会特别深入, 重点是把你带入门</p>
+</blockquote>
+<h3 id="简单的网页结构"><a href="#简单的网页结构" class="headerlink" title="简单的网页结构"></a>简单的网页结构</h3><p>在 HTML 中, 基本上所有的实体内容, 都会有个 tag 来框住它. 而这个被 tag 住的内容, 就可以被展示成不同的形式, 或有不同的功能. 主体的 tag 分成两部分, <code>header</code> 和 <code>body</code>. 在 <code>header</code> 中, 存放这一些网页的网页的元信息, 比如说 <code>title</code>, 这些信息是不会被显示到你看到的网页中的. 这些信息大多数时候是给浏览器看, 或者是给搜索引擎的爬虫看</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=<span class="string">"UTF-8"</span>&gt;</span><br><span class="line">    &lt;title&gt;云澈の博客&lt;/title&gt;</span><br><span class="line">    &lt;link rel=<span class="string">"icon"</span> href=<span class="string">"https://liudufu.github.io/"</span>&gt;</span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>HTML 的第二大块是 <code>body</code>, 这个部分才是你看到的网页信息. 网页中的 <code>heading</code>, 视频, 图片和文字等都存放在这里. 这里的 <code>&lt;h1&gt;&lt;/h1&gt;</code> tag 就是主标题, 我们看到呈现出来的效果就是大一号的文字. <code>&lt;p&gt;&lt;/p&gt;</code> 里面的文字就是一个段落. <code>&lt;a&gt;&lt;/a&gt;</code>里面都是一些链接. 所以很多情况, 东西都是放在这些 tag 中的.</p>
+<h3 id="用-Python-登录网页"><a href="#用-Python-登录网页" class="headerlink" title="用 Python 登录网页"></a>用 Python 登录网页</h3><p>好了, 对网页结构和 HTML 有了一些基本认识以后, 我们就能用 Python 来爬取这个<a href="https://mofanpy.com/static/scraping/basic-structure.html" target="_blank" rel="noopener">网页</a>的一些基本信息. 首先要做的, 是使用 Python 来登录这个网页, 并打印出这个网页 HTML 的 source code. 注意, 因为网页中存在中文, 为了正常显示中文, <code>read()</code> 完以后, 我们要对读出来的文字进行转换, <code>decode()</code> 成可以正常显示中文的形式.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"><span class="comment"># if has Chinese, apply decode()</span></span><br><span class="line">html = urlopen(</span><br><span class="line">    <span class="string">"https://liudufu.github.io/"</span></span><br><span class="line">).read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">print(html)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们能够成功读取这个网页的所有信息了. 但我们还没有对网页的信息进行汇总和利用. 我们发现, 想要提取一些形式的信息, 合理的利用 tag 的名字十分重要.</p>
+<h3 id="匹配网页内容"><a href="#匹配网页内容" class="headerlink" title="匹配网页内容"></a>匹配网页内容</h3><p>这里我们使用 Python 的正则表达式 RegEx 进行匹配文字, 筛选信息的工作. 如果是初级的网页匹配, 我们使用正则完全就可以了, 高级一点或者比较繁琐的匹配, 我还是推荐使用 <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/" target="_blank" rel="noopener">BeautifulSoup</a>. 不急不急, 我知道你想偷懒, 我之后马上就会教 beautiful soup 了. 但是现在我们还是使用正则来做几个简单的例子, 让你熟悉一下套路.</p>
+<p>如果我们想用代码找到这个网页的 title, 我们就能这样写. 选好要使用的 tag 名称 <code>&lt;title&gt;</code>. 使用正则匹配.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> re</span><br><span class="line">res = re.findall(<span class="string">r"&lt;title&gt;(.+?)&lt;/title&gt;"</span>, html)</span><br><span class="line">print(<span class="string">"\nPage title is: "</span>, res[<span class="number">0</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果想要找到中间的那个段落 <code>&lt;p&gt;</code>, 我们使用下面方法, 因为这个段落在 HTML 中还夹杂着 tab, new line, 所以我们给一个 <code>flags=re.DOTALL</code> 来对这些 tab, new line 不敏感.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res = re.findall(<span class="string">r"&lt;p&gt;(.*?)&lt;/p&gt;"</span>, html, flags=re.DOTALL)    <span class="comment"># re.DOTALL if multi line</span></span><br><span class="line">print(<span class="string">"\nPage paragraph is: "</span>, res[<span class="number">0</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<p>最后一个练习是找一找所有的链接, 这个比较有用, 有时候你想找到网页里的链接, 然后下载一些内容到电脑里, 就靠这样的途径</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">res = re.findall(<span class="string">r'href="(.*?)"'</span>, html)</span><br><span class="line">print(<span class="string">"\nAll links: "</span>, res)</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="BeautifulSoup基础"><a href="#BeautifulSoup基础" class="headerlink" title="BeautifulSoup基础"></a>BeautifulSoup基础</h3><p>我们总结一下爬网页的流程, 让你对 BeautifulSoup 有一个更好的定位.</p>
+<ol>
+<li>选着要爬的网址 (url)</li>
+<li>使用 python 登录上这个网址 (urlopen等)</li>
+<li>读取网页信息 (read() 出来)</li>
+<li><strong>将读取的信息放入 BeautifulSoup</strong></li>
+<li><strong>使用 BeautifulSoup 选取 tag 信息等 (代替正则表达式)</strong></li>
+</ol>
+<p>初学的时候总是搞不懂这些包是干什么的, 现在你就能理解这个 BeautifulSoup 到底是干什么的了.</p>
+<p>BeautifulSoup 使用起来非常简单, 我们先按常规读取网页</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"><span class="comment"># if has Chinese, apply decode()</span></span><br><span class="line">html = urlopen(<span class="string">"url"</span>).read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">print(html)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>每张网页中, 都有两大块, 一个是 <code>&lt;head&gt;</code>, 一个是 <code>&lt;body&gt;</code>, 我们等会用 <code>BeautifulSoup</code> 来找到 body 中的段落 <code>&lt;p&gt;</code> 和所有链接 <code>&lt;a&gt;</code>.</p>
+<p>读取这个网页信息, 我们将要加载进 <code>BeautifulSoup</code>, 以 <code>lxml</code> 的这种形式加载. 除了 <code>lxml</code>, 其实还有<a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/#id9" target="_blank" rel="noopener">很多形式的解析器</a>, 不过大家都推荐使用 <code>lxml</code> 的形式. 然后 <code>soup</code> 里面就有着这个 HTML 的所有信息. 如果你要输出 <code>&lt;h1&gt;</code> 标题, 可以就直接 <code>soup.h1</code>.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(html, features=<span class="string">'lxml'</span>)</span><br><span class="line">print(soup.h1)</span><br><span class="line"></span><br><span class="line">print(<span class="string">'\n'</span>, soup.p)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果网页中有多个同样的 tag, 比如链接 <code>&lt;a&gt;</code>, 我们可以使用 <code>find_all()</code> 来找到所有的选项. 因为我们真正的 link 不是在 <code>&lt;a&gt;</code> 中间 <code>&lt;/a&gt;</code>, 而是在 <code>&lt;a href="link"&gt;</code> 里面, 也可以看做是 <code>&lt;a&gt;</code> 的一个属性. 我们能用像 Python 字典的形式, 用 key 来读取 <code>l["href"]</code>.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">all_href = soup.find_all(<span class="string">'a'</span>)</span><br><span class="line">all_href = [l[<span class="string">'href'</span>] <span class="keyword">for</span> l <span class="keyword">in</span> all_href]</span><br><span class="line">print(<span class="string">'\n'</span>, all_href)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>懂得这些还是远远不够的, 真实情况往往比这些复杂. <code>BeautifulSoup</code> 还有很多其他的选择增强器. 接下来, 我们来了解一些 CSS 的概念, 用 <code>BeautifulSoup</code> 加上 CSS 来选择内容.</p>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><p>CSS 主要用途就是装饰你 骨感 HTML 页面. 如果将 HTML 比喻成没穿衣服的人, 那 CSS 就是五颜六色的衣服. 穿在人身上让人有了气质. CSS 的规则很多, 好在如果你只是需要爬网页, 你并不需要学习 CSS 的这些用法或规则, (如果你想, 你可以看到<a href="https://www.w3schools.com/css/" target="_blank" rel="noopener">这里</a>), 你只需要注意 CSS 的一条规则就能玩转爬虫了.</p>
+<h4 id="CSS-的-Class"><a href="#CSS-的-Class" class="headerlink" title="CSS 的 Class"></a>CSS 的 Class</h4><p>这条规则就是 CSS 的 Class, CSS 在装饰每一个网页部件的时候, 都会给它一个名字. 而且一个类型的部件, 名字都可以一样. 比如每个网页 里面的字体/背景颜色, 字体大小, 都是由 CSS 来掌控的.</p>
+<p>而 CSS 的代码, 可能就会放在这个网页的 <code>&lt;head&gt;</code> 中. 我们先使用 Python 读取这个页面.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"></span><br><span class="line"><span class="comment"># if has Chinese, apply decode()</span></span><br><span class="line">html = urlopen(<span class="string">"URL"</span>).read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">print(html)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>在 <code>&lt;head&gt;</code> 中, 你会发现有这样一些东西被放在 <code>&lt;style&gt;</code> 里面, 这些东西都是某些 class 的 CSS 代码. 比如 <code>jan</code> 就是一个 class. <code>jan</code> 这个类掌控了这个类型的背景颜色. 所以在 <code>&lt;ul class="jan"&gt;</code> 这里, 这个 ul 的背景颜色就是黄色的. 而如果是 <code>month</code> 这个类, 它们的字体颜色就是红色.</p>
+<h4 id="按-Class-匹配"><a href="#按-Class-匹配" class="headerlink" title="按 Class 匹配"></a>按 Class 匹配</h4><p> Class 匹配很简单. 比如我要找所有 class=month 的信息. 并打印出它们的 tag 内文字.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(html, features=<span class="string">'lxml'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># use class to narrow search</span></span><br><span class="line">month = soup.find_all(<span class="string">'li'</span>, {<span class="string">"class"</span>: <span class="string">"month"</span>})</span><br><span class="line"><span class="keyword">for</span> m <span class="keyword">in</span> month:</span><br><span class="line">    print(m.get_text())</span><br></pre></td></tr></tbody></table></figure>
+
+<p>或者找到 class=jan 的信息. 然后在 <code>&lt;ul&gt;</code> 下面继续找 <code>&lt;ul&gt;</code> 内部的 <code>&lt;li&gt;</code> 信息. 这样一层层嵌套的信息, 非常容易找到.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">jan = soup.find(<span class="string">'ul'</span>, {<span class="string">"class"</span>: <span class="string">'jan'</span>})</span><br><span class="line">d_jan = jan.find_all(<span class="string">'li'</span>)              <span class="comment"># use jan as a parent</span></span><br><span class="line"><span class="keyword">for</span> d <span class="keyword">in</span> d_jan:</span><br><span class="line">    print(d.get_text())</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果想要找到一些有着一定格式的信息, 比如使用正则表达来寻找相类似的信息, 我们在 BeautifulSoup 中也能嵌入正则表达式</p>
+<h3 id="嵌入正则"><a href="#嵌入正则" class="headerlink" title="嵌入正则"></a>嵌入正则</h3><p>比如你想下载页面的图片, 我们就可以将图片形式的 url 个匹配出来. 之后再下载就简单多了</p>
+<h4 id="正则匹配"><a href="#正则匹配" class="headerlink" title="正则匹配"></a>正则匹配</h4><p>我们先读取这个网页. 导入正则模块 <code>re</code>.</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># if has Chinese, apply decode()</span></span><br><span class="line">html = urlopen(<span class="string">"URL"</span>).read().decode(<span class="string">'utf-8'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果是图片, 它们都藏在这样一个 tag 中:</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;td&gt;</span><br><span class="line">    &lt;img src=<span class="string">"tf.jpg"</span>&gt;</span><br><span class="line">&lt;/td&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>所以, 我们可以用 <code>soup</code> 将这些 <code>&lt;img&gt;</code> tag 全部找出来, 但是每一个 img 的链接(src)都可能不同. 或者每一个图片有的可能是 jpg 有的是 png, 如果我们只想挑选 jpg 形式的图片, 我们就可以用这样一个正则 <code>r'.*?\.jpg'</code> 来选取. 把正则的 compile 形式放到 <code>BeautifulSoup</code> 的功能中, 就能选到符合要求的图片链接了.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">soup = BeautifulSoup(html, features=<span class="string">'lxml'</span>)</span><br><span class="line"></span><br><span class="line">img_links = soup.find_all(<span class="string">"img"</span>, {<span class="string">"src"</span>: re.compile(<span class="string">'.*?\.jpg'</span>)})</span><br><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> img_links:</span><br><span class="line">    print(link[<span class="string">'src'</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<p>又或者我们发现, 我想选一些课程的链接, 而这些链接都有统一的形式, 就是开头都会有 <code>https://.</code>, 那我就将这个定为一个正则的规则, 让 BeautifulSoup 帮我找到符合这个规则的链接.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">course_links = soup.find_all(<span class="string">'a'</span>, {<span class="string">'href'</span>: re.compile(<span class="string">'/tutorials/.*'</span>)})</span><br><span class="line"><span class="keyword">for</span> link <span class="keyword">in</span> course_links:</span><br><span class="line">    print(link[<span class="string">'href'</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们接下来就来做一个小实战, 让我们的爬虫在百度百科上自由爬行, 在各个百科网页上跳来跳去</p>
+<h3 id="爬百度百科"><a href="#爬百度百科" class="headerlink" title="爬百度百科"></a>爬百度百科</h3><blockquote>
+<p>爬一爬百度百科, 让我们的爬虫从 网络爬虫 这一页开始爬, 然后在页面中寻找其他页面的信息, 然后爬去其他页面, 然后循环这么做, 看看最后我们的爬虫到底爬去了哪</p>
+</blockquote>
+<h4 id="百度百科"><a href="#百度百科" class="headerlink" title="百度百科"></a>百度百科</h4><p>百度百科中有很多名词的解释信息, 我们今天从 网页爬虫 的词条开始爬, 然后在页面中任意寻找下一个词条, 爬过去, 再寻找词条, 继续爬. 看看最后我们爬到的词条和 网页爬虫 差别有多大.</p>
+<h4 id="观看规律"><a href="#观看规律" class="headerlink" title="观看规律"></a>观看规律</h4><p>20+行代码. 但是却能让它游走在百度百科的知识的海洋中. 首先我们需要定义一个起始网页, 我选择了 <a href="https://baike.baidu.com/item/网络爬虫/5162711" target="_blank" rel="noopener">网页爬虫</a>. 我们发现, 页面中有一些链接, 指向百度百科中的另外一些词条, 比如说下面这样.</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;a target="_blank" href="/item/%E8%9C%98%E8%9B%9B/8135707" data-lemmaid="8135707"&gt;蜘蛛&lt;/a&gt;</span><br><span class="line">&lt;a target="_blank" href="/item/%E8%A0%95%E8%99%AB"&gt;蠕虫&lt;/a&gt;</span><br><span class="line">&lt;a target="_blank" href="/item/%E9%80%9A%E7%94%A8%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E"&gt;通用搜索引擎&lt;/a&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p>通过观察, 我们发现, 链接有些共通之处. 它们都是 <code>/item/</code> 开头, 夹杂着一些 <code>%E9</code> 这样的东西. 但是仔细搜索一下, 发现还有一些以 <code>/item/</code> 开头的, 却不是词条. 比如</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href="/item/史记·2016?fr=navbar" target="_blank"&gt;史记·2016&lt;/a&gt;</span><br></pre></td></tr></tbody></table></figure>
+
+<p> 我们需要对这些链接做一些筛选, 之前提到 的用 <code>BeautifulSoup</code> 和 正则表达式来筛选应该用得上. 有了些思路, 我们开始写代码吧.</p>
+<h4 id="制作爬虫"><a href="#制作爬虫" class="headerlink" title="制作爬虫"></a>制作爬虫</h4><p>导入一些模块, 设置起始页. 并将 <code>/item/...</code> 的网页都放在 <code>his</code> 中, 做一个备案, 记录我们浏览过的网页.</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">base_url = <span class="string">"https://baike.baidu.com"</span></span><br><span class="line">his = [<span class="string">"/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711"</span>]</span><br></pre></td></tr></tbody></table></figure>
+
+<p>接着我们先不用循环, 对一个网页进行处理, 走一遍流程, 然后加上循环, 让我们的爬虫能在很多网页中爬取. 下面做的事情, 是为了在屏幕上打印出来我们现在正在哪张网页上, 网页的名字叫什么.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">url = base_url + his[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">html = urlopen(url).read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">soup = BeautifulSoup(html, features=<span class="string">'lxml'</span>)</span><br><span class="line">print(soup.find(<span class="string">'h1'</span>).get_text(), <span class="string">'    url: '</span>, his[<span class="number">-1</span>])</span><br></pre></td></tr></tbody></table></figure>
+
+<p>接下来我们开始在这个网页上找所有符合要求的 <code>/item/</code> 网址. 使用一个正则表达式(<a href="https://mofanpy.com/tutorials/python-basic/basic/regular-expression" target="_blank" rel="noopener">正则教程</a>) 过滤掉不想要的网址形式. 这样我们找到的网址都是 <code>/item/%xx%xx%xx...</code> 这样的格式了. 之后我们在这些过滤后的网页中随机选一个, 当做下一个要爬的网页. 不过有时候很不幸, 在 <code>sub_urls</code> 中并不能找到合适的网页, 我们就往回跳一个网页, 回到之前的网页中再随机抽一个网页做同样的事.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># find valid urls</span></span><br><span class="line">sub_urls = soup.find_all(<span class="string">"a"</span>, {<span class="string">"target"</span>: <span class="string">"_blank"</span>, <span class="string">"href"</span>: re.compile(<span class="string">"/item/(%.{2})+$"</span>)})</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> len(sub_urls) != <span class="number">0</span>:</span><br><span class="line">    his.append(random.sample(sub_urls, <span class="number">1</span>)[<span class="number">0</span>][<span class="string">'href'</span>])</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="comment"># no valid sub link found</span></span><br><span class="line">    his.pop()</span><br><span class="line">print(his)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>有了这套体系, 我们就能把它放在一个 for loop 中, 让它在各种不同的网页中跳来跳去</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">his = [<span class="string">"/item/%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB/5162711"</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">20</span>):</span><br><span class="line">    url = base_url + his[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    html = urlopen(url).read().decode(<span class="string">'utf-8'</span>)</span><br><span class="line">    soup = BeautifulSoup(html, features=<span class="string">'lxml'</span>)</span><br><span class="line">    print(i, soup.find(<span class="string">'h1'</span>).get_text(), <span class="string">'    url: '</span>, his[<span class="number">-1</span>])</span><br><span class="line"></span><br><span class="line">    <span class="comment"># find valid urls</span></span><br><span class="line">    sub_urls = soup.find_all(<span class="string">"a"</span>, {<span class="string">"target"</span>: <span class="string">"_blank"</span>, <span class="string">"href"</span>: re.compile(<span class="string">"/item/(%.{2})+$"</span>)})</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> len(sub_urls) != <span class="number">0</span>:</span><br><span class="line">        his.append(random.sample(sub_urls, <span class="number">1</span>)[<span class="number">0</span>][<span class="string">'href'</span>])</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="comment"># no valid sub link found</span></span><br><span class="line">        his.pop()</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="requests"><a href="#requests" class="headerlink" title="requests"></a>requests</h3><h4 id="获取网页的方式"><a href="#获取网页的方式" class="headerlink" title="获取网页的方式"></a>获取网页的方式</h4><p>其实在加载网页的时候, 有几种类型, 而这几种类型就是你打开网页的关键. 最重要的类型 (method) 就是 <code>get</code> 和 <code>post</code> (当然还有<a href="https://www.w3schools.com/tags/ref_httpmethods.asp" target="_blank" rel="noopener">其他的</a>, 比如 <code>head</code>, <code>delete</code>). 刚接触网页构架的朋友可能又会觉得有点懵逼了. 这些请求的方式到底有什么不同? 他们又有什么作用?</p>
+<p>我们就来说两个重要的, <code>get</code>, <code>post</code>, 95% 的时间, 你都是在使用这两个来请求一个网页.</p>
+<ul>
+<li>post<ul>
+<li>账号登录</li>
+<li>搜索内容</li>
+<li>上传图片</li>
+<li>上传文件</li>
+<li>往服务器传数据 等</li>
+</ul>
+</li>
+<li>get<ul>
+<li>正常打开网页</li>
+<li><strong>不</strong>往服务器传数据</li>
+</ul>
+</li>
+</ul>
+<p>这样看来, 很多网页使用 <code>get</code> 就可以了, 比如 百度百科 里的所有页面, 都是只是 <code>get</code> 发送请求. 而 <code>post</code>, 我们则是给服务器发送个性化请求, 比如将你的账号密码传给服务器, 让它给你返回一个含有你个人信息的 HTML.</p>
+<p>从主动和被动的角度来说, <code>post</code> 中文是<em>发送</em>, 比较主动, 你<strong>控制</strong>了服务器返回的内容. 而 <code>get</code> 中文是<em>取得</em>, 是被动的, 你<strong>没有</strong>发送给服务器个性化的信息, 它<strong>不会</strong>根据你个性化的信息返回<strong>不一样</strong>的 HTML.</p>
+<h4 id="requests-get-请求"><a href="#requests-get-请求" class="headerlink" title="requests get 请求"></a>requests get 请求</h4><p>有了 requests, 我们可以发送个中 method 的请求. 比如 <code>get</code>. 我们想模拟一下百度的搜索. 首先我们需要观看一下百度搜索的规律. 在百度搜索框中写上CSDN 我们发现它弹出了一串很长长的网址.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.baidu.com/s?word=CSDN&amp;tn=25017023_2_dg&amp;ch=5&amp;ie=utf-8</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>但是仔细一看, 和 CSDN 有关的信息, 只有前面一小段 (&amp;word=CSDN), 其他的对我们来说都是无用的信息. 所以我们现在来尝试一下如果的无用 url 都去掉会怎样? Duang! 我们还是能搜到 CSDN.</p>
+<p>所以<code>&amp;word=CSDN</code> 这就是我们搜索需要的关键信息. 我们就能用 <code>get</code> 来搭配一些自定义的搜索关键词来用 python 个性化搜索. 首先, 我们固定不动的网址部分是 <a href="http://www.baidu.com/s" target="_blank" rel="noopener">http://www.baidu.com/s</a>, <code>?</code> 后面的东西都是一些参数 (parameters), 所以我们将这些 parameters 用 python 的字典代替, 然后传入 requests.get() 功能. 然后我们还能用 python (webbrowser模块) 打开一个你的默认浏览器, 观看你是否在百度的搜索页面.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> webbrowser</span><br><span class="line">param = {<span class="string">"wd"</span>: <span class="string">"CSDN"</span>}  <span class="comment"># 搜索的信息</span></span><br><span class="line">r = requests.get(<span class="string">'http://www.baidu.com/s'</span>, params=param)</span><br><span class="line">print(r.url)</span><br><span class="line">webbrowser.open(r.url)</span><br><span class="line"></span><br><span class="line"><span class="comment"># http://www.baidu.com/s?wd=%E8%8E%AB%E7%83%A6Python</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="requests-post-请求"><a href="#requests-post-请求" class="headerlink" title="requests post 请求"></a>requests post 请求</h4><p><code>post</code> 又怎么用呢? 我们举个小例子, 假设 我们有一个提交信息的窗口, 如果我提交上去这个信息, 那边的服务器会更加这个提交的信息返回出另一个网页. 这就是网页怎么样使用你 <code>post</code> 过去的信息了.</p>
+<p>比如我在一个表单填上自己的姓名, 当我点 submit 的时候, 这个姓名 就会被提交给服务器, 然后它会根据提交的姓名返回这个网页.</p>
+<p>这样咋看起来好像和上面讲的 <code>get</code> 百度搜索没区别呀? 都是提交一些信息, 返回一个界面. 但是, <strong>重点来了</strong>. 你看看网址栏. 你 <code>post</code> 上去的个人信息, 有没有显示在 url 里? 你愿意将你的私密信息显示在 url 里吗? 你 <code>post</code> 过去的信息是交给服务器内部处理的. 不是用来显示在网址上的.</p>
+<p>懂了这些, 我们就来看使用 python 和 requests 怎么做 <code>post</code> 这个操作吧.</p>
+<p>首先我们调出浏览器的 <code>inspect</code> 然后发现我们填入姓名的地方原来是在一个 <code>&lt;form&gt;</code> 里面.</p>
+<p>这个 <code>&lt;form&gt;</code> 里面有一些 <code>&lt;input&gt;</code> 个 tag, 我们仔细看到 <code>&lt;input&gt;</code> 里面的这个值 <code>name="firstname"</code> 和 <code>name="lastname"</code>, 这两个就是我们要 <code>post</code> 提交上去的关键信息了. 我们填好姓名, 为了记录点击 submit 后, 浏览器究竟发生了什么翻天覆地的变化, 我们在 <code>inspect</code> 窗口, 选择 <code>Network</code>, 勾选 <code>Preserve log</code>, 再点击 submit, 你就能看到服务器返回给你定制化后的页面时, 你使用的方法和数据.</p>
+<p>这些数据包括了:</p>
+<ul>
+<li>Request URL (post 要用的 URL)</li>
+<li>Request Method (post)</li>
+<li>Form Data (post 去的信息)</li>
+</ul>
+<p>有了这些记录, 我们就能开始写 Python 来模拟这一次提交 post 了. </p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = {<span class="string">'firstname'</span>: <span class="string">'xx'</span>, <span class="string">'lastname'</span>: <span class="string">'xx'</span>}</span><br><span class="line">r = requests.post(<span class="string">'url'</span>, data=data)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="上传图片"><a href="#上传图片" class="headerlink" title="上传图片"></a>上传图片</h4><p>传照片也是 <code>post</code> 的一种, 我们得将本地的照片文件传送到服务器. 我们使用这个<a href="http://pythonscraping.com/files/form2.html" target="_blank" rel="noopener">网页</a>来模拟一次传照片的过程</p>
+<p>如果你留意观察 url, 你会发现, 传送完照片以后的 url 有变动. 我们使用同样的步骤再次检查, 发现, choose file 按键链接的 <code>&lt;input&gt;</code> 是一个叫 <code>uploadFile</code> 的名字. 我们将这个名字记下, 放入 python 的字典当一个 key.</p>
+<p>接着在字典中, 使用 open 打开一个图片文件, 当做要上传的文件. 把这个字典放入你的 <code>post</code> 里面的 <code>files</code> 参数. 就能上传你的图片了, 网页会返回一个页面, 将你的图片名显示在上面.</p>
+<figure class="highlight py"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">file = {<span class="string">'uploadFile'</span>: open(<span class="string">'./image.png'</span>, <span class="string">'rb'</span>)}</span><br><span class="line">r = requests.post(<span class="string">'url'</span>, files=file)</span><br><span class="line">print(r.text)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h4><p>用 <code>post</code> 还有一个重要的, 就是模拟登录. 再登录的时候发生了什么事情呢? </p>
+<p>我们总结一下, 登录账号, 我们的浏览器做了什么.</p>
+<ol>
+<li>使用 post 方法登录了第一个红框的 url</li>
+<li>post 的时候, 使用了 Form data 中的用户名和密码</li>
+<li><strong>生成了一些 cookies</strong></li>
+</ol>
+<p>第三点我们是从来没有提到过的. cookie, 听起来很熟呀! 每当游览器出现问题的时候, 网上的解决方法是不是都有什么清除 cookie 之类的, 那 cookie 实际上是什么呢? <a href="https://baike.baidu.com/item/cookie/1119?fr=aladdin" target="_blank" rel="noopener">这里</a>给出了和全面的介绍.</p>
+<p>简单来说, 因为打开网页时, 每一个页面都是不连续的, 没有关联的, cookies 就是用来衔接一个页面和另一个页面的关系. 比如说当我登录以后, 浏览器为了保存我的登录信息, 将这些信息存放在了 cookie 中. 然后我访问第二个页面的时候, 保存的 cookie 被调用, 服务器知道我之前做了什么, 浏览了些什么. 像你在网上看到的广告, 为什么都可能是你感兴趣的商品? 你登录淘宝, 给你推荐的为什么都和你买过的类似? 都是 cookies 的功劳, 让服务器知道你的个性化需求.</p>
+<p>所以大部分时候, 每次你登录, 你就会有一个 cookies, 里面会提到你已经是登录状态了. 所以 cookie 在这时候很重要. cookies 的传递也特别重要, 比如我用 <code>requests.post</code> + <code>payload</code> 的用户信息发给网页, 返回的 <code>r</code> 里面会有生成的 cookies 信息. 接着我请求去登录后的页面时, 使用 <code>request.get</code>, 并将之前的 cookies 传入到 get 请求. 这样就能已登录的名义访问 get 的页面了.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">payload = {<span class="string">'username'</span>: <span class="string">'Morvan'</span>, <span class="string">'password'</span>: <span class="string">'password'</span>}</span><br><span class="line">r = requests.post(<span class="string">'/pages/cookies/welcome.php'</span>, data=payload)</span><br><span class="line">print(r.cookies.get_dict())</span><br><span class="line"></span><br><span class="line"><span class="comment"># {'username': 'Morvan', 'loggedin': '1'}</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = requests.get(<span class="string">'/pages/cookies/profile.php'</span>, cookies=r.cookies)</span><br><span class="line">print(r.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hey Morvan! Looks like you're still logged into the site!</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="使用-Session-登录"><a href="#使用-Session-登录" class="headerlink" title="使用 Session 登录"></a>使用 Session 登录</h4><p>不过每次都要传递 cookies 是很麻烦的, 好在 requests 有个很 handy 的功能, 那就是 Session. 在一次会话中, 我们的 cookies 信息都是相连通的, 它自动帮我们传递这些 cookies 信息.</p>
+<p>同样是执行上面的登录操作, 下面就是使用 session 的版本. 创建完一个 session 过后, 我们直接只用 session 来 <code>post</code> 和 <code>get</code>. 而且这次 <code>get</code> 的时候, 我们并没有传入 cookies. 但是实际上 session 内部就已经有了之前的 cookies 了.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">session = requests.Session()</span><br><span class="line">payload = {<span class="string">'username'</span>: <span class="string">'Morvan'</span>, <span class="string">'password'</span>: <span class="string">'password'</span>}</span><br><span class="line">r = session.post(<span class="string">'/pages/cookies/welcome.php'</span>, data=payload)</span><br><span class="line">print(r.cookies.get_dict())</span><br><span class="line"></span><br><span class="line"><span class="comment"># {'username': 'Morvan', 'loggedin': '1'}</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">r = session.get(<span class="string">"http://pythonscraping.com/pages/cookies/profile.php"</span>)</span><br><span class="line">print(r.text)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hey Morvan! Looks like you're still logged into the site!</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>这就是我们这次的教学, 想了解更多 requests 使用的朋友看到<a href="http://docs.python-requests.org/en/master/" target="_blank" rel="noopener">这里</a>.</p>
+<h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><p>在下载之前, 我们的弄清楚怎么样下载. 想下一张图, 我们首先要到这张图所在的网页. 在这个网页中找到这张图的位置, 并右键 <code>inspect</code>, 找到它在 HTML 中的信息.</p>
+<p>发现原图被存放在这个网页, 注意这个地址开头是 <code>/</code>, 并不是完整的网址, 这种形式代表着, 它是在主域名下面的网址. 所以我们还要将其补全, 才能在网址栏中找到这个图片地址.</p>
+<p>找到了这个网址, 我们就能开始下载了. 为了下载到一个特定的文件夹, 我们先建立一个文件夹吧. 并且规定这个图片下载地址.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.makedirs(<span class="string">'./img/'</span>, exist_ok=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">IMAGE_URL = <span class="string">"url"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="使用-urlretrieve"><a href="#使用-urlretrieve" class="headerlink" title="使用 urlretrieve"></a>使用 urlretrieve</h4><p>在 urllib 模块中, 提供了我们一个下载功能 urlretrieve. 使用起来很简单. 输入下载地址 <code>IMAGE_URL</code> 和要存放的位置. 图片就会被自动下载过去了.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlretrieve</span><br><span class="line">urlretrieve(IMAGE_URL, <span class="string">'./img/image1.png'</span>)</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="使用-request"><a href="#使用-request" class="headerlink" title="使用 request"></a>使用 request</h4><p>而在 requests模块, 也能拿来下东西. 下面的代码实现了和上面一样的功能, 但是稍微长了点. 但我们为什么要提到 requests 的下载呢? 因为使用它的另一种方法, 我们可以更加有效率的下载大文件.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line">r = requests.get(IMAGE_URL)</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'./img/image2.png'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    f.write(r.content)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>所以说, 如果你要下载的是大文件, 比如视频等. requests 能让你下一点, 保存一点, 而不是要全部下载完才能保存去另外的地方. 这就是一个 chunk 一个 chunk 的下载. 使用 <code>r.iter_content(chunk_size)</code> 来控制每个 chunk 的大小, 然后在文件中写入这个 chunk 大小的数据.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">r = requests.get(IMAGE_URL, stream=<span class="literal">True</span>)    <span class="comment"># stream loading</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'./img/image3.png'</span>, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size=<span class="number">32</span>):</span><br><span class="line">        f.write(chunk)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>有了这些知识的积累, 我们就能开始做一个小的实战练习</p>
+<h3 id="下载美国地图"><a href="#下载美国地图" class="headerlink" title="下载美国地图"></a>下载美国地图</h3><h4 id="找到图片位置"><a href="#找到图片位置" class="headerlink" title="找到图片位置"></a>找到图片位置</h4><p>说白了, 每次的爬虫, 都是先分析一下这个网页要找的东西的位置, 然后怎么索引上这个位置, 最后用 python 找到它. 这次也是这个逻辑. 我们看看今天要爬的这个图片<a href="https://i.natgeofe.com/n/fb700cc3-3cdb-48cc-a2bd-1ba9ed6a2c72/NGM-10439-1080x805.jpg?w=960" target="_blank" rel="noopener">网址</a>. 定位到最新图片的位置,</p>
+<p>找到这张图片的所在位置, 对比这类型的图片, 找到一种手段来筛选这些图片. 而图片地址都是在 <code>&lt;img&gt;</code> 中.现在我们有了思路, 先找带有 <code>Image__Wrapper Image__Wrapper--relative</code> 的这种 <code>&lt;div&gt;</code>, 然后在 <code>&lt;div&gt;</code> 里面找 <code>&lt;img&gt;</code>.</p>
+<h4 id="下载图片"><a href="#下载图片" class="headerlink" title="下载图片"></a>下载图片</h4><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">URL = <span class="string">"https://www.nationalgeographic.com/travel/article/ethical-souvenirs-crafts-shop-australia-india/"</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>用 BeautifulSoup 找到带有 <code>Image__Wrapper Image__Wrapper--relative</code> 的这种 <code>&lt;div&gt;</code>,</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">html = requests.get(URL).text</span><br><span class="line">soup = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">img_ul = soup.find_all(<span class="string">'div'</span>, {<span class="string">"class"</span>: <span class="string">"Image__Wrapper Image__Wrapper--relative"</span>})</span><br></pre></td></tr></tbody></table></figure>
+
+<p>从 div中找到所有的 <code>&lt;img&gt;</code>, 然后提取 <code>&lt;img&gt;</code> 的 <code>src</code> 属性, 里面的就是图片的网址啦. 接着, 就用之前在 requests 下载里提到的一段段下载.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> ul <span class="keyword">in</span> img_ul:</span><br><span class="line">    imgs = ul.find_all(<span class="string">'img'</span>)</span><br><span class="line">    <span class="keyword">for</span> img <span class="keyword">in</span> imgs:</span><br><span class="line">        url = img[<span class="string">'src'</span>]</span><br><span class="line">        r = requests.get(url, stream=<span class="literal">True</span>)</span><br><span class="line">        image_name = url.split(<span class="string">'/'</span>)[<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'./img/%s'</span> % image_name, <span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            <span class="keyword">for</span> chunk <span class="keyword">in</span> r.iter_content(chunk_size=<span class="number">128</span>):</span><br><span class="line">                f.write(chunk)</span><br><span class="line">        print(<span class="string">'Saved %s'</span> % image_name)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>如果你只是偶尔爬一爬网页, 学到目前为止, 你已经入门了, 但是如果你想要继续深入, 你开始对爬虫的效率担忧, 觉得自己爬得太慢, 想要大规模爬取网页, 那么接下来的内容就再适合你不过了. 接下来我们就会提到爬虫的提效方法. 而且现在我们爬取的都是静态网页 , 如果你遇到 JavaScript 很多的动态加载网页 (淘宝等), 就需要selenium .</p>
+<h3 id="加速爬虫：多进程分布式"><a href="#加速爬虫：多进程分布式" class="headerlink" title="加速爬虫：多进程分布式"></a>加速爬虫：多进程分布式</h3><h4 id="什么是分布式爬虫"><a href="#什么是分布式爬虫" class="headerlink" title="什么是分布式爬虫"></a>什么是分布式爬虫</h4><p>分布式爬虫主要是为了非常有效率的抓取网页, 我们的程序一般是单线程跑的, 指令也是一条条处理的, 每执行完一条指令才能跳到下一条. 那么在爬虫的世界里, 这里存在着一个问题.</p>
+<p>如果你已经顺利地执行过了前几节的爬虫代码, 你会发现, 有时候代码运行的时间大部分都花在了下载网页上. 有时候不到一秒能下载好一张网页的 HTML, 有时候却要几十秒. 而且非要等到 HTML 下载好了以后, 才能执行网页分析等步骤. 这非常浪费时间.</p>
+<p>如果我们能合理利用计算资源, 在下载一部分网页的时候就已经开始分析另一部分网页了. 这将会大大节省整个程序的运行时间. 又或者, 我们能同时下载多个网页, 同时分析多个网页, 这样就有种事倍功半的效用. 分布式爬虫的体系有很多种, 处理优化的问题也是多样的. 这里有<a href="http://bittiger.blogspot.com.au/2016/02/blog-post_3.html" target="_blank" rel="noopener">一篇博客</a>可以当做扩展阅读, 来了解当今比较流行的分布式爬虫框架.</p>
+<h4 id="我们的分布式爬虫"><a href="#我们的分布式爬虫" class="headerlink" title="我们的分布式爬虫"></a>我们的分布式爬虫</h4><p>而今天我们想搭建的这一个爬虫, 就是同时下载, 同时分析的这一种类型的分布式爬虫. 虽然算不上特别优化的框架, 但是概念理解起来比较容易. 我有尝试过徒手写高级一点的分布式爬虫, 但是写起来非常麻烦. 我琢磨了一下, 打算给大家介绍的这种分布式爬虫代码也较好写, 而且效率比普通爬虫快了3.5倍. </p>
+<p>主要来说, 我们最开始有一个网页, 然后首页中有很多 url, 我们使用多进程 同时开始下载这些 url, 得到这些 url 的 HTML 以后, 同时开始解析 (比如 BeautifulSoup) 网页内容. 在网页中寻找这个网站还没有爬过的链接. 最终爬完整个 网站所有页面.</p>
+<p>有了这种思路, 我们就可以开始写代码了. 你可以在<a href="https://github.com/MorvanZhou/easy-scraping-tutorial/blob/master/notebook/4-1-distributed-scraping.ipynb" target="_blank" rel="noopener">我的 Github</a> 一次性观看全部代码.</p>
+<p>首先 import 全部要用的模块, 并规定一个主页. </p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> multiprocessing <span class="keyword">as</span> mp</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen, urljoin</span><br><span class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"></span><br><span class="line"><span class="comment"># base_url = "http://127.0.0.1:4000/"</span></span><br><span class="line">base_url = <span class="string">'https://xxx.com/'</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们定义两个功能, 一个是用来爬取网页的(crawl), 一个是解析网页的(parse). 有了前几节内容的铺垫, 你应该能一言看懂下面的代码. <code>crawl()</code> 用 urlopen 来打开网页, 我用的内网测试, 所以为了体现下载网页的延迟, 添加了一个 <code>time.sleep(0.1)</code> 的下载延迟. 返回原始的 HTML 页面, <code>parse()</code> 就是在这个 HTML 页面中找到需要的信息, 我们用 BeautifulSoup 返回找到的信息.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">crawl</span><span class="params">(url)</span>:</span></span><br><span class="line">    response = urlopen(url)</span><br><span class="line">    <span class="comment"># time.sleep(0.1)             # slightly delay for downloading</span></span><br><span class="line">    <span class="keyword">return</span> response.read().decode()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(html)</span>:</span></span><br><span class="line">    soup = BeautifulSoup(html, <span class="string">'lxml'</span>)</span><br><span class="line">    urls = soup.find_all(<span class="string">'a'</span>, {<span class="string">"href"</span>: re.compile(<span class="string">'^/.+?/$'</span>)})</span><br><span class="line">    title = soup.find(<span class="string">'h1'</span>).get_text().strip()</span><br><span class="line">    page_urls = set([urljoin(base_url, url[<span class="string">'href'</span>]) <span class="keyword">for</span> url <span class="keyword">in</span> urls])   <span class="comment"># 去重</span></span><br><span class="line">    url = soup.find(<span class="string">'meta'</span>, {<span class="string">'property'</span>: <span class="string">"og:url"</span>})[<span class="string">'content'</span>]</span><br><span class="line">    <span class="keyword">return</span> title, page_urls, url</span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<p>网页中爬取中, 肯定会爬到重复的网址, 为了去除掉这些重复, 我们使用 python 的 set 功能. 定义两个 set, 用来搜集爬过的网页和没爬过的.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">unseen = set([base_url,])</span><br><span class="line">seen = set()</span><br></pre></td></tr></tbody></table></figure>
+
+<h4 id="测试普通爬法"><a href="#测试普通爬法" class="headerlink" title="测试普通爬法"></a>测试普通爬法</h4><p>为了对比效果, 我们将在下面对比普通的爬虫和这种分布式的效果. 如果是普通爬虫, 我简化了一下接下来的代码, 将一些不影响的代码去除掉了. 我们用循环一个个 <code>crawl</code> <code>unseen</code> 里面的 url, 爬出来的 HTML 放到 <code>parse</code> 里面去分析得到结果. 接着就是更新 <code>seen</code> 和 <code>unseen</code> 这两个集合了.</p>
+<p><strong>特别注意: 任何网站都是有一个服务器压力的, 如果你爬的过于频繁, 特别是使用多进程爬取或异步爬取, 一次性提交请求给服务器太多次, 这将可能会使得服务器瘫痪, 所以为了安全起见, 我限制了爬取数量(restricted_crawl=True).</strong> 因为我测试使用的是内网 <a href="http://127.0.0.1:4000/" target="_blank" rel="noopener">http://127.0.0.1:4000/</a> 所以不会有这种压力. 你在以后的爬网页中, 会经常遇到这样的爬取次数的限制 (甚至被封号). 我以前爬 github 时就被限制成一小时只能爬60页.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># DON'T OVER CRAWL THE WEBSITE OR YOU MAY NEVER VISIT AGAIN</span></span><br><span class="line"><span class="keyword">if</span> base_url != <span class="string">"http://127.0.0.1:4000/"</span>:</span><br><span class="line">    restricted_crawl = <span class="literal">True</span></span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    restricted_crawl = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> len(unseen) != <span class="number">0</span>:                 <span class="comment"># still get some url to visit</span></span><br><span class="line">    <span class="keyword">if</span> restricted_crawl <span class="keyword">and</span> len(seen) &gt;= <span class="number">20</span>:</span><br><span class="line">        <span class="keyword">break</span></span><br><span class="line">    htmls = [crawl(url) <span class="keyword">for</span> url <span class="keyword">in</span> unseen]</span><br><span class="line">    results = [parse(html) <span class="keyword">for</span> html <span class="keyword">in</span> htmls]</span><br><span class="line"></span><br><span class="line">    seen.update(unseen)         <span class="comment"># seen the crawled</span></span><br><span class="line">    unseen.clear()              <span class="comment"># nothing unseen</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> title, page_urls, url <span class="keyword">in</span> results:</span><br><span class="line">        unseen.update(page_urls - seen)     <span class="comment"># get new url to crawl</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>使用这种单线程的方法, 在我的内网上面爬, 爬完整个 网站, 一共消耗 <strong>52.3秒</strong>. 接着我们把它改成多进程分布式.</p>
+<h4 id="测试分布式爬法"><a href="#测试分布式爬法" class="headerlink" title="测试分布式爬法"></a>测试分布式爬法</h4><p>还是上一个 <code>while</code> 循环, 首先我们创建一个进程池(Pool).. 然后我们修改得到 <code>htmls</code> 和 <code>results</code> 的两句代码. 其他都不变, 只将这两个功能给并行了. 我在这里写的都是简化代码, </p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">pool = mp.Pool(<span class="number">4</span>)</span><br><span class="line"><span class="keyword">while</span> len(unseen) != <span class="number">0</span>:</span><br><span class="line">    <span class="comment"># htmls = [crawl(url) for url in unseen]</span></span><br><span class="line">    <span class="comment"># ---&gt;</span></span><br><span class="line">    crawl_jobs = [pool.apply_async(crawl, args=(url,)) <span class="keyword">for</span> url <span class="keyword">in</span> unseen]</span><br><span class="line">    htmls = [j.get() <span class="keyword">for</span> j <span class="keyword">in</span> crawl_jobs]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># results = [parse(html) for html in htmls]</span></span><br><span class="line">    <span class="comment"># ---&gt;</span></span><br><span class="line">    parse_jobs = [pool.apply_async(parse, args=(html,)) <span class="keyword">for</span> html <span class="keyword">in</span> htmls]</span><br><span class="line">    results = [j.get() <span class="keyword">for</span> j <span class="keyword">in</span> parse_jobs]</span><br><span class="line"></span><br><span class="line">    ...</span><br></pre></td></tr></tbody></table></figure>
+
+<p>还是在内网测试, 只用了 <strong>16.3秒</strong>!! 这可比上面的单线程爬虫快了3.5倍. 而且我还不是在外网测试的. 如果在外网, 爬取一张网页的时间更长, 使用多进程会更加有效率, 节省的时间更多.</p>
+<p>看到这里, 一定觉得多线程是爬虫的救星. 其实不然</p>
+<p><strong>代码全</strong>：</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure>
+
+
+
+<h3 id="加速爬虫：异步加载"><a href="#加速爬虫：异步加载" class="headerlink" title="加速爬虫：异步加载"></a>加速爬虫：异步加载</h3><p>Python 还提供了一个有力的工具, 叫做 <a href="https://docs.python.org/3/library/asyncio.html" target="_blank" rel="noopener">asyncio</a>. 这是一个仅仅使用单线程, 就能达到多线程/进程的效果的工具. 它的原理, 简单说就是: <strong>在单线程里使用异步计算, 下载网页的时候和处理网页的时候是不连续的, 更有效利用了等待下载的这段时间.</strong></p>
+<p>传统的单线程下载处理网页可能就像此图(<a href="https://www.nginx.com/blog/thread-pools-boost-performance-9x/" target="_blank" rel="noopener">来源</a>)左边蓝色那样, 计算机执行一些代码, 然后等待下载网页, 下好以后, 再执行一些代码… 或者在等待的时候, 用另外一个线程执行其他的代码, 这是多线程的手段. 那么 asyncio 就像右边, 只使用一个线程, 但是将这些等待时间统统掐掉, 下载应该都调到了后台, 这个时间里, 执行其他异步的功能, 下载好了之后, 再调回来接着往下执行.</p>
+<p>今天就来尝试使用 asyncio 来替换掉 multiprocessing 或者 threading, 看看效果如何.</p>
+<h4 id="Asyncio-库"><a href="#Asyncio-库" class="headerlink" title="Asyncio 库"></a>Asyncio 库</h4><p><a href="https://docs.python.org/3/library/asyncio.html" target="_blank" rel="noopener">Asyncio</a> 库是 Python 的原装库, 但是是在 Python 3 的时候提出来的, Python 2 和 Python 3.3- 是没有的. 而且 Python 3.5 之后, 和 Python 3.4 前在语法上还是有些不同, 比如 await 和 yield 的使用, 下面的教程都是基于 Python 3.5+, 使用 Python3.4 的可能会执行有点问题. 调整一下就好.</p>
+<p>在 3.5+ 版本中, asyncio 有两样语法非常重要, <code>async</code>, <code>await</code>. 弄懂了它们是如何协同工作的, 我们就完全能发挥出这个库的功能了. 剧透一下, 等会使用单线程爬网页的 asyncio 和之前多进程写的爬网页效果差不多, 而且当并行的进程数少的时候, asyncio 效果还会比多进程快.</p>
+<h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><p>接着我们来举例介绍 asyncio, 像之前画的图那样, 我们要时刻记住, asyncio 不是多进程, 也不是多线程, 单单是一个线程, 但是是在 Python 的功能间切换着执行. 切换的点用 <code>await</code> 来标记, 能够异步的功能用 <code>async</code> 标记, 比如 <code>async def function():</code>. 首先我们看一下, 不使用 <code>async</code> 完成的一份代码, 然后我们将这份代码改成 <code>async</code> 版的. </p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 不是异步的</span></span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">(t)</span>:</span></span><br><span class="line">    print(<span class="string">'Start job '</span>, t)</span><br><span class="line">    time.sleep(t)               <span class="comment"># wait for "t" seconds</span></span><br><span class="line">    print(<span class="string">'Job '</span>, t, <span class="string">' takes '</span>, t, <span class="string">' s'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    [job(t) <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line">main()</span><br><span class="line">print(<span class="string">"NO async total time : "</span>, time.time() - t1)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Start job  1</span></span><br><span class="line"><span class="string">Job  1  takes  1  s</span></span><br><span class="line"><span class="string">Start job  2</span></span><br><span class="line"><span class="string">Job  2  takes  2  s</span></span><br><span class="line"><span class="string">NO async total time :  3.008603096008301</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>从上面可以看出, 我们的 job 是按顺序执行的, 必须执行完 <code>job 1</code> 才能开始执行 <code>job 2</code>, 而且 <code>job 1</code> 需要1秒的执行时间, 而 <code>job 2</code> 需要2秒. 所以总时间是 <strong>3 秒多</strong>. 而如果我们使用 asyncio 的形式, <code>job 1</code> 在等待 <code>time.sleep(t)</code> 结束的时候, 比如是等待一个网页的下载成功, 在这个地方是可以切换给 <code>job 2</code>, 让它开始执行.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> asyncio</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">(t)</span>:</span>                   <span class="comment"># async 形式的功能</span></span><br><span class="line">    print(<span class="string">'Start job '</span>, t)</span><br><span class="line">    <span class="keyword">await</span> asyncio.sleep(t)          <span class="comment"># 等待 "t" 秒, 期间切换其他任务</span></span><br><span class="line">    print(<span class="string">'Job '</span>, t, <span class="string">' takes '</span>, t, <span class="string">' s'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(loop)</span>:</span>                       <span class="comment"># async 形式的功能</span></span><br><span class="line">    tasks = [</span><br><span class="line">    loop.create_task(job(t)) <span class="keyword">for</span> t <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">3</span>)</span><br><span class="line">    ]                                       <span class="comment"># 创建任务, 但是不执行</span></span><br><span class="line">    <span class="keyword">await</span> asyncio.wait(tasks)               <span class="comment"># 执行并等待所有任务完成</span></span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line">loop = asyncio.get_event_loop()             <span class="comment"># 建立 loop</span></span><br><span class="line">loop.run_until_complete(main(loop))         <span class="comment"># 执行 loop</span></span><br><span class="line">loop.close()                                <span class="comment"># 关闭 loop</span></span><br><span class="line">print(<span class="string">"Async total time : "</span>, time.time() - t1)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Start job  1</span></span><br><span class="line"><span class="string">Start job  2</span></span><br><span class="line"><span class="string">Job  1  takes  1  s</span></span><br><span class="line"><span class="string">Job  2  takes  2  s</span></span><br><span class="line"><span class="string">Async total time :  2.001495838165283</span></span><br><span class="line"><span class="string">"""</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>从结果可以看出, 我们没有等待 <code>job 1</code> 的结束才开始 <code>job 2</code>, 而是 <code>job 1</code> 触发了 <code>await</code> 的时候就切换到了 <code>job 2</code> 了. 这时, <code>job 1</code> 和 <code>job 2</code> 同时在等待 <code>await asyncio.sleep(t)</code>, 所以最终的程序完成时间, 取决于等待最长的 <code>t</code>, 也就是 <strong>2秒</strong>. 这和上面用普通形式的代码相比(3秒), 的确快了很多.</p>
+<h4 id="aiohttp"><a href="#aiohttp" class="headerlink" title="aiohttp"></a>aiohttp</h4><p>有了对 asyncio 的基本了解, 我们就来看怎么把它用在爬虫. 这个功能对于爬虫非常的理想, 原因很简单, 我们在等待一个网页下载的时候, 完全可以切换到其它代码, 事半功倍. 但是 asycio 自己还是没办法完成这项任务的, 我们还需要安装另一个牛逼的模块将 <code>requests</code> 模块代替成一个异步的 <code>requests</code>, 这个牛逼的模块叫作 <code>aiohttp</code> (<a href="https://aiohttp.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">官网在这</a>). 下载安装特别简单. 直接在你的 terminal 或者 cmd 里面输入 pip3 install aiohttp.</p>
+<p>接着我们来看看我们怎么用最一般的 requests 模块爬网页, 和我们怎么将 requests 替换成 aiohttp.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line">URL = <span class="string">'https://xxx.com/'</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal</span><span class="params">()</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>):</span><br><span class="line">        r = requests.get(URL)</span><br><span class="line">        url = r.url</span><br><span class="line">        print(url)</span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line">normal()</span><br><span class="line">print(<span class="string">"Normal total time:"</span>, time.time()-t1)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后我们在用 <a href="https://aiohttp.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">aiohttp</a> 来实现一样的功能</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> aiohttp</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">job</span><span class="params">(session)</span>:</span></span><br><span class="line">    response = <span class="keyword">await</span> session.get(URL)       <span class="comment"># 等待并切换</span></span><br><span class="line">    <span class="keyword">return</span> str(response.url)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(loop)</span>:</span></span><br><span class="line">    <span class="keyword">async</span> <span class="keyword">with</span> aiohttp.ClientSession() <span class="keyword">as</span> session:      <span class="comment"># 官网推荐建立 Session 的形式</span></span><br><span class="line">        tasks = [loop.create_task(job(session)) <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">2</span>)]</span><br><span class="line">        finished, unfinished = <span class="keyword">await</span> asyncio.wait(tasks)</span><br><span class="line">        all_results = [r.result() <span class="keyword">for</span> r <span class="keyword">in</span> finished]    <span class="comment"># 获取所有结果</span></span><br><span class="line">        print(all_results)</span><br><span class="line"></span><br><span class="line">t1 = time.time()</span><br><span class="line">loop = asyncio.get_event_loop()</span><br><span class="line">loop.run_until_complete(main(loop))</span><br><span class="line">loop.close()</span><br><span class="line">print(<span class="string">"Async total time:"</span>, time.time() - t1)</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们刚刚创建了一个 Session, 这是官网推荐的方式, 但是我觉得也可以直接用 request 形式, 细节请参考<a href="https://aiohttp.readthedocs.io/en/stable/client.html#make-a-request" target="_blank" rel="noopener">官方说明</a>. 如果要获取网页返回的结果, 我们可以在 <code>job()</code> 中 return 个结果出来, 然后再在 <code>finished, unfinished = await asyncio.wait(tasks)</code> 收集完成的结果, 这里它会返回完成的和没完成的, 我们关心的都是完成的, 而且 <code>await</code> 也确实是等待都完成了才返回. 真正的结果被存放在了 <code>result()</code> 里面.</p>
+<h4 id="和多进程分布式爬虫对比"><a href="#和多进程分布式爬虫对比" class="headerlink" title="和多进程分布式爬虫对比"></a>和多进程分布式爬虫对比</h4><p>有了这些基础, 我们就可以来玩点高级的了, 之前我们用 multiprocessing 写过了一个简单的分布式爬虫, 现在我们就来拿过来 PK 一下 asyncio 的方法. 首先我们对比一下这次写的结构和上次写的简单分布式爬虫的区别. 分布式我们完全依赖的是 multiprocessing 这个模块. 使用 python 强大的并行处理运算来下载我们要处理的 urls, 然后解析网页也是一件耗时的事, 特别是网页量多的时候. 所以我们也将网页解析给并行了. 这样大大节省了下载和运算时间. 再看右边的这个 asyncio 的例子, 我们解析网页还是用的和 multiprocessing 那边一样的并行处理, 因为 asyncio 好像不支持解析网页的异步, 毕竟是计算密集型工序. 然后不一样的地方是, 我们在下载网页时, 不用 multiprocessing, 改用 asyncio, 用一个单线程的东西挑战多进程.</p>
+<p>我们发现, 如果 <code>Pool(n)</code> 里面的这个 n 越大, 多进程才能越快, 但是 asyncio 却不会特别受进程数的影响. 一个单线程的东西居然战胜了多进程. 可见异步 asyncio 下载网页的重要性.</p>
+<p>上面介绍的还只是 asyncio 的一小部分功能, 如果想了解更多有关于 asyncio 的使用方法, 请看到 Python 的<a href="https://docs.python.org/3/library/asyncio.html" target="_blank" rel="noopener">官方介绍</a>.</p>
+<h3 id="高级爬虫：让-Selenium-控制你的浏览器帮你爬"><a href="#高级爬虫：让-Selenium-控制你的浏览器帮你爬" class="headerlink" title="高级爬虫：让 Selenium 控制你的浏览器帮你爬"></a>高级爬虫：<strong>让 Selenium 控制你的浏览器帮你爬</strong></h3><blockquote>
+<p>Selenium 是为了测试而出生的. 但是没想到到了爬虫的年代, 它摇身一变, 变成了爬虫的好工具. 让我试着用一句话来概括 Seleninm: <strong>它能控制你的浏览器, 有模有样地学人类看网页</strong>.</p>
+</blockquote>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>因为 Selenium 需要操控你的浏览器, 所以安装起来比传统的 Python 模块要多几步. 先在 terminal 或者 cmd 用 pip 安装 selenium.</p>
+<p>要操控浏览器, 你就要有浏览器的 driver. Selenium 针对几个主流的浏览器都有 driver. <strong>针对 Linux 和 MacOS</strong>.</p>
+<ul>
+<li>Chrome <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="noopener">driver</a>, 如果前面链接无法打开, 请尝试<a href="https://npm.taobao.org/mirrors/chromedriver" target="_blank" rel="noopener">这个</a>, 并下载对应版本的 driver</li>
+<li>Edge <a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/webdriver/" target="_blank" rel="noopener">driver</a></li>
+<li>Firefox <a href="https://github.com/mozilla/geckodriver/releases" target="_blank" rel="noopener">driver</a></li>
+<li>Safari <a href="https://webkit.org/blog/6900/webdriver-support-in-safari-10/" target="_blank" rel="noopener">driver</a></li>
+</ul>
+<p>Linux 和 MacOS 用户下载好之后, 请将下载好的geckodriver文件放在你的计算机的 /usr/bin 或 /usr/local/bin 目录. 并赋予执行权限, 不会放的, 请使用这条语句.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp 你的geckodriver位置 /usr/local/bin</span><br><span class="line">sudo chmod +x /usr/local/bin/geckodriver</span><br></pre></td></tr></tbody></table></figure>
+
+<p>对于 Windows 用户, 官网上的<a href="http://selenium-python.readthedocs.io/installation.html#detailed-instructions-for-windows-users" target="_blank" rel="noopener">说法</a>, 好像没有提到要具体怎么操作, 我想, 应该是把 geckodriver 这个文件的位置加在 Windows 的环境变量中(PATH).</p>
+<p>如果你安装有任何的问题, 请在它们的<a href="http://selenium-python.readthedocs.io/installation.html" target="_blank" rel="noopener">官网</a>上查询解决方案.</p>
+<h4 id="偷懒的火狐浏览器插件"><a href="#偷懒的火狐浏览器插件" class="headerlink" title="偷懒的火狐浏览器插件"></a>偷懒的火狐浏览器插件</h4><p>在这教你用<a href="https://www.mozilla.org/en-US/firefox/new/" target="_blank" rel="noopener">火狐浏览器</a>偷懒的一招, 因为暂时只有火狐上有这个插件. 插件 Katalon Recorder 下载的网址<a href="https://addons.mozilla.org/en-US/firefox/addon/katalon-automation-record/" target="_blank" rel="noopener">在这</a></p>
+<p>这个插件能让你记录你使用浏览器的操作. 我以前玩网游, 为了偷懒, 用过一个叫按键精灵的东西, 帮我做了很多重复性的工作, 拯救了我的鼠标和键盘, 当然还有我的手指! 看着别人一直在点鼠标, 我心中暗爽~ 这个 Katalon Recorder 插件 + Selenium 就和按键精灵是一个意思. 记录你的操作, 然后你可以让电脑重复上千遍.</p>
+<p>安装好火狐上的这个插件后, 打开它.</p>
+<p>找到插件上的 record, 点它. 然后用火狐登录上 某个网站, 开始你的各种点击工作,</p>
+<p>每当你点击的时候, 插件就会记录下你这些点击, 形成一些log. 最后神奇的事情将要发生. 你可以点击 Export 按钮, 观看到帮你生成的浏览记录代码!</p>
+<p>虽然这个代码输出只有 Python2 版本的, 不过不影响. 我们直接将这些圈起来的代码复制. 这将会是 python 帮你执行的行为代码.</p>
+<h4 id="Python-控制浏览器"><a href="#Python-控制浏览器" class="headerlink" title="Python 控制浏览器"></a>Python 控制浏览器</h4><p>好了, 有了这些代码, 我们就能回到 Python. 开始写 Python 的代码了. 这里十分简单! 我将 selenium 绑定到 Chrome 上 <code>webdriver.Chrome()</code>. 你可以绑其它的浏览器.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome()     <span class="comment"># 打开 Chrome 浏览器</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将刚刚复制的帖在这</span></span><br><span class="line">driver.get(<span class="string">"https://xxx.com/"</span>)</span><br><span class="line">driver.find_element_by_xpath(<span class="string">u"//img[@alt='强化学习 (Reinforcement Learning)']"</span>).click()</span><br><span class="line">driver.find_element_by_link_text(<span class="string">"About"</span>).click()</span><br><span class="line">driver.find_element_by_link_text(<span class="string">u"赞助"</span>).click()</span><br><span class="line">driver.find_element_by_link_text(<span class="string">u"教程 ▾"</span>).click()</span><br><span class="line">driver.find_element_by_link_text(<span class="string">u"数据处理 ▾"</span>).click()</span><br><span class="line">driver.find_element_by_link_text(<span class="string">u"网页爬虫"</span>).click()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 得到网页 html, 还能截图</span></span><br><span class="line">html = driver.page_source       <span class="comment"># get html</span></span><br><span class="line">driver.get_screenshot_as_file(<span class="string">"./img/sreenshot1.png"</span>)</span><br><span class="line">driver.close()</span><br></pre></td></tr></tbody></table></figure>
+
+<p>我们能得到页面的 html code (<code>driver.page_source</code>), 就能基于这个 code 来爬取数据了. </p>
+<p>不过每次都要看着浏览器执行这些操作, 有时候有点不方便. 我们可以让 selenium 不弹出浏览器窗口, 让它安静地执行操作. 在创建 <code>driver</code> 之前定义几个参数就能摆脱浏览器的身体了.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium.webdriver.chrome.options <span class="keyword">import</span> Options</span><br><span class="line"></span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(<span class="string">"--headless"</span>)       <span class="comment"># define headless</span></span><br><span class="line"></span><br><span class="line">driver = webdriver.Chrome(chrome_options=chrome_options)</span><br><span class="line">...</span><br></pre></td></tr></tbody></table></figure>
+
+<p>Selenium 能做的事还有很多, 比如填 Form 表单, 超控键盘等等. 这个教程不会细说了, 只是个入门, 如果你还想继续深入了解, 欢迎点进去<a href="http://selenium-python.readthedocs.io/" target="_blank" rel="noopener">他们的 Python 教学官网</a>.</p>
+<p>最后, Selenium 的优点我们都看出来了, 可以很方便的帮你模拟你的操作, 添加其它操作也是非常容易的, 但是也是有缺点的, 不是任何时候 selenium 都很好. 因为要打开浏览器, 加载更多东西, 它的执行速度肯定没有其它模块快. 所以如果你需要速度, 能不用 Selenium, 就不用吧.</p>
+<h4 id="高级爬虫-高效无忧的-Scrapy-爬虫库"><a href="#高级爬虫-高效无忧的-Scrapy-爬虫库" class="headerlink" title="高级爬虫: 高效无忧的 Scrapy 爬虫库"></a><strong>高级爬虫: 高效无忧的 Scrapy 爬虫库</strong></h4><blockquote>
+<p> 如果你想更高效的开发, 爬取网页, 记录数据库, Scrapy 是值得一推的. 它是一个爬虫的框架, 而不是一个简单的爬虫. 它整合了爬取, 处理数据, 存储数据的一条龙服务. 如果你只需要偶尔的一两次爬爬网页, 前面的教程已经够了, 如果你需要每天靠爬虫吃饭, Scrapy 还是有必要了解的</p>
+<p>这里你写出一个 Scrapy 形式的爬虫, 带你入门 Scrapy, 但是 Scrapy 不仅仅只有爬虫, 你需要学习更多. 那学习 Scrapy 的地方, 当然是他们<a href="https://docs.scrapy.org/en/latest/" target="_blank" rel="noopener">自家网站</a>咯.</p>
+</blockquote>
+<h4 id="Scrapy-的优势"><a href="#Scrapy-的优势" class="headerlink" title="Scrapy 的优势"></a>Scrapy 的优势</h4><p>Scrapy 是一个整合了的爬虫框架, 有着非常健全的管理系统. 而且它也是分布式爬虫, 但是比我们之前写的那个分布式爬虫高级多了. 这里是 Scrapy 的框架示意图(<a href="https://docs.scrapy.org/en/latest/topics/architecture.html#topics-architecture" target="_blank" rel="noopener">图源</a>). 它的管理体系非常复杂. 但是特别高效. 让你又刷网页, 又下载, 同时能处理数据. 简直千手观音呀.</p>
+<p>而且做 Scrapy 的项目, 绝对不是只需要写一个脚本就能解决的. 为了把你带入门, 这次我们只写一个脚本, 只涉及里面的爬虫(spider)部分. 其他的部分你可以在这里深入学习.</p>
+<ul>
+<li>官网教程 <a href="https://docs.scrapy.org/en/latest/" target="_blank" rel="noopener">英文</a>, <a href="https://scrapy-chs.readthedocs.io/zh_CN/0.24/" target="_blank" rel="noopener">中文</a></li>
+<li>JasonDing 的<a href="https://www.jianshu.com/p/a8aad3bf4dc4" target="_blank" rel="noopener">学习Scrapy入门</a></li>
+<li>young-hz 的<a href="http://blog.csdn.net/u012150179/article/details/32343635" target="_blank" rel="noopener">Scrapy研究探索系列</a></li>
+</ul>
+<h4 id="Scrapy-爬虫"><a href="#Scrapy-爬虫" class="headerlink" title="Scrapy 爬虫"></a>Scrapy 爬虫</h4><p>首先你得安装 Scrapy. 在 terminal 或者 cmd 使用 pip 安装就好.</p>
+<p>如果安装遇到任何问题, 它们家的<a href="https://docs.scrapy.org/en/latest/intro/install.html" target="_blank" rel="noopener">网站</a>是个好去处.</p>
+<p>我们导入 scrapy 模块, 并创建一个 spider 的 class. 并继承 <code>scrapy.Spider</code>, 一定还要给这个 spider 一个名字, 我就用 <code>mofan</code> 好了, 因为是爬 莫烦Python 的. 给定一些初始爬取的网页, 写在 <code>start_urls</code> 里. 这里特别要提的是: <strong>之前我们用 python 的 set 来去除重复的 url, 在 scrapy 中, 这是不需要的, 因为它自动帮你去重</strong>. </p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> scrapy</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MofanSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    name = <span class="string">"mofan"</span></span><br><span class="line">    start_urls = [</span><br><span class="line">        <span class="string">'https://xxx.com/'</span>,</span><br><span class="line">    ]</span><br><span class="line">    <span class="comment"># unseen = set()</span></span><br><span class="line">    <span class="comment"># seen = set()      # 我们不在需要 set 了, 它自动去重</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>接着我们还要定义这个 class 中的一个功能就能完事了. 我们使用 python 的 <code>yield</code> 来返回搜集到的数据 (为什么是yield? 因为在 scrapy 中也有异步处理, 加速整体效率). 这些 title 和 url 的数据, 我们都是用 scrapy 中<a href="https://docs.scrapy.org/en/latest/intro/tutorial.html#extracting-data" target="_blank" rel="noopener">抓取信息的方式</a>.</p>
+<figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MofanSpider</span><span class="params">(scrapy.Spider)</span>:</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">parse</span><span class="params">(self, response)</span>:</span></span><br><span class="line">        <span class="keyword">yield</span> {     <span class="comment"># return some results</span></span><br><span class="line">            <span class="string">'title'</span>: response.css(<span class="string">'h1::text'</span>).extract_first(default=<span class="string">'Missing'</span>).strip().replace(<span class="string">'"'</span>, <span class="string">""</span>),</span><br><span class="line">            <span class="string">'url'</span>: response.url,</span><br><span class="line">        }</span><br><span class="line"></span><br><span class="line">        urls = response.css(<span class="string">'a::attr(href)'</span>).re(<span class="string">r'^/.+?/$'</span>)     <span class="comment"># find all sub urls</span></span><br><span class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> urls:</span><br><span class="line">            <span class="keyword">yield</span> response.follow(url, callback=self.parse)     <span class="comment"># it will filter duplication automatically</span></span><br></pre></td></tr></tbody></table></figure>
+
+<p>然后在这个response网页中筛选 <code>urls</code>, 这里我们也不需要使用 <code>urljoin()</code> 这种功能给 url 改变形式. 它在 <code>follow()</code> 这一步会自动检测 url 的格式. (真是省心啊<del>), 然后对于每个找到的 url, 然后 yield 重新使用 <code>self.parse()</code> 来爬取, 这里又是自动去重! Scrapy 仿佛知道你最不想做什么, 它自动帮你都做好了. 开心</del></p>
+<p>最后需要运行的时候有点不同, 你需要在 terminal 或 cmd 中运行这个爬虫. 而且还能帮你保存刚刚 yield 的 <code>{title:, url:}</code> 的结果. <code>runspider 5-2-scrapy.py</code> 就是选择你要跑的这个 Python 文件.</p>
+<figure class="highlight plain"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ scrapy runspider 5-2-scrapy.py -o res.json</span><br></pre></td></tr></tbody></table></figure>
+
+<p><code>-o res.json</code> 这个 <code>-o</code> 就是输出的指令, 你可以在那个文件夹中找到一个名字叫 <code>res.json</code> 的文件, 里面存有所有找到的 <code>{title:, url:}</code>.</p>
+<p>其实我们只做了 scrapy 中的爬虫, 一个正常的 scrapy 项目还包括有很多其他的内容(见下面). 这个教程就不会细说了, 因为学好 scrapy 还是比较麻烦的. 你可以在上面推荐给你的链接中, 继续深入学习 scrapy.</p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+      
+    </div>
+    
+    
+    
+	
+	<div>
+		
+			<div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+		
+	</div>
+	  
+		<div>
+		  <div id="wechat_subscriber" style="display: block; padding: 10px 0; margin: 20px auto; width: 100%; text-align: center">
+    <img id="wechat_subscriber_qcode" src="/images/bolg_mask.png" alt="云澈 wechat" style="width: 200px; max-width: 100%;"/>
+    <div>扫一扫，用手机访问哦</div>
+</div>
+
+		</div>
+	  
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="https://i.loli.net/2020/06/10/PNbxe7H5KXJgcoh.jpg" alt="云澈 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="https://i.loli.net/2020/06/10/FQkTKeyYndB5WhP.jpg" alt="云澈 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者：</strong>
+    云澈
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://liudufu.github.io/Getting_Started_with_Request_Crawler/" title="request爬虫入门">https://liudufu.github.io/Getting_Started_with_Request_Crawler/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>
+    本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/python/" rel="tag"><i class="fa fa-tag"></i> python</a>
+          
+            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"><i class="fa fa-tag"></i> 学习笔记</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div id="needsharebutton-postbottom">
+            <span class="btn">
+              <i class="fa fa-share-alt" aria-hidden="true"></i>
+            </span>
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Introduction_to_RE_Regularization/" rel="next" title="re正则入门">
+                re正则入门 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='//bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+      <div id="lv-container" data-id="city" data-uid="MTAyMC81MDQzNi8yNjkyMw"></div>
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+      <div id="sidebar-dimmer"></div>
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+			  <a href="/">
+                <img class="site-author-image" itemprop="image"
+                  src="https://s1.ax1x.com/2020/07/20/UfbOPJ.jpg"
+                  alt="云澈" />
+			  </a>
+            
+              <p class="site-author-name" itemprop="name">云澈</p>
+              <p class="site-description motion-element" itemprop="description">Time would heal almost all wounds,if your wounds have not been healed up.please wait for a short while</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">75</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">106</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/liudufu" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:2649176532@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://weibo.com/liudufu" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://me.csdn.net/weixin_45333934" target="_blank" title="csdn">
+                      
+                        <i class="fa fa-fw fa-heartbeat"></i>csdn</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://twitter.com/yourname" target="_blank" title="Twitter">
+                      
+                        <i class="fa fa-fw fa-twitter"></i>Twitter</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.cnblogs.com/dufu-csdn/" target="_blank" title="博客园">
+                      
+                        <i class="fa fa-fw fa-instagram"></i>博客园</a>
+                  </span>
+                
+            </div>
+          
+		  
+		  
+		  
+		    <div class="links-of-blogroll motion-element links-of-blogroll-block">
+			  <div class="links-of-blogroll-title">
+			    <!-- modify icon to fire by szw -->
+			    <i class="fa fa-history fa-" aria-hidden="true"></i>
+			    近期文章
+			  </div>
+			  <ul class="links-of-blogroll-list">
+			    
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Getting_Started_with_Request_Crawler/" title="request爬虫入门" target="_blank">request爬虫入门</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Introduction_to_RE_Regularization/" title="re正则入门" target="_blank">re正则入门</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/knowledge_C_language/" title="Easy to mix knowledge points of C language" target="_blank">Easy to mix knowledge points of C language</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/Servlet_Basics/" title="servlet基础" target="_blank">servlet基础</a>
+				  </li>
+			    
+				  <li class="recent_posts_li">
+				    <a href="/The_difference_and_basic_usage_of_JPA_and_JDBC/" title="JPA与JDBC的区别和基本用法" target="_blank">JPA与JDBC的区别和基本用法</a>
+				  </li>
+			    
+			  </ul>
+		    </div>
+		  
+		  
+		  <div id="music163player">
+			<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=1428784488&auto=1&height=66"></iframe>
+		  </div>
+		  
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+        
+			  
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://leetcode-cn.com/" title="leetcode" target="_blank" rel="external nofollow">leetcode</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="https://gitee.com/dufu-03-13/" title="码云" target="_blank" rel="external nofollow">码云</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.alloyteam.com/nav/" title="Web前端导航" target="_blank" rel="external nofollow">Web前端导航</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://www.36zhen.com/t?id=3448" title="前端书籍资料" target="_blank" rel="external nofollow">前端书籍资料</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://ife.baidu.com/" title="百度前端技术学院" target="_blank" rel="external nofollow">百度前端技术学院</a>
+                </span>
+              
+                <span class="links-of-author-item" style="text-align: left">
+                  <a href="http://wf.uisdc.com/cn/" title="google前端开发基础" target="_blank" rel="external nofollow">google前端开发基础</a>
+                </span>
+              
+		  <div id="days"></div>
+<script>
+function show_date_time(){
+window.setTimeout("show_date_time()",1000);
+BirthDay=new Date("06/01/2020 15:13:14");
+today=new Date();
+timeold=(today.getTime()-BirthDay.getTime());
+sectimeold=timeold/1000
+secondsold=Math.floor(sectimeold);
+msPerDay=24*60*60*1000
+e_daysold=timeold/msPerDay
+daysold=Math.floor(e_daysold);
+e_hrsold=(e_daysold-daysold)*24;
+hrsold=setzero(Math.floor(e_hrsold));
+e_minsold=(e_hrsold-hrsold)*60;
+minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+seconds=setzero(Math.floor((e_minsold-minsold)*60));
+document.getElementById('days').innerHTML="已运行"+daysold+"天"+hrsold+"小时"+minsold+"分"+seconds+"秒";
+}
+function setzero(i){
+if (i<10)
+{i="0" + i};
+return i;
+}
+show_date_time();
+</script>
+
+
+            </div>
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#🌸request爬虫入门"><span class="nav-number">1.</span> <span class="nav-text">🌸request爬虫入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#简单的网页结构"><span class="nav-number">1.1.</span> <span class="nav-text">简单的网页结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用-Python-登录网页"><span class="nav-number">1.2.</span> <span class="nav-text">用 Python 登录网页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#匹配网页内容"><span class="nav-number">1.3.</span> <span class="nav-text">匹配网页内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BeautifulSoup基础"><span class="nav-number">1.4.</span> <span class="nav-text">BeautifulSoup基础</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">1.5.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#CSS-的-Class"><span class="nav-number">1.5.1.</span> <span class="nav-text">CSS 的 Class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#按-Class-匹配"><span class="nav-number">1.5.2.</span> <span class="nav-text">按 Class 匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#嵌入正则"><span class="nav-number">1.6.</span> <span class="nav-text">嵌入正则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#正则匹配"><span class="nav-number">1.6.1.</span> <span class="nav-text">正则匹配</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#爬百度百科"><span class="nav-number">1.7.</span> <span class="nav-text">爬百度百科</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#百度百科"><span class="nav-number">1.7.1.</span> <span class="nav-text">百度百科</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#观看规律"><span class="nav-number">1.7.2.</span> <span class="nav-text">观看规律</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#制作爬虫"><span class="nav-number">1.7.3.</span> <span class="nav-text">制作爬虫</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#requests"><span class="nav-number">1.8.</span> <span class="nav-text">requests</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#获取网页的方式"><span class="nav-number">1.8.1.</span> <span class="nav-text">获取网页的方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#requests-get-请求"><span class="nav-number">1.8.2.</span> <span class="nav-text">requests get 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#requests-post-请求"><span class="nav-number">1.8.3.</span> <span class="nav-text">requests post 请求</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#上传图片"><span class="nav-number">1.8.4.</span> <span class="nav-text">上传图片</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#登录"><span class="nav-number">1.8.5.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-Session-登录"><span class="nav-number">1.8.6.</span> <span class="nav-text">使用 Session 登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载文件"><span class="nav-number">1.9.</span> <span class="nav-text">下载文件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">1.9.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-urlretrieve"><span class="nav-number">1.9.2.</span> <span class="nav-text">使用 urlretrieve</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#使用-request"><span class="nav-number">1.9.3.</span> <span class="nav-text">使用 request</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#下载美国地图"><span class="nav-number">1.10.</span> <span class="nav-text">下载美国地图</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#找到图片位置"><span class="nav-number">1.10.1.</span> <span class="nav-text">找到图片位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#下载图片"><span class="nav-number">1.10.2.</span> <span class="nav-text">下载图片</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加速爬虫：多进程分布式"><span class="nav-number">1.11.</span> <span class="nav-text">加速爬虫：多进程分布式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是分布式爬虫"><span class="nav-number">1.11.1.</span> <span class="nav-text">什么是分布式爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#我们的分布式爬虫"><span class="nav-number">1.11.2.</span> <span class="nav-text">我们的分布式爬虫</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试普通爬法"><span class="nav-number">1.11.3.</span> <span class="nav-text">测试普通爬法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试分布式爬法"><span class="nav-number">1.11.4.</span> <span class="nav-text">测试分布式爬法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加速爬虫：异步加载"><span class="nav-number">1.12.</span> <span class="nav-text">加速爬虫：异步加载</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Asyncio-库"><span class="nav-number">1.12.1.</span> <span class="nav-text">Asyncio 库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本用法"><span class="nav-number">1.12.2.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#aiohttp"><span class="nav-number">1.12.3.</span> <span class="nav-text">aiohttp</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#和多进程分布式爬虫对比"><span class="nav-number">1.12.4.</span> <span class="nav-text">和多进程分布式爬虫对比</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级爬虫：让-Selenium-控制你的浏览器帮你爬"><span class="nav-number">1.13.</span> <span class="nav-text">高级爬虫：让 Selenium 控制你的浏览器帮你爬</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.13.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#偷懒的火狐浏览器插件"><span class="nav-number">1.13.2.</span> <span class="nav-text">偷懒的火狐浏览器插件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Python-控制浏览器"><span class="nav-number">1.13.3.</span> <span class="nav-text">Python 控制浏览器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级爬虫-高效无忧的-Scrapy-爬虫库"><span class="nav-number">1.13.4.</span> <span class="nav-text">高级爬虫: 高效无忧的 Scrapy 爬虫库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrapy-的优势"><span class="nav-number">1.13.5.</span> <span class="nav-text">Scrapy 的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Scrapy-爬虫"><span class="nav-number">1.13.6.</span> <span class="nav-text">Scrapy 爬虫</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; 2020 &mdash; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love" id="heart">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">云澈</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">226.5k</span>
+  
+  
+   <span style="margin-left:8px;">
+   <script src="http://s6.cnzz.com/stat.php?id=1278978367&web_id=1278978367" type="text/javascript"></script>
+   </span>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+<div class="weixin-box">
+  <div class="weixin-menu">
+    <div class="weixin-hover">
+      <div class="weixin-description">微信扫一扫，订阅本博客</div>
+    </div>
+  </div>
+</div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共226.5k字</span>
+</div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+          <span id="scrollpercent"><span>0</span>%</span>
+        
+      </div>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("ToKAq6EqsKrh3oh1kL7AwHkb-9Nh9j0Va", "Jjb4SKFne0eAr0pwOARr8X21");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/needsharebutton/needsharebutton.css">
+
+  
+  
+  <script src="/lib/needsharebutton/needsharebutton.js"></script>
+
+  <script>
+    
+      pbOptions = {};
+      
+          pbOptions.iconStyle = "default";
+      
+          pbOptions.boxForm = "horizontal";
+      
+          pbOptions.position = "bottomCenter";
+      
+          pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+          flOptions.iconStyle = "default";
+      
+          flOptions.boxForm = "horizontal";
+      
+          flOptions.position = "topRight";
+      
+          flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+  
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1278978367&web_id=1278978367" language="JavaScript"></script>
+  </div>
+
+
+
+  
+  
+   <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+   <script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+   <script type="text/javascript" src="/js/src/fireworks.js"></script>
+  
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":150,"height":300,"left":120},"mobile":{"show":true},"react":{"opacity":0.7}});</script></body>
+</html>
+<!-- ҳ����С���� -->
+<script type="text/javascript" src="/js/src/love.js"></script>
